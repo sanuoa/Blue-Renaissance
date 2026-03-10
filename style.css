@@ -134,7 +134,7 @@
 
         nav ul li a:hover::after { transform: translateX(-50%) scaleX(1); }
 
-        /* Active page indicator */
+  
         nav ul li a.active {
             color: var(--col-light);
             background: rgba(99,228,242,0.15);
@@ -143,7 +143,6 @@
 
         nav ul li a.active::after { transform: translateX(-50%) scaleX(1); }
 
-        /* Hamburger (mobile) */
         .nav-toggle {
             display: none;
             flex-direction: column;
