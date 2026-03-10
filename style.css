@@ -34,7 +34,7 @@
             min-height: 100vh;
         }
 
-        /*Header and nav Bar*/
+        /*Header and nav*/
         header {
             position: sticky;
             top: 0;
