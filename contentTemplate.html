@@ -11,7 +11,6 @@
     <style>
        
 
-        /* Two-column layout: fixed sidebar + fluid article */
         .content-layout {
             display: grid;
             grid-template-columns: minmax(140px, 190px) 1fr;
@@ -19,7 +18,6 @@
             align-items: start;
         }
 
-        /* Sticky side-nav — vertically stacked label then links */
         .side-nav {
             position: sticky;
             top: 90px;
@@ -46,7 +44,6 @@
             padding: 0 0.25rem;
         }
 
-        /* List is also a column — each item gets full width */
         .side-nav ul {
             list-style: none;
             display: flex;
@@ -58,12 +55,10 @@
         }
 
         .side-nav ul li {
-            /* Let each list item fill the ul width */
             width: 100%;
             box-sizing: border-box;
         }
 
-        /* Links fill their list item and wrap naturally */
         .side-nav ul li a {
             display: block;
             box-sizing: border-box;
@@ -86,7 +81,6 @@
             padding-left: 0.85rem;
         }
 
-        /* Content article sections */
         .content-article section {
             margin-bottom: 3.5rem;
             scroll-margin-top: 90px;
@@ -132,7 +126,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Content images with captions */
         .content-img-wrap {
             margin: 1.5rem 0;
             border-radius: var(--radius-md);
@@ -155,22 +148,6 @@
             font-style: italic;
         }
 
-        /* Highlight/callout box */
-        .callout {
-            background: linear-gradient(135deg, rgba(59,167,191,0.1), rgba(25,89,115,0.08));
-            border-left: 4px solid var(--col-teal);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .callout p {
-            margin: 0;
-            font-weight: 500;
-            color: var(--col-deep);
-        }
-
-        /* Stat cards row */
         .stat-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -201,7 +178,6 @@
             line-height: 1.4;
         }
 
-        /* Ordered / unordered list styling */
         .content-article ul,
         .content-article ol {
             padding-left: 1.5rem;
@@ -241,7 +217,6 @@
             transform: translateY(-3px);
         }
 
-        /* Responsive: stack sidebar above content on small screens */
         @media (max-width: 860px) {
             .content-layout {
                 grid-template-columns: 1fr;
@@ -251,14 +226,11 @@
                 border-left: none;
                 border-top: 4px solid var(--col-teal);
             }
-            /* On mobile: pills in a horizontal wrapping row */
             .side-nav ul {
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: 0.4rem;
             }
-            /* Each pill shrinks to fit its text — nowrap is fine HERE
-               because the pill container wraps, not the text inside it */
             .side-nav ul li {
                 width: auto;
             }
@@ -277,7 +249,6 @@
     </style>
 </head>
 <body>
-    <!-- ═══════════════ HEADER / NAV (from shared template) ═══════════════ -->
     <header>
         <nav>
             <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
@@ -299,13 +270,12 @@
         </nav>
     </header>
 
-    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
     <main>
         <div class="section-wrap">
 
             <div class="content-layout">
 
-                <!-- ── Sticky Side Navigation ── -->
+                <!-- Sticky Side Navigation -->
                 <nav class="side-nav" aria-label="Page sections">
                     <h3>On This Page</h3>
                     <ul>
@@ -318,237 +288,207 @@
                     </ul>
                 </nav>
 
-                <!-- ── Article Body ── -->
+                <!-- Article Body -->
                 <article class="content-article">
 
-                    <!-- Page Title -->
-                    <h1 id="top">Ocean Health &amp; Biodiversity</h1>
+                    <h1 id="top">Coral Reefs</h1>
                     <p class="page-intro">
-                        Our oceans cover over 70% of the Earth's surface and sustain all life on our planet.
-                        SDG 14 — <em>Life Below Water</em> — calls on all of us to protect and restore
-                        marine ecosystems before it is too late. This page explores why oceans matter,
-                        the threats they face, and the concrete steps you can take today.
+                        Coral reefs are among the most vibrant and essential ecosystems on Earth.
+                        Known as the “rainforests of the sea,” they support incredible biodiversity
+                        while protecting coastlines and sustaining millions of people worldwide.
+                        However, coral reefs are under serious threat — and protecting them is
+                        a key part of achieving SDG 14: Life Below Water.
                     </p>
 
-                    <!-- ── Section 1: Introduction ── -->
                     <section id="introduction">
                         <h2>Introduction</h2>
                         <p>
-                            The ocean is Earth's life-support system. It regulates climate, produces more than
-                            half of the oxygen we breathe, absorbs roughly 30% of all CO₂ emissions, and
-                            provides food and livelihoods for more than three billion people worldwide.
+                            Coral reefs are underwater ecosystems formed by tiny animals called coral polyps.
+                            Over time, these organisms build massive calcium carbonate structures that become
+                            home to thousands of marine species.
                         </p>
                         <p>
-                            Yet despite its fundamental importance, the ocean is under unprecedented stress.
-                            Pollution, overfishing, habitat destruction, and climate-driven warming are pushing
-                            marine systems toward tipping points that could prove irreversible within our
-                            lifetimes.
+                            Although they cover less than 1% of the ocean floor, coral reefs support nearly
+                            25% of all marine life. They are critical not only for ocean biodiversity but
+                            also for human livelihoods, food security, and coastal protection.
                         </p>
 
-                        <!-- Key stats -->
                         <div class="stat-row">
                             <div class="stat-card">
-                                <span class="stat-number">30%</span>
-                                <span class="stat-label">of CO₂ absorbed by oceans annually</span>
+                                <span class="stat-number">25%</span>
+                                <span class="stat-label">of marine species depend on reefs</span>
                             </div>
                             <div class="stat-card">
-                                <span class="stat-number">50%</span>
-                                <span class="stat-label">of Earth's oxygen produced by marine life</span>
+                                <span class="stat-number">1%</span>
+                                <span class="stat-label">of ocean floor covered by reefs</span>
                             </div>
                             <div class="stat-card">
-                                <span class="stat-number">3B+</span>
-                                <span class="stat-label">people depend on oceans for food &amp; income</span>
+                                <span class="stat-number">500M+</span>
+                                <span class="stat-label">people rely on reefs for survival</span>
                             </div>
                         </div>
 
                         <figure class="content-img-wrap">
-                            <!-- Replace src with your actual royalty-free image -->
-                            <img src="Resources/content/ocean-overview.jpg"
-                                 alt="Aerial view of a coral reef teeming with colourful fish and marine life">
-                            <figcaption>A healthy coral reef — one of the ocean's most biodiverse ecosystems. Source: [Royalty-free image – reference here]</figcaption>
+                            <img src="Resources/content/coral-reef.jpg"
+                                alt="Colorful coral reef with diverse marine life">
+                            <figcaption>Coral reefs support one of the richest ecosystems on Earth.</figcaption>
                         </figure>
                     </section>
 
-                    <!-- ── Section 2: Why It Matters ── -->
                     <section id="why-it-matters">
-                        <h2>Why It Matters to Students</h2>
+                        <h2>Why Coral Reefs Matter</h2>
                         <p>
-                            You might be studying far from the coast, but the ocean shapes your world in ways
-                            you interact with every day — from the seafood in your canteen to the weather
-                            outside your window and the cotton in your clothing (produced with water that
-                            cycles through ocean evaporation).
+                            Coral reefs are vital to both marine ecosystems and human societies.
+                            They provide food, income, and protection for millions of people around the world.
                         </p>
 
-                        <div class="callout">
-                            <p>
-                                💡 Did you know? Ocean acidification — caused by excess CO₂ — has already
-                                increased ocean acidity by 26% since the Industrial Revolution, threatening
-                                shellfish, coral, and the entire food chains that depend on them.
-                            </p>
-                        </div>
-
-                        <h3>Economic Relevance</h3>
+                        <h3>Environmental Importance</h3>
                         <p>
-                            The global ocean economy is valued at over $1.5 trillion annually. Tourism,
-                            fisheries, shipping, and emerging blue-economy industries all depend on healthy
-                            seas. As future professionals, decisions you make in engineering, business, law,
-                            design, or science will intersect with ocean health.
+                            Reefs provide shelter, breeding grounds, and food for countless marine species.
+                            Without them, many ocean ecosystems would collapse.
                         </p>
 
-                        <h3>Social Justice Angle</h3>
+                        <h3>Economic Importance</h3>
                         <p>
-                            Coastal and island communities — often among the world's most economically
-                            marginalised populations — bear the greatest cost of ocean degradation. Declining
-                            fish stocks mean hunger and poverty. Rising seas mean displacement. Protecting the
-                            ocean is inseparable from protecting human rights.
+                            Coral reefs support tourism and fishing industries worth billions of dollars
+                            globally. They are essential for the livelihoods of coastal communities.
                         </p>
 
                         <figure class="content-img-wrap">
-                            <img src="Resources/content/coastal-community.jpg"
-                                 alt="Fishing boats in a small coastal village with clear blue water">
-                            <figcaption>Coastal communities depend on healthy oceans for their livelihoods. Source: [Royalty-free image – reference here]</figcaption>
+                            <img src="Resources/content/coral-fish.jpg"
+                                alt="Fish swimming around coral reefs">
+                            <figcaption>Thousands of marine species depend on coral reefs for survival.</figcaption>
                         </figure>
                     </section>
 
-                    <!-- ── Section 3: Key Threats ── -->
                     <section id="key-threats">
-                        <h2>Key Threats Facing Our Oceans</h2>
+                        <h2>Key Threats</h2>
 
-                        <h3>Plastic Pollution</h3>
+                        <h3>Climate Change</h3>
                         <p>
-                            Around 8 million tonnes of plastic enter the ocean every year — equivalent to
-                            dumping a rubbish truck's worth every single minute. Microplastics have now been
-                            found in the deepest ocean trenches and in human blood. Marine animals mistake
-                            plastic for food, causing starvation, internal injury, and death.
+                            Rising ocean temperatures cause coral bleaching, a process where corals lose
+                            their color and ability to survive.
+                        </p>
+
+                        <h3>Pollution</h3>
+                        <p>
+                            Plastic waste, chemicals, and sewage damage reef ecosystems and harm marine life.
                         </p>
 
                         <h3>Overfishing</h3>
                         <p>
-                            The UN Food and Agriculture Organisation estimates that over a third of global
-                            fish stocks are now harvested at biologically unsustainable levels. Without
-                            recovery time, entire species and the ecosystems they anchor risk collapse.
+                            Removing key species disrupts the balance of reef ecosystems, making them weaker.
                         </p>
 
-                        <h3>Ocean Warming &amp; Acidification</h3>
+                        <h3>Ocean Acidification</h3>
                         <p>
-                            Oceans have absorbed over 90% of the excess heat generated by climate change.
-                            Warmer, more acidic water bleaches coral reefs, disrupts breeding cycles, and
-                            forces species to migrate — or face extinction.
+                            Increased CO₂ levels make oceans more acidic, weakening coral skeletons.
                         </p>
 
                         <ul>
-                            <li>50% of the world's coral reefs have been lost since the 1950s</li>
-                            <li>Ocean temperatures have risen by an average of 0.13°C per decade</li>
-                            <li>Dead zones — low-oxygen areas hostile to marine life — have quadrupled since 1950</li>
-                            <li>Seagrass meadows, critical nurseries for fish, are declining at 7% per year</li>
+                            <li>Over 50% of coral reefs have already been lost</li>
+                            <li>Bleaching events are increasing worldwide</li>
+                            <li>Pollution affects even remote reef systems</li>
+                            <li>Climate change is the biggest long-term threat</li>
                         </ul>
 
                         <figure class="content-img-wrap">
-                            <img src="Resources/content/plastic-ocean.jpg"
-                                 alt="Close-up of plastic waste floating on the ocean surface">
-                            <figcaption>Plastic pollution is one of the most visible and devastating threats to marine ecosystems. Source: [Royalty-free image – reference here]</figcaption>
+                            <img src="Resources/content/coral-bleaching.jpg"
+                                alt="Bleached coral reef showing loss of color">
+                            <figcaption>Coral bleaching is one of the biggest threats to reef survival.</figcaption>
                         </figure>
                     </section>
 
-                    <!-- ── Section 4: Student Actions ── -->
                     <section id="student-actions">
-                        <h2>Actions You Can Take as a Student</h2>
+                        <h2>Student Actions</h2>
                         <p>
-                            You don't need to be a marine biologist or an environmental activist to make a
-                            difference. Here are practical, realistic actions that every student can take
-                            right now:
+                            Students can make a real difference in protecting coral reefs through simple actions:
                         </p>
 
-                        <h3>In Your Daily Life</h3>
+                        <h3>Daily Actions</h3>
                         <ol>
-                            <li><strong>Refuse single-use plastics</strong> — carry a reusable bottle, bag, and coffee cup.</li>
-                            <li><strong>Choose sustainable seafood</strong> — use apps like "Good Fish Guide" when shopping or eating out.</li>
-                            <li><strong>Reduce your carbon footprint</strong> — ocean warming is driven by CO₂; cutting your emissions helps.</li>
-                            <li><strong>Never pour chemicals or medication down the drain</strong> — they end up in waterways and the sea.</li>
+                            <li>Reduce single-use plastic</li>
+                            <li>Save energy to reduce climate change</li>
+                            <li>Use eco-friendly products</li>
+                            <li>Avoid wasting water</li>
                         </ol>
 
-                        <h3>As Part of a Community</h3>
+                        <h3>Community Actions</h3>
                         <ol>
-                            <li><strong>Join or organise a beach or river clean-up</strong> — local waterways connect directly to the ocean.</li>
-                            <li><strong>Advocate at your university</strong> — push for plastic-free policies in your canteen and campus shops.</li>
-                            <li><strong>Share knowledge</strong> — social media reach can spread ocean-positive awareness further than any campaign.</li>
+                            <li>Join beach clean-ups</li>
+                            <li>Spread awareness on social media</li>
+                            <li>Participate in environmental clubs</li>
+                            <li>Educate friends and family</li>
                         </ol>
 
                         <div class="callout">
                             <p>
-                                🌊 Even landlocked students matter: every river, stream, and drain eventually
-                                leads to the sea. Your local environment is connected to global ocean health.
+                                Small actions by many students can create a global impact for ocean protection.
                             </p>
                         </div>
 
                         <figure class="content-img-wrap">
                             <img src="Resources/content/beach-cleanup.jpg"
-                                 alt="Students collecting plastic waste during a beach clean-up">
-                            <figcaption>Students participating in a community beach clean-up. Source: [Royalty-free image – reference here]</figcaption>
+                                alt="Students cleaning a beach">
+                            <figcaption>Students taking action to protect marine environments.</figcaption>
                         </figure>
                     </section>
 
-                    <!-- ── Section 5: Success Stories ── -->
                     <section id="success-stories">
                         <h2>Success Stories</h2>
                         <p>
-                            Progress is possible. Around the world, communities, governments, and young
-                            activists have shown that ocean protection works when people take action.
+                            Around the world, efforts are being made to restore and protect coral reefs.
+                        </p>
+
+                        <h3>Coral Restoration Projects</h3>
+                        <p>
+                            Scientists grow corals in nurseries and replant them in damaged areas.
                         </p>
 
                         <h3>Marine Protected Areas</h3>
                         <p>
-                            Where MPAs have been established and enforced, fish populations have recovered
-                            significantly — sometimes doubling within a decade. The UK's network of MPAs
-                            now covers around 38% of its waters.
+                            Protected zones allow marine ecosystems to recover naturally.
                         </p>
 
-                        <h3>Seagrass Restoration in Wales</h3>
+                        <h3>Innovative Research</h3>
                         <p>
-                            Project Seagrass — a charity partly founded by researchers at Cardiff University
-                            — has successfully restored seagrass meadows in Dale Bay, Wales. Seagrass stores
-                            carbon 35 times faster than rainforests and is a critical nursery for juvenile fish.
+                            Researchers are developing heat-resistant coral species to survive climate change.
                         </p>
 
-                        <h3>The Great Barrier Reef Recovery Efforts</h3>
                         <p>
-                            Australian scientists and the government have invested in coral reef restoration
-                            programmes including coral aquaculture and heat-resistant coral breeding. Early
-                            results in some reef sections show genuine recovery when local stressors are
-                            reduced alongside climate action.
+                            These efforts show that coral reefs can recover if we act quickly and responsibly.
                         </p>
                     </section>
 
-                    <!-- ── Section 6: Get Involved ── -->
                     <section id="get-involved">
                         <h2>Get Involved</h2>
                         <p>
-                            Ready to turn awareness into action? Here are some places to start:
+                            You can help protect coral reefs by getting involved in conservation efforts:
                         </p>
+
                         <ul>
-                            <li><strong>Surfers Against Sewage</strong> — UK-based ocean charity running beach cleans and campaigns.</li>
-                            <li><strong>Project Seagrass</strong> — volunteer and citizen science opportunities.</li>
-                            <li><strong>Oceana</strong> — global advocacy organisation with student programmes.</li>
-                            <li><strong>Marine Conservation Society</strong> — good fish guides, volunteer events, policy campaigns.</li>
+                            <li>Join environmental organizations</li>
+                            <li>Volunteer for marine conservation programs</li>
+                            <li>Support eco-friendly initiatives</li>
+                            <li>Advocate for ocean protection policies</li>
                         </ul>
+
                         <p>
-                            You can also explore your own impact using our
-                            <a href="ais.html" style="color:var(--col-teal); font-weight:600;">Action Impact Simulator</a>
-                            — select the ocean-positive actions you already take or plan to take and see how
-                            your collective impact stacks up.
+                            Try our 
+                            <a href="ais.html" style="color:var(--col-teal); font-weight:600;">
+                            Action Impact Simulator</a> to see how your actions can make a difference.
                         </p>
+
                         <a href="ais.html" class="btn btn-primary">Try the Impact Simulator →</a>
                     </section>
 
                 </article>
-            </div><!-- end .content-layout -->
-        </div><!-- end .section-wrap -->
+            </div>
+        </div>
     </main>
 
-    <!-- ═══════════════ GO TO TOP ═══════════════ -->
     <a href="#top" class="go-top" aria-label="Go back to top of page" title="Back to top">↑</a>
 
-    <!-- ═══════════════ FOOTER (from shared template) ═══════════════ -->
     <footer>
         <div class="footer-inner">
             <div class="footer-grid">
@@ -580,9 +520,7 @@
         </div>
     </footer>
 
-    <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
     <script>
-        // Mobile nav toggle
         const navToggle = document.getElementById('navToggle');
         const navMenu   = document.getElementById('navMenu');
 
@@ -591,7 +529,6 @@
             navToggle.setAttribute('aria-expanded', isOpen);
         });
 
-        // Mark active nav link based on current page filename
         const currentPage = window.location.pathname.split('/').pop();
         document.querySelectorAll('nav ul li a').forEach(link => {
             if (link.getAttribute('href') === currentPage) {
@@ -600,7 +537,6 @@
             }
         });
 
-        // Highlight side-nav link that is currently in view (simple scroll spy)
         const sections  = document.querySelectorAll('.content-article section[id]');
         const sideLinks = document.querySelectorAll('.side-nav a');
 

@@ -1,73 +1,739 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Blue Renaissance | Home</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    </head>
+<head>
+    <title>Blue Renaissance | Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <body>
-        <header>
-            <nav>
-                <img src="" alt="Site logo">
-                <ul>
-                    <li>Home</li>
-                    <li>Gallery</li>
-                    <li>Impact Simulator</li>
-                    <li>Feedback</li>
-                    <li>Team</li>
-                    <li>Profile</li>
-                    <li>Sitemap</li>
-                </ul>
-            </nav>
-        </header>
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        <main>
-            <section id="card">
-                <h1>Protect life Below Water</h1>
-                <p>Our ocean cover 71% of the Earth's surface and supprot billions of lives.
-                     SDG 14 calls on the all of us to conserva and sustainably use marine</p>
-                <p>Explore Content</p>
-            </section>
-        </main>
-            <h2>Why SDG 14 Matters</h2>
+    <link rel="stylesheet" href="style.css">
+
+    <style id="home-page-styles">
+        /* 1. Hero section layout */
+        .hero {
+            background: linear-gradient(160deg, var(--col-dark) 0%, var(--col-deep) 55%, var(--col-mid) 100%);
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 2. Hero animated wave decoration */
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0; right: 0;
+            height: 120px;
+            background: var(--col-offwhite);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        /* Animated bubbles in hero */
+        .hero-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(99,228,242,0.08);
+            border: 1px solid rgba(99,228,242,0.12);
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+            50%       { transform: translateY(-30px) scale(1.08); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem 8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(249,115,22,0.2);
+            border: 1px solid rgba(249,115,22,0.4);
+            color: #fdba74;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-badge::before { content: '🌊'; font-size: 0.9rem; }
+
+        /* 3. Hero title animated entrance */
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            color: var(--col-white);
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            animation: slideUp 0.8s ease both;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--col-light);
+            position: relative;
+        }
+
+        .hero h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0; right: 0;
+            height: 3px;
+            background: var(--col-accent);
+            border-radius: 3px;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s 0.1s ease both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s 0.2s ease both;
+        }
+
+        .hero-stat-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            animation: slideUp 0.8s 0.3s ease both;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(99,228,242,0.2);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(99,228,242,0.5);
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--col-light);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.2rem;
+            line-height: 1.3;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 4. SDG Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+        }
+
+        /* 5. Card list styling (home-page specific list style) */
+        .card-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .card-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #3a5a62;
+            line-height: 1.4;
+        }
+
+        .card-list li::before {
+            content: '→';
+            color: var(--col-accent);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+        }
+
+        /* 6. Explore / Gallery section */
+        .explore-section {
+            background: linear-gradient(180deg, var(--col-offwhite) 0%, #d4f4f8 100%);
+            padding: 5rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-tile {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--col-deep), var(--col-dark));
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .gallery-tile:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-tile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-tile:hover .gallery-tile-img {
+            transform: scale(1.07);
+        }
+
+        /* Placeholder gradient backgrounds for tiles */
+        .gallery-tile-bg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-tile:hover .gallery-tile-bg { transform: scale(1.07); }
+
+        .gallery-tile-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(5,58,64,0.85) 0%, rgba(5,58,64,0.1) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            transition: background var(--transition);
+        }
+
+        .gallery-tile:hover .gallery-tile-overlay {
+            background: linear-gradient(0deg, rgba(5,58,64,0.92) 0%, rgba(5,58,64,0.3) 60%);
+        }
+
+        .gallery-tile-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--col-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-tile-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--col-white);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .gallery-tile-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--col-light);
+            font-size: 0.82rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: var(--transition);
+        }
+
+        .gallery-tile:hover .gallery-tile-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive home page */
+        @media (max-width: 900px) {
+            .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-stat-box { order: -1; }
+            .cards-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 580px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .hero-stat-box { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     HEADER & NAVIGATION
+============================================================ -->
+<header>
+    <nav>
+        <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">  
+            <img src="Resourses\ocean renaissance logo.png" alt="ocean renaissance logo" >
+            <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+        </a>
+
+        <!-- Mobile toggle -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul id="navMenu" role="list">
+            <li><a href="home.html" class="active" aria-current="page">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="ais.html">Impact Simulator</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- ============================================================
+     MAIN CONTENT
+============================================================ -->
+<main>
+
+    <!-- ── HERO SECTION ── -->
+    <section class="hero" aria-labelledby="hero-title">
+
+        <!-- Decorative bubbles -->
+        <div class="hero-bubble" style="width:300px;height:300px;top:-80px;right:-60px;animation-delay:0s;"></div>
+        <div class="hero-bubble" style="width:180px;height:180px;bottom:120px;right:200px;animation-delay:2.5s;"></div>
+        <div class="hero-bubble" style="width:100px;height:100px;top:40%;left:40%;animation-delay:5s;"></div>
+
+        <div class="hero-content">
             <div>
-                <img src="" alt="Marine BioDiversity">
-                <h3>Marine BoiDiversity</h3>
-                <p>Over 2 million species live in our oceans. Pollution, overfishing and climate changes threten their survival and the ecosystems they sustain</p>
-                <ul>
-                    <li>Reduce single use Plastics</li>
-                    <li>Support sustainable seafood choices</li>
-                    <li>Participate in beach clean ups</li>
-                </ul>
+                <span class="hero-badge">SDG 14 · Life Below Water</span>
+                <h1 id="hero-title">Protect Life<br><em>Below Water</em></h1>
+                <p>Our oceans cover 71% of the Earth's surface and support billions of lives.
+                   SDG 14 calls on all of us to conserve and sustainably use marine and coastal
+                   ecosystems — because a healthy ocean means a healthy planet.</p>
+                <div class="hero-actions">
+                    <a href="#why-matters" class="btn btn-accent">Discover Why It Matters</a>
+                    <a href="#explore-content" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">Explore Content</a>
+                </div>
             </div>
 
-            <div>
-                <img src="" alt="Ocean Climate">
-                <h3>Ocean Climate</h3>
-                <p>The ocean absorb 25% of CO<sub>2</sub> emmision and genarate 50% od Earth's oxygen, Protecting it is central to tackling climate change</p>
-                <ul>
-                    <li>Lower your carbon footprint</li>
-                    <li>Advocate for renewable energy</li>
-                    <li>Share ocean climate facts</li>
-                </ul>
+            <div class="hero-stat-box" aria-label="Ocean facts">
+                <div class="stat-item">
+                    <span class="stat-num">71%</span>
+                    <span class="stat-label">of Earth's surface is ocean</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">2M+</span>
+                    <span class="stat-label">species live in our seas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">50%</span>
+                    <span class="stat-label">of Earth's oxygen from ocean</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">34%</span>
+                    <span class="stat-label">of fish stocks overexploited</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── WHY SDG 14 MATTERS — THREE CARDS ── -->
+    <section id="why-matters" aria-labelledby="why-title">
+        <div class="section-wrap">
+            <h2 class="section-title" id="why-title">Why SDG 14 Matters</h2>
+            <p class="section-subtitle">
+                The ocean is not just beautiful — it is essential. Here is what is at stake, and what you can do.
+            </p>
+
+            <div class="cards-grid">
+
+                <!-- Card 1: Marine Biodiversity -->
+                <article class="card" tabindex="0" aria-label="Marine Biodiversity card">
+                    <div class="card-img-placeholder" aria-hidden="true">🐠</div>
+                    <!--
+                        PLACEHOLDER IMAGE
+                        Replace the div above with:
+                        <img class="card-img" src="images/marine-biodiversity.jpg"
+                             alt="Colourful coral reef with diverse fish species">
+                    -->
+                    <div class="card-body">
+                        <h3>Marine Biodiversity</h3>
+                        <p>Over 2 million species live in our oceans. Pollution, overfishing,
+                           and climate change threaten their survival and the ecosystems that
+                           sustain all life on Earth.</p>
+                        <ul class="card-list" aria-label="Actions you can take">
+                            <li>Reduce single-use plastics in your daily routine</li>
+                            <li>Support sustainable seafood choices &amp; certifications</li>
+                            <li>Participate in local beach or river clean-ups</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Card 2: Ocean & Climate -->
+                <article class="card" tabindex="0" aria-label="Ocean and Climate card">
+                    <div class="card-img-placeholder" aria-hidden="true">🌍</div>
+                    <!--
+                        PLACEHOLDER IMAGE
+                        Replace the div above with:
+                        <img class="card-img" src="images/ocean-climate.jpg"
+                             alt="Aerial view of ocean waves representing climate connection">
+                    -->
+                    <div class="card-body">
+                        <h3>Ocean &amp; Climate</h3>
+                        <p>The ocean absorbs 25% of all CO₂ emissions and generates 50%
+                           of Earth's oxygen. Protecting it is not optional — it is central
+                           to tackling the climate crisis we all face.</p>
+                        <ul class="card-list" aria-label="Actions you can take">
+                            <li>Lower your carbon footprint through everyday choices</li>
+                            <li>Advocate for renewable energy in your community</li>
+                            <li>Share verified ocean-climate facts on social media</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Card 3: Sustainable Fisheries -->
+                <article class="card" tabindex="0" aria-label="Sustainable Fisheries card">
+                    <div class="card-img-placeholder" aria-hidden="true">🎣</div>
+                    <!--
+                        PLACEHOLDER IMAGE
+                        Replace the div above with:
+                        <img class="card-img" src="images/sustainable-fisheries.jpg"
+                             alt="Fishermen on a boat using sustainable fishing methods">
+                    -->
+                    <div class="card-body">
+                        <h3>Sustainable Fisheries</h3>
+                        <p>34% of fish stocks are currently overexploited. Sustainable fishing
+                           protects livelihoods for 600 million people who depend on
+                           fisheries worldwide for food and income.</p>
+                        <ul class="card-list" aria-label="Actions you can take">
+                            <li>Choose MSC-certified fish when shopping</li>
+                            <li>Report suspicious or illegal fishing activity</li>
+                            <li>Support fishing communities &amp; fair trade seafood</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── EXPLORE CONTENT — GALLERY TILES ── -->
+    <section id="explore-content" class="explore-section" aria-labelledby="explore-title">
+        <div class="section-wrap" style="padding-top:0;padding-bottom:0;">
+            <h2 class="section-title" id="explore-title">Explore Our Content</h2>
+            <p class="section-subtitle">
+                Hover over a topic to learn more. Click to read the full page written by each team member.
+            </p>
+
+            <div class="gallery-grid" role="list">
+
+                <!-- Tile 1: Student 1 Content Page -->
+                <a href="content_ST1.html" class="gallery-tile" role="listitem"
+                   aria-label="Navigate to Student 1 content page">
+                    <!--
+                        TO CUSTOMISE THIS TILE:
+                        1. Replace the .gallery-tile-bg div with an <img> tag:
+                           <img class="gallery-tile-img" src="images/content1-thumb.jpg"
+                                alt="[Describe the image]">
+                        2. Update the label, title, and description below.
+                    -->
+                    <div class="gallery-tile-bg"
+                         style="background:linear-gradient(135deg,#195973,#2D83A6);"
+                         aria-hidden="true">🐋</div>
+                    <div class="gallery-tile-overlay">
+                        <span class="gallery-tile-label">Student 1 · Topic</span>
+                        <p class="gallery-tile-title">Ocean Pollution &amp; Plastic Crisis</p>
+                        <!-- UPDATE: Replace with real topic title and short description -->
+                        <span class="gallery-tile-arrow">Read full article →</span>
+                    </div>
+                </a>
+
+                <!-- Tile 2: Student 2 Content Page -->
+                <a href="content_ST2.html" class="gallery-tile" role="listitem"
+                   aria-label="Navigate to Student 2 content page">
+                    <div class="gallery-tile-bg"
+                         style="background:linear-gradient(135deg,#053A40,#195973);"
+                         aria-hidden="true">🦈</div>
+                    <div class="gallery-tile-overlay">
+                        <span class="gallery-tile-label">Student 2 · Topic</span>
+                        <p class="gallery-tile-title">Marine Protected Areas</p>
+                        <!-- UPDATE: Replace with real topic title -->
+                        <span class="gallery-tile-arrow">Read full article →</span>
+                    </div>
+                </a>
+
+                <!-- Tile 3: Student 3 Content Page -->
+                <a href="content_ST3.html" class="gallery-tile" role="listitem"
+                   aria-label="Navigate to Student 3 content page">
+                    <div class="gallery-tile-bg"
+                         style="background:linear-gradient(135deg,#2D83A6,#3BA7BF);"
+                         aria-hidden="true">🐢</div>
+                    <div class="gallery-tile-overlay">
+                        <span class="gallery-tile-label">Student 3 · Topic</span>
+                        <p class="gallery-tile-title">Climate Change &amp; Rising Seas</p>
+                        <!-- UPDATE: Replace with real topic title -->
+                        <span class="gallery-tile-arrow">Read full article →</span>
+                    </div>
+                </a>
+
+                <!-- Tile 4: Student 4 Content Page -->
+                <a href="content_ST4.html" class="gallery-tile" role="listitem"
+                   aria-label="Navigate to Student 4 content page">
+                    <div class="gallery-tile-bg"
+                         style="background:linear-gradient(135deg,#3BA7BF,#63E4F2);"
+                         aria-hidden="true">🌊</div>
+                    <div class="gallery-tile-overlay">
+                        <span class="gallery-tile-label">Student 4 · Topic</span>
+                        <p class="gallery-tile-title">Sustainable Fishing Practices</p>
+                        <!-- UPDATE: Replace with real topic title -->
+                        <span class="gallery-tile-arrow">Read full article →</span>
+                    </div>
+                </a>
+
             </div>
 
+            <!-- CTA row -->
+            <div style="text-align:center;margin-top:3rem;">
+                <a href="gallery.html" class="btn btn-primary" style="font-size:0.95rem;padding:0.8rem 2rem;">
+                    Browse Full Gallery →
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer role="contentinfo">
+    <div class="footer-inner">
+        <div class="footer-grid">
             <div>
-                <img src="" alt="Sustainable fisharies">
-                <h3>Sustainable fisharies</h3>
-                <p>34% of fish stocks are overexploited.Sustainable fishing protects livelihoods for 600 million people who depend on fisheries worldwide</p>
-                <ul>
-                    <li>Choose MSC certified fish</li>
-                    <li>Report illegal fishing </li>
-                    <li>Support fishing communities</li>
-                </ul>
-            </div>  
+                <h4>Blue Renaissance</h4>
+                <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                   Web Design &amp; Development module at the University of Westminster.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="home.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="ais.html">Impact Simulator</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="team.html">Team</a>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+            <div>
+                <h4>Student 1</h4>
+                <p style="margin-bottom:0.5rem;">Name: N.G.S.R.Gunarahne<br>Student ID: 2024055 / w2181558</p>
+                <a href="pageEditor_ST1.html">My Page Editor</a>
+                <a href="validation_ST1.html">Validation Page</a>
+                <a href="#" aria-label="Accessibility compliance information">Accessibility Statement</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+            <span>All content complies with JANET regulations.</span>
+        </div>
+    </div>
+</footer>
 
-            <h2>Explore our content</h2>
-            <p>Hover over a topic to learn more. click to read the full page</p>
-        <footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     Handles: mobile nav toggle, scroll-reveal animations,
+     gallery hover interactivity, smooth scroll, active-link check
+============================================================ -->
+<script>
+    // ── 1. Mobile Navigation Toggle ──────────────────────────────
+    const navToggle = document.getElementById('navToggle');
+    const navMenu   = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+        // Animate hamburger to X
+        const spans = navToggle.querySelectorAll('span');
+        if (isOpen) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity   = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+        } else {
+            spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        }
+    });
+
+    // Close menu when a link is clicked
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', false);
+        });
+    });
 
 
-        </footer>
-    </body>
+    // ── 2. Scroll-Reveal Animation ───────────────────────────────
+    // Cards and gallery tiles animate in when scrolled into view
+    const revealItems = document.querySelectorAll('.card, .gallery-tile, .stat-item');
+
+    // Set initial hidden state
+    revealItems.forEach((el, i) => {
+        el.style.opacity  = '0';
+        el.style.transform = 'translateY(32px)';
+        el.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s, box-shadow 0.35s ease`;
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity   = '1';
+                entry.target.style.transform  = 'translateY(0)';
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(el => revealObserver.observe(el));
+
+
+    // ── 3. Gallery Tile Hover — JavaScript Event Listeners ───────
+    // Per spec: hover logic must use JS event listeners, not CSS-only
+    const galleryTiles = document.querySelectorAll('.gallery-tile');
+
+    galleryTiles.forEach(tile => {
+        // Hover: add JS-controlled visual pop
+        tile.addEventListener('mouseenter', () => {
+            tile.style.outline = '3px solid rgba(99,228,242,0.5)';
+        });
+
+        tile.addEventListener('mouseleave', () => {
+            tile.style.outline = '';
+        });
+
+        // Keyboard: Enter or Space to navigate
+        tile.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                window.location.href = tile.getAttribute('href');
+            }
+        });
+    });
+
+
+    // ── 4. Smooth scroll for on-page anchor links ─────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const targetId = anchor.getAttribute('href');
+            const target   = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+
+    // ── 5. Sticky header shadow on scroll ────────────────────────
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            header.style.boxShadow = '0 4px 30px rgba(5,58,64,0.5)';
+        } else {
+            header.style.boxShadow = '0 2px 20px rgba(5,58,64,0.4)';
+        }
+    });
+
+
+    // ── 6. Animated stat counter in hero ──────────────────────────
+    function animateCounter(el, target, suffix = '', duration = 1800) {
+        let start = 0;
+        const step = (timestamp) => {
+            if (!start) start = timestamp;
+            const progress = Math.min((timestamp - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            el.textContent = Math.floor(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    }
+
+    // Only animate when stats come into view
+    const statsEl = document.querySelectorAll('.stat-num');
+    const statData = [
+        { target: 71, suffix: '%' },
+        { target: 2,  suffix: 'M+' },
+        { target: 50, suffix: '%' },
+        { target: 34, suffix: '%' }
+    ];
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                statsEl.forEach((el, i) => {
+                    if (statData[i]) {
+                        animateCounter(el, statData[i].target, statData[i].suffix);
+                    }
+                });
+                statsObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    if (statsEl.length) statsObserver.observe(statsEl[0].closest('.hero-stat-box') || statsEl[0]);
+</script>
+
+</body>
 </html>
