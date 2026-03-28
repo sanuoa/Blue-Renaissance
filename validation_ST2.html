@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation - H.D.M.R.M Weerasiri | Blue Renaissance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageEditor_validator.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="ocean renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="stud" id="top">
+        <h2>H.D.M.R.M Weerasiri &nbsp;|&nbsp; Blue Renaissance &nbsp;|&nbsp; Student 2 - Validation Report</h2>
+    </section>
+
+    <div class="container">
+        <main>
+
+            <section>
+                <h2 id="splashVal">Splash Screen - Validation Report</h2>
+                <p>
+                    I validated the splash screen using the W3C Markup Validation Service.
+                    It came back with no errors which I was happy about.
+                    There was one warning saying that a space was expected at the meta refresh tag but I looked into it and it seems that 
+                    this is a common warning for meta refresh tags and it doesn't affect the functionality of the page but I decided to fix it anyway.
+                </p>
+                <img src="Resourses/Splash_validation.png" alt="W3C validation result for Splash Screen">
+
+                <h3>Back to Page Editor</h3>
+                <p><a href="pageEditor_ST2.html#splash">Back to Splash Screen in Page Editor</a></p>
+            </section>
+
+            <section>
+                <h2 id="aisVal">Action Impact Simulator - Validation Report</h2>
+                <p>
+                    I validated the AIS page using the W3C Markup Validation Service and it gave some warnings, I fixed what was neccassary.
+                    A warning was given about the heading structure saying that I added a H1 tag and a H3 tag without a 
+                    H2 inbetween which is true but I decided to keep it as it is because the H1 tag is only used for the main heading of the page and the H3 tag 
+                    is used for the subheadings of the references section so it made more sense to me to keep it this way rather than adding an unnecessary H2 tag just to satisfy the validator.
+                </p>
+                <img src="Resourses/AIS_validation_1.png" alt="W3C validation result for AIS page">
+
+                <h3>Back to Page Editor</h3>
+                <p><a href="pageEditor_ST2.html#ais">Back to AIS in Page Editor</a></p>
+            </section>
+
+            <section>
+                <h2 id="contentVal">Content Page - Validation Report</h2>
+                <p>
+                    I validated the content page using the W3C Markup Validation Service. 
+                    The validator came back with a few issues. I fixed the ones that were actual mistakes 
+                    a typo in a CSS gap value where I had written 0.9srem instead of 0.9rem. The other two issues 
+                    a space in the logo image filename and an h4 heading in the footer following an h2 
+                    I chose to leave as they were since they did not break anything on the page and fixing them 
+                    would have required changes across multiple files shared with the rest of the team.
+                   
+                </p>
+                <img src="Resourses/validation_content.png" alt="W3C validation result for Content Page">
+
+                <h3>Back to Page Editor</h3>
+                <p><a href="pageEditor_ST2.html#content">Back to Content Page in Page Editor</a></p>
+            </section>
+
+            <p class="top"><a href="#top">Go top</a></p>
+        </main>
+
+        <aside>
+            <h3>Validation Reports</h3>
+            <ul>
+                <li><a href="#splashVal">Splash Screen</a></li>
+                <li><a href="#aisVal">Action Impact Simulator</a></li>
+                <li><a href="#contentVal">Content Page</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 2</h4>
+                    <p style="margin-bottom:0.5rem;">Name: H.D.M.R.M Weerasiri<br>Student ID: 20240789 / w2181803</p>
+                    <a href="pageEditor_ST2.html">My Page Editor</a>
+                    <a href="validation_ST2.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

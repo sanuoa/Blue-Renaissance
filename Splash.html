@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="4; url=home.html">
+  <title>Ocean Renaissance</title>
+
+  <style>
+
+    /* =============================================
+       Colour palette:
+         #195973  deep ocean blue (primary)
+         #2D83A6  mid blue
+         #3BA7BF  teal (secondary)
+         #053A40  darkest (dark bg)
+         #63E4F2  light cyan (accent)
+       Highlights: light orange (#ff8c42)
+       ============================================= */
+
+    @font-face {
+      font-family: Aestera;
+      src: url(Resourses/Aestera.ttf) format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial;
+      color: #a4a4a4;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .splash-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #d3ffde 0%, #2D83A6 60%, #0a3d62 100%);
+    }
+
+    .content {
+      text-align: center;
+      z-index: 10;
+      padding: 32px;
+    }
+
+    h1 {
+      font-family: Aestera;
+      font-size: 80px;
+      font-weight: 900;
+      background: #ffff;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .sdg-badge {
+      display: inline-block;
+      background: #0097b2;
+      color: #fff;
+      padding: 5px 19px;
+      border-radius: 20px;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .mission {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 460px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .team-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .team-names {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .team-names span {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .fish-loader {
+      width: 340px;
+      margin: 0 auto 19px;
+      padding-top: 30px;
+    }
+
+    .fish-track {
+      position: relative;
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 50px;
+      overflow: visible;
+    }
+
+    .fish-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff6a00, #ff8529);
+      border-radius: 50px;
+      transition: width 0.05s linear;
+    }
+
+    .fish-icon {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(-70%, -53%);
+      width: 60px;
+      height: 60px;
+      z-index: 5;
+      transition: left 0.05s linear;
+    }
+
+    .fish-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: scaleX(-1) rotate(-20deg);
+    }
+
+    .countdown {
+      font-size: 16px;
+      color: #ff8529;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .skip-btn {
+      background: transparent;
+      border: 2px solid rgba(212, 120, 0, 0.6);
+      color: #ffff;
+      padding: 8px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .skip-btn:hover {
+      background: #d45c00;
+      color: #071a2e;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="splash-wrapper">
+
+    <div class="content">
+
+      <h1>Ocean Renaissance</h1>
+      <p class="sdg-badge">SDG 14 - Life Below Water</p>
+
+      <p class="mission">
+        Inspiring students and communities to take action 
+        and protect our oceans for future generations.
+      </p>
+
+      <p class="team-label">Our Team</p>
+      <div class="team-names">
+        <span>Rusith Weerasiri</span>
+        <span>Sanupa Gunerathne</span>
+        <span>Dimuth Matheesha</span>
+        <span>Desandu Jayasinghe</span>
+      </div>
+
+      <div class="fish-loader">
+        <div class="fish-track">
+          <div class="fish-fill" id="fishFill"></div>
+          <div class="fish-icon" id="fishIcon">
+            <img src="Resourses/Fish.png" alt="Fish swimming loader">
+          </div>
+        </div>
+      </div>
+
+      <p class="countdown" id="countdown">Entering site in 4...</p>
+      <button class="skip-btn" id="skipBtn">Skip Intro →</button>
+
+    </div>
+  </div>
+
+  <script>
+    var TOTAL_MS = 4000; 
+    var INTERVAL = 30;    
+    var elapsed  = 0;
+
+    var countdownEl = document.getElementById('countdown');
+    var skipBtn     = document.getElementById('skipBtn');
+    var fishIcon    = document.getElementById('fishIcon');
+    var fishFill    = document.getElementById('fishFill');
+
+    var timer = setInterval(function () {
+
+      elapsed += INTERVAL;
+
+      var progress = elapsed / TOTAL_MS;
+      if (progress > 1) progress = 1;
+
+      var pct = progress * 100;
+
+      fishFill.style.width = pct + '%';
+      fishIcon.style.left  = pct + '%';
+
+      var secondsLeft = Math.ceil((TOTAL_MS - elapsed) / 1000);
+      if (secondsLeft > 0) {
+        countdownEl.textContent = 'Entering site in ' + secondsLeft + '...';
+      } else {
+        countdownEl.textContent = 'Entering site...';
+        clearInterval(timer);
+      }
+
+    }, INTERVAL);
+
+    skipBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      window.location.href = 'home.html';
+    });
+  </script>
+
+</body>
+</html>
