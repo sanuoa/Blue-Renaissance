@@ -1,0 +1,203 @@
+/* =============================================
+   pageEditor_validator.css
+   Styled to match Blue Renaissance theme
+   Uses same colour palette as style.css
+   ============================================= */
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0fbfd;
+    color: #0d2b30;
+}
+
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+main {
+    flex: 3;
+}
+
+/* Sidebar */
+aside {
+    flex: 1;
+    background-color: #053A40;
+    padding: 1.25rem;
+    border-radius: 10px;
+    align-self: flex-start;
+    position: sticky;
+    top: 90px;
+}
+
+aside h3 {
+    color: #63E4F2;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(99,228,242,0.3);
+    padding-bottom: 0.5rem;
+}
+
+aside ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+aside li {
+    padding-bottom: 0.4rem;
+}
+
+aside a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+aside a:hover {
+    color: #63E4F2;
+}
+
+/* Student banner */
+.stud {
+    text-align: center;
+    background: #053A40;
+    color: #63E4F2;
+    padding: 0.75rem 2rem;
+}
+
+.stud h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.5;
+    color: #63E4F2;
+}
+
+/* Sections */
+section {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid #c8e8ef;
+    background-color: #ffffff;
+    box-shadow: 0 2px 12px rgba(25, 89, 115, 0.07);
+}
+
+section h2 {
+    color: #195973;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #3BA7BF;
+}
+
+section h3 {
+    color: #2D83A6;
+    font-size: 1rem;
+    margin: 1rem 0 0.4rem;
+}
+
+section p, section li {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #1a3a40;
+}
+
+section a {
+    color: #2D83A6;
+    text-decoration: none;
+}
+
+section a:hover {
+    color: #195973;
+    text-decoration: underline;
+}
+
+/* References list */
+.ref {
+    padding-left: 0;
+}
+
+.ref li {
+    list-style: none;
+    padding-bottom: 0.6rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* Validation screenshots */
+img {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid #3BA7BF;
+    margin: 1rem 0;
+}
+
+/* Meetings table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #c8e8ef;
+    text-align: left;
+}
+
+thead {
+    background-color: #195973;
+    color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f0fbfd;
+}
+
+tbody tr:hover {
+    background-color: #dff4f8;
+}
+
+/* Go to top button */
+.top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.top a {
+    padding: 0.5rem 1.2rem;
+    background-color: #195973;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(25,89,115,0.3);
+    transition: background 0.25s;
+}
+
+.top a:hover {
+    background-color: #2D83A6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    aside {
+        position: static;
+    }
+}

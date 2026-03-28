@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Editor - H.D.M.R.M Weerasiri | Blue Renaissance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageEditor_validator.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="ocean renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="stud" id="top">
+        <h2>H.D.M.R.M Weerasiri &nbsp;|&nbsp; Blue Renaissance &nbsp;|&nbsp; Student 2 – Splash Screen &amp; AIS</h2>
+    </section>
+
+    <div class="container">
+        <main>
+
+            <section>
+                <h2 id="splash">Splash Screen</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The splash screen is a single page where all the CSS and JavaScript are written directly inside the HTML file itself rather than in separate files.
+                    It automatically redirects to the home page after 4 seconds using a meta refresh tag in the head.
+                    The whole page is centered using flexbox, and the background is a gradient that goes from a light green at the top to a dark ocean blue at the bottom to give it an underwater feel.
+                </p>
+                <p>
+                    I used a custom font called Aestera for the main heading, which I loaded using a font-face rule pointing to the font file in the resources folder.
+                    Instead of a regular loading spinner I made a fish swimming across a bar. There is a thin orange bar and a fish image that both move from left to right together over 4 seconds using JavaScript's setInterval, which updates the position every 30 milliseconds.
+                    The skip button lets the user go straight to the home page without waiting.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    The fish image has an alt attribute so screen readers can understand what it is.
+                    The skip button is a proper button element so it works with keyboard navigation.
+                    The page has a lang attribute set to English so screen readers know what language the content is in.
+                    The text colours are light enough against the dark background to be readable.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST2.html#splashVal">View W3C validation result for the Splash Screen</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="Splash.html">View the Splash Screen</a></p>
+            </section>
+
+            <section>
+                <h2 id="ais">Action Impact Simulator (AIS)</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The AIS page uses the shared header and footer from the site template.
+                    The action cards are arranged in a grid layout that automatically adjusts depending on the screen size, so they reflow into fewer columns on smaller screens without needing to write extra CSS for it.
+                </p>
+                <p>
+                    Each card has a data attribute that stores how many impact points it is worth. When a card is clicked, JavaScript reads that value and adds it to the total score.
+                    I used a Set to keep track of which cards are selected so the same card cannot be counted twice.
+                    The score is split into three levels — low, medium and high — and depending on which level the user reaches, a different class gets added to the body element, which changes the background colour of the whole page through CSS.
+                    Cards can also be selected using the keyboard by pressing Enter or Space.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    Each card has a tabindex so it can be reached by keyboard, and an aria-pressed attribute that updates when the card is selected or deselected so screen readers know its state.
+                    All card images have alt text.
+                    The reset button is a proper button element.
+                    The background colours used for each impact level are light enough that the card text stays readable on top of them.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST2.html#aisVal">View W3C validation result for the AIS Page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="ais.html">View the Action Impact Simulator</a></p>
+            </section>
+
+            <section>
+                <h2 id="content">Content Page</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    During the development of the content page I came across a few technical issues when running the W3C validator.
+                     The first was a typo in the CSS where it was written 0.9srem instead of 0.9rem for a gap value in the side navigation
+                    this was a simple spelling mistake that I fixed straight away.Two other issues came up 
+                    a space in the logo image file path and a heading level skip in the footer where an h4 followed an h2 — but after reviewing them I decided to leave these as they were for now since 
+                    they did not affect how the page looked or functioned.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    For the content page I tried to make it as accessible as I could. 
+                    All four images have alt text that describes what is shown in them. The page has a proper 
+                    heading structure going from h1 down through h2 and h3 so that someone using a screen reader 
+                    can follow the content easily. The sticky sidebar navigation uses anchor links so users can jump
+                    to any section without scrolling through the whole page. The go to top button is always visible in 
+                    the bottom right corner for easier navigation. The page also has a lang attribute set to English 
+                    and a viewport meta tag so it works correctly on all screen sizes.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST2.html#contentVal">View W3C validation result for the Content Page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="content_ST2.html">View the Content Page</a></p>
+            </section>
+
+            <section>
+                <h2 id="challenge">Challenges and Lessons Learned</h2>
+                <p>
+                    The biggest challenge I faced was trying to get a 3D jellyfish model to spin on the splash screen.
+                    I found a free jellyfish FBX model and tried to load it using Three.js, a JavaScript library for 3D graphics in the browser.
+                    I set up the scene, the camera, the lights and the loader but no matter what I tried the model just refused to show up.
+                    Even after spending a lot of time troubleshooting it and making sure everything was correctly set up, it still did not work.
+                    Since we are still in the early stages of learning JavaScript and have not covered anything like 3D rendering, I think it was just too complex for where we are right now.
+                    In the end I replaced it with a simple fish PNG that swims across a loading bar using basic JavaScript, which actually ended up looking better and more in line with the rest of the site's style.
+                    This taught me that sometimes a simpler solution works better, and that it is important to know when to change approach rather than keep pushing something that is not working.
+                </p>
+                <p>
+                    Another issue I ran into was with the AIS page background colour. I had set up the three impact levels to change the background but when I tested it, only the feedback box was changing colour and not the whole page.
+                    After looking through the JavaScript I realised I was only adding the class to the feedback box element and not to the body. Once I moved it to document.body it worked properly.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="compliance">Compliance</h2>
+                <p>All of my pages follow the JANET regulations for web publishing at the University of Westminster:</p>
+                <ul>
+                    <li>All the written content is my own and was not copied from any other website.</li>
+                    <li>The images I used are royalty-free and properly referenced below.</li>
+                    <li>None of my pages collect or store any personal information from users.</li>
+                    <li>The skip button on the splash screen means the user is never forced to wait.</li>
+                    <li>All pages have the correct charset and viewport settings in the head.</li>
+                    <li>There is no offensive or inappropriate content on any of my pages.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 id="group">Group Meetings and Individual Contribution Log</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="6">Group Meetings and Contribution Log</th>
+                        </tr>
+                        <tr>
+                            <th>Meeting</th>
+                            <th>Date & Time</th>
+                            <th>Format</th>
+                            <th>Objective</th>
+                            <th>Attended</th>
+                            <th>Your Individual Contribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2/03/2026, 11:00 AM</td>
+                            <td>Face-to-face</td>
+                            <td>Agree SDG topic and assign student roles</td>
+                            <td>Yes</td>
+                            <td>I agreed to take on the Splash Screen and Action Impact Simulator pages.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>9/03/2026, 7:00 PM</td>
+                            <td>Online</td>
+                            <td>Discuss design direction and colour palette</td>
+                            <td>Yes</td>
+                            <td>I suggested the ocean gradient for the splash screen background and shared the colour palette I was using.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>14/03/2026, 11:30 AM</td>
+                            <td>Hybrid</td>
+                            <td>Progress review - share individual page drafts</td>
+                            <td>Yes</td>
+                            <td>I showed the group my attempt at adding a 3D jellyfish to the splash screen using Three.js. It wasn't working and after discussing it we agreed I should try a different approach.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>19/03/2026, 8:00 PM</td>
+                            <td>Online</td>
+                            <td>Review updated pages after the jellyfish was scrapped</td>
+                            <td>Yes</td>
+                            <td>I showed the new fish swimming loader I made as a replacement and got feedback from the group to make the bar thinner and position the fish better.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>24/03/2026, 11:00 AM</td>
+                            <td>Face-to-face</td>
+                            <td>Accessibility and validation checks</td>
+                            <td>Yes</td>
+                            <td>I ran W3C validation on all my pages and fixed a couple of small HTML errors that came up in the AIS page.</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>28/03/2026, 8:00 PM</td>
+                            <td>Online</td>
+                            <td>Final review before submission</td>
+                            <td>Yes</td>
+                            <td>I went through all my pages one last time, checked all the links were working, and made sure the images all had alt text.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 id="ref">References</h2>
+                <h3>Images Used:</h3>
+                <ul class="ref">
+                    <li>Photo by Timothy K on <a href="https://unsplash.com/photos/brown-tree-branch-on-water-1CiE1x4dHIY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></li>
+                    <li>Photo by Jonathan Chng on <a href="https://unsplash.com/photos/white-plastic-bottle-lot-OTDyDgPoJ_0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></li>
+                    <li>Photo by Yuval Zukerman on <a href="https://unsplash.com/photos/a-table-full-of-seafood-ED-E7Uq-rAo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></li>  
+                    <li>Photo by Sean Oulashin on <a href="https://unsplash.com/photos/seashore-during-golden-hour-KMn4VEeEPR8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></li> 
+                    <li>Photo by Mika Baumeister on <a href="https://unsplash.com/photos/man-in-black-jacket-riding-bicycle-on-road-during-daytime-yerrwvj_Xy4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></li>
+                    <li>Photo by NOAA on <a href="https://unsplash.com/photos/yellow-and-black-gas-lamp-BfLOn4V0JgQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></li>
+                    <li>Photo by Laker on <a href="https://www.pexels.com/photo/graffiti-with-inscription-protect-the-oceans-placed-on-concrete-wall-6156943/" target="_blank"> Pexels</a></li>
+                    <li>Photo by Engin Akyurt on <a href="https://unsplash.com/photos/plastic-bottle-floating-on-murky-water-Cf2FrCX0Tio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Fish SVG from <a href="https://www.svgrepo.com/svg/3077/fish" target="_blank">SVGRepo</a></li>
+                   
+                </ul>
+                <h3>Website References</h3>
+                <ul class="ref">
+                    
+                    <li>MDN Web Docs Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" target="_blank">https://developer.mozilla.org/</a></li>
+                    <li>W3Schools : Available at: <a href="https://www.w3schools.com/css/css_grid.asp" target="_blank">https://www.w3schools.com/</a></li>
+                    <li>W3C Markup Validation Service : Available at: <a href="https://validator.w3.org/" target="_blank">https://validator.w3.org/</a></li>
+                    <li>Unsplash : Available at: <a href="https://unsplash.com/" target="_blank">https://unsplash.com/</a></li>
+                    <li>Pexels : Available at: <a href="https://www.pexels.com/" target="_blank">https://www.pexels.com/</a></li>
+                    <li>United Nations : Available at: <a href="https://sdgs.un.org/" target="_blank">https://sdgs.un.org/</a></li>
+                    <li>National Oceanic and Atmospheric Administration (NOAA) : Available at: <a href="https://www.noaa.gov/" target="_blank">https://www.noaa.gov/</a></li>
+                    <li>National Geographic : Available at: <a href="https://www.nationalgeographic.com/" target="_blank">https://www.nationalgeographic.com/</a></li>
+                    <li>Surfers Against Sewage : Available at: <a href="https://www.surfersagainstsewage.org/" target="_blank">https://www.surfersagainstsewage.org/</a></li>
+                    <li>Aestera font from: <a href="https://befonts.com/aestera-font.html" target="_blank">BeFonts.com</a></li>
+                    
+                </ul>
+            </section>
+
+            <p class="top"><a href="#top">Go top</a></p>
+        </main>
+
+        <aside>
+            <h3>Student 2 Pages:</h3>
+            <ul class="top-level-ul">
+                <li><a href="#splash">Splash Screen</a></li>
+                <li><a href="#ais">Action Impact Simulator</a></li>
+                <li><a href="#content">Content Page</a></li>
+                <li><a href="#challenge">Challenges &amp; Lessons Learned</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+                <li><a href="#group">Group Meetings Log</a></li>
+                <li><a href="#ref">References</a></li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 2</h4>
+                    <p style="margin-bottom:0.5rem;">Name: H.D.M.R.M Weerasiri<br>Student ID: 20240789 / w2181803</p>
+                    <a href="pageEditor_ST2.html">My Page Editor</a>
+                    <a href="validation_ST2.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

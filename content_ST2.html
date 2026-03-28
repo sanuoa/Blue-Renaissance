@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blue Renaissance | Ocean Health & Biodiversity</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+       
+
+        /* Two-column layout: fixed sidebar + fluid article */
+        .content-layout {
+            display: grid;
+            grid-template-columns: minmax(140px, 190px) 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* Sticky side-nav — vertically stacked label then links */
+        .side-nav {
+            position: sticky;
+            top: 90px;
+            width: 100%;
+            box-sizing: border-box;
+            background: var(--col-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            padding: 1rem 0.875rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.9rem;
+            text-align: center;
+        }
+
+        .side-nav h3 {
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            color: var(--col-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
+            padding: 0 0.25rem;
+        }
+
+        /* List is also a column — each item gets full width */
+        .side-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-nav ul li {
+            /* Let each list item fill the ul width */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Links fill their list item and wrap naturally */
+        .side-nav ul li a {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.42rem 0.5rem;
+            font-size: 0.82rem;
+            color: #4a6670;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            font-weight: 500;
+            line-height: 1.4;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .side-nav ul li a:hover {
+            background: var(--col-offwhite);
+            color: var(--col-deep);
+            padding-left: 0.85rem;
+        }
+
+        /* Content article sections */
+        .content-article section {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 90px;
+        }
+
+        .content-article h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--col-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .content-article .page-intro {
+            font-size: 1.1rem;
+            color: #5a7a82;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+            padding-bottom: 1.5rem;
+        }
+
+        .content-article h2 {
+            font-family: var(--font-display);
+            font-size: 1.65rem;
+            color: var(--col-deep);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+        }
+
+        .content-article h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--col-mid);
+            margin: 1.5rem 0 0.6rem;
+        }
+
+        .content-article p {
+            font-size: 0.96rem;
+            line-height: 1.8;
+            color: #3a5560;
+            margin-bottom: 1rem;
+        }
+
+        /* Content images with captions */
+        .content-img-wrap {
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .content-img-wrap img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-img-wrap figcaption {
+            background: var(--col-dark);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+            padding: 0.6rem 1rem;
+            font-style: italic;
+        }
+
+        /* Highlight/callout box */
+        .callout {
+            background: linear-gradient(135deg, rgba(59,167,191,0.1), rgba(25,89,115,0.08));
+            border-left: 4px solid var(--col-teal);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--col-deep);
+        }
+
+        /* Stat cards row */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--col-dark);
+            color: white;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--col-light);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        /* Ordered / unordered list styling */
+        .content-article ul,
+        .content-article ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-article ul li,
+        .content-article ol li {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: #3a5560;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Go-to-top button */
+        .go-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--col-deep);
+            color: white;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+            z-index: 500;
+        }
+
+        .go-top:hover {
+            background: var(--col-teal);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive: stack sidebar above content on small screens */
+        @media (max-width: 860px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            .side-nav {
+                position: static;
+                border-left: none;
+                border-top: 4px solid var(--col-teal);
+            }
+            /* On mobile: pills in a horizontal wrapping row */
+            .side-nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            /* Each pill shrinks to fit its text — nowrap is fine HERE
+               because the pill container wraps, not the text inside it */
+            .side-nav ul li {
+                width: auto;
+            }
+            .side-nav ul li a {
+                white-space: nowrap;
+                background: var(--col-offwhite);
+                border: 1px solid #c8e6ea;
+                padding: 0.35rem 0.85rem;
+                border-radius: 999px;
+                font-size: 0.82rem;
+            }
+            .stat-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════════════ HEADER / NAV (from shared template) ═══════════════ -->
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resources/ocean renaissance logo.png" alt="Ocean Renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main>
+        <div class="section-wrap">
+
+            <div class="content-layout">
+
+                <!-- ── Sticky Side Navigation ── -->
+                <nav class="side-nav" aria-label="Page sections">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#why-it-matters">Why It Matters</a></li>
+                        <li><a href="#key-threats">Key Threats</a></li>
+                        <li><a href="#student-actions">Student Actions</a></li>
+                        <li><a href="#success-stories">Success Stories</a></li>
+                        <li><a href="#get-involved">Get Involved</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Article Body -->
+                <article class="content-article">
+
+                    <h1 id="top">Ocean Pollution</h1>
+                    <p class="page-intro">
+                        Every minute, the equivalent of a rubbish truck full of plastic is dumped into our oceans.
+                        Ocean pollution is one of the most urgent environmental crises of our time and one
+                        that every person on the planet contributes to. This page explores what ocean pollution
+                        is, why it matters, and what you can do about it.
+                    </p>
+
+                    <section id="introduction">
+                        <h2>Introduction</h2>
+                        <p>
+                            Ocean pollution refers to harmful substances entering the sea  including plastic,
+                            chemicals, oil, sewage, and noise. It comes from both direct dumping at sea and
+                            from land-based sources carried by rivers, wind, and rain. Around 80% of ocean
+                            pollution originates on land, meaning the choices we make every day from how we
+                            dispose of rubbish to what products we buy affect the health of our seas.
+                        </p>
+                        <p>
+                            The scale of the problem is enormous. As of 2025, it is estimated that between 75
+                            and 199 million tonnes of plastic waste are already sitting in our oceans, with
+                            millions more tonnes entering every single year. The ocean absorbs this pollution
+                            silently but the damage it causes to marine life, human health, and global
+                            ecosystems is anything but quiet.
+                        </p>
+
+                        <div class="stat-row">
+                            <div class="stat-card">
+                                <span class="stat-number">11M</span>
+                                <span class="stat-label">Tonnes of plastic enter the ocean every year</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Ocean dead zones where marine life cannot survive</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">1,000</span>
+                                <span class="stat-label">Marine animal species affected by ocean pollution</span>
+                            </div>
+                        </div>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/pollution_intro.png" alt="Plastic waste and bottles floating on ocean surface">
+                            <figcaption>Plastic waste floating on the ocean surface. Source: [Unsplash - Photo by Naja Bertolt Jensen on <a href="https://unsplash.com/photos/a-group-of-garbage-floating-in-the-ocean-FxnqdmKBJps?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"  style="color:var(--col-teal); font-weight:600;">Unsplash</a>]</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="why-it-matters">
+                        <h2>Why It Matters to Students</h2>
+                        <p>
+                            You might think ocean pollution is a problem for coastal countries or future
+                            generations but it is already affecting the world you live in right now.
+                            Microplastics have been found in human blood, lungs, and even in unborn babies.
+                            The fish on your plate may contain traces of plastic. The water you drink and
+                            the air you breathe are not immune either.
+                        </p>
+
+                        <div class="callout">
+                            <p>
+                                By 2050, scientists predict there will be more plastic in the ocean
+                                by weight than fish unless we change course now.
+                            </p>
+                        </div>
+
+                        <h3>Impact on Food and Health</h3>
+                        <p>
+                            Over 3 billion people rely on the ocean as a primary source of food. When the
+                            ocean is polluted, the fish and shellfish that billions of people eat absorb
+                            toxins and microplastics, which then pass into the human food chain. Persistent
+                            chemicals like PCBs and DDT do not break down they build up in animals and
+                            eventually reach us.
+                        </p>
+
+                        <h3>Economic Impact</h3>
+                        <p>
+                            Ocean pollution costs the global economy billions every year through damage to
+                            fisheries, tourism, and coastal industries. Beach pollution alone drives tourists
+                            away from coastal communities, hurting local economies that depend on clean seas.
+                        </p>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/pollution_impact.jpg"
+                                 alt="Sea turtle entangled in plastic waste underwater">
+                            <figcaption>Marine animals frequently become entangled in plastic waste. Source: [Pexels - Photo by Nataliya Vaitkevich on <a href="https://www.pexels.com/photo/fish-in-a-clear-plastic-by-the-seashore-4813988/" target="_blank"  style="color:var(--col-teal); font-weight:600;">Pexels</a>]</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="key-threats">
+                        <h2>Key Types of Ocean Pollution</h2>
+
+                        <h3>Plastic Pollution</h3>
+                        <p>
+                            Plastic is the most widespread and visible form of ocean pollution. Around 11
+                            million tonnes of plastic enter the ocean every year equivalent to 2,000
+                            rubbish trucks being emptied into the sea every single day. About 80% of this
+                            comes from land-based sources, carried by rivers and drains. Once in the ocean,
+                            sunlight and waves break plastic down into tiny particles called microplastics,
+                            which are now found everywhere from the deepest ocean trenches to the Arctic
+                            ice. Over 800 marine species are harmed by plastic pollution, and 100% of marine
+                            turtles studied have been found to have plastic in their systems.
+                        </p>
+
+                        <h3>Chemical and Agricultural Runoff</h3>
+                        <p>
+                            Pesticides, fertilisers, and industrial chemicals wash off farmland and urban
+                            areas into rivers, eventually reaching the sea. When too many nutrients like
+                            nitrogen enter the ocean, they cause huge algae blooms that suck oxygen out
+                            of the water. This creates dead zones areas so low in oxygen that fish and
+                            other marine life simply cannot survive. There are now over 500 recorded dead
+                            zones around the world, up from just 146 in 2004.
+                        </p>
+
+                        <h3>Oil Pollution</h3>
+                        <p>
+                            While dramatic oil spills make the news, they actually account for only about
+                            12% of the oil in our oceans. The majority comes from everyday runoff oil
+                            and fuel washing off roads, vehicles, and drains into rivers and eventually
+                            the sea. Oil coats the feathers of seabirds, clogs the gills of fish, and
+                            smothers coral reefs.
+                        </p>
+
+                        <h3>Noise Pollution</h3>
+                        <p>
+                            This is one of the least talked about forms of ocean pollution. Noise from
+                            shipping, military sonar, and offshore drilling disrupts the communication,
+                            navigation, and feeding of whales, dolphins, and other marine animals that
+                            rely on sound to survive. It can cause mass strandings and long-term stress
+                            in marine mammal populations.
+                        </p>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/dead_zone.jpg"
+                                 alt="Aerial view of algae bloom in ocean water caused by nutrient runoff">
+                            <figcaption>Algae blooms caused by agricultural runoff create dead zones in the ocean. Source: [Unsplash - Photo by Liz Harrellon <a href="https://unsplash.com/photos/green-and-blue-abstract-painting-yvn5UBRamAM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" style="color:var(--col-teal); font-weight:600;">Unsplash</a>]</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="student-actions">
+                        <h2>Actions You Can Take as a Student</h2>
+                        <p>
+                            Ocean pollution can feel overwhelming, but individual actions genuinely do add
+                            up especially when they spread through communities and inspire others. Here
+                            are realistic things you can start doing right now:
+                        </p>
+
+                        <h3>In Your Daily Life</h3>
+                        <ol>
+                            <li><strong>Ditch single-use plastics</strong> carry a reusable bottle, bag, and coffee cup every day.</li>
+                            <li><strong>Dispose of rubbish properly</strong> never leave litter near water, rivers, or drains.</li>
+                            <li><strong>Never flush or pour chemicals down the sink</strong> medicines, paint, and cleaning products end up in waterways.</li>
+                            <li><strong>Buy less plastic-packaged food</strong> oose fruit and vegetables, refill stores, and reusable containers all help.</li>
+                        </ol>
+
+                        <h3>As Part of a Community</h3>
+                        <ol>
+                            <li><strong>Join a beach or river clean-up</strong> local rivers carry plastic directly to the sea.</li>
+                            <li><strong>Spread awareness</strong> share ocean pollution facts on social media or in your university community.</li>
+                            <li><strong>Push for change at your university</strong> petition for plastic-free canteens or better recycling facilities.</li>
+                        </ol>
+
+                        <div class="callout">
+                            <p>
+                                Even if you live far from the coast, every drain and river connects to the ocean.
+                                What you put down the drain or drop on the street can end up in the sea.
+                            </p>
+                        </div>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/beach_cleanup.jpg"
+                                 alt="Students collecting plastic waste during a beach clean-up event">
+                            <figcaption>Community beach clean-ups remove thousands of tonnes of plastic every year. Source: [Unsplash - Photo by OCG Saving The Ocean on <a href="https://unsplash.com/photos/people-on-beach-during-daytime-bWAArZ5M4Ag?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" style="color:var(--col-teal); font-weight:600;">Unsplash</a>]</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="success-stories">
+                        <h2>Reasons for Hope</h2>
+                        <p>
+                            As bad as the situation is, there are genuine reasons for optimism. Governments,
+                            organisations, and individuals around the world are taking action and it is
+                            working in places.
+                        </p>
+
+                        <h3>The Ocean Cleanup Project</h3>
+                        <p>
+                            By 2024, The Ocean Cleanup organisation had removed over 10 million kilograms
+                            of plastic from oceans and rivers worldwide using their large-scale ocean
+                            cleanup systems and river interceptors. The project has shown that large-scale
+                            ocean cleanup is technically possible.
+                        </p>
+
+                        <h3>The UN Global Plastics Treaty</h3>
+                        <p>
+                            In 2022, the United Nations Environment Programme launched negotiations for a
+                            Global Plastics Treaty an international agreement aiming to end plastic
+                            pollution by 2040. This is considered one of the most significant environmental
+                            agreements since the Paris Climate Accord.
+                        </p>
+
+                        <h3>Single-Use Plastic Bans</h3>
+                        <p>
+                            The UK, EU, and many other countries have already banned or restricted a range
+                            of single-use plastics including straws, cutlery, and cotton buds. These bans
+                            are reducing the flow of some of the most common plastic pollutants into the
+                            ocean.
+                        </p>
+                    </section>
+
+                    <section id="get-involved">
+                        <h2>Get Involved</h2>
+                        <p>
+                            There are many organisations working to tackle ocean pollution that welcome
+                            student involvement:
+                        </p>
+                        <ul>
+                            <li><strong>Surfers Against Sewage</strong> UK charity running beach cleans and plastic-free campaigns. <a href="https://www.sas.org.uk" target="_blank"  style="color:var(--col-teal); font-weight:600;">sas.org.uk</a></li>
+                            <li><strong>The Ocean Cleanup</strong> developing technology to remove plastic from the ocean. <a href="https://theoceancleanup.com" target="_blank"  style="color:var(--col-teal); font-weight:600;">theoceancleanup.com</a></li>
+                            <li><strong>Marine Conservation Society</strong> volunteer beach surveys, policy campaigns, and ocean advocacy. <a href="https://www.mcsuk.org" target="_blank"  style="color:var(--col-teal); font-weight:600;">mcsuk.org</a></li>
+                            <li><strong>UNEP Clean Seas Campaign</strong> global initiative to end marine litter. <a href="https://www.cleanseas.org" target="_blank"  style="color:var(--col-teal); font-weight:600;">cleanseas.org</a></li>
+                        </ul>
+                        <p>
+                            You can also explore your own impact using our
+                            <a href="ais.html" style="color:var(--col-teal); font-weight:600;">Action Impact Simulator</a>
+                            select the actions you already take or plan to take and see how your choices
+                            add up.
+                        </p>
+                        <a href="ais.html" class="btn btn-primary">Try the Impact Simulator</a>
+                    </section>
+
+                </article>
+            </div><!-- end .content-layout -->
+        </div><!-- end .section-wrap -->
+    </main>
+
+    <!-- ═══════════════ GO TO TOP ═══════════════ -->
+    <a href="#top" class="go-top" aria-label="Go back to top of page" title="Back to top">↑</a>
+
+    <!-- ═══════════════ FOOTER (from shared template) ═══════════════ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 2</h4>
+                    <p style="margin-bottom:0.5rem;">Name: H.D.M.R.M Weerasiri<br>Student ID: 20240789 / w2181803</p>
+                    <a href="pageEditor_ST2.html">My Page Editor</a>
+                    <a href="validation_ST2.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu   = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Mark active nav link based on current page filename
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+
+        // Highlight side-nav link that is currently in view (simple scroll spy)
+        const sections  = document.querySelectorAll('.content-article section[id]');
+        const sideLinks = document.querySelectorAll('.side-nav a');
+
+        function updateSideNav() {
+            let currentId = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 110) {
+                    currentId = sec.getAttribute('id');
+                }
+            });
+            sideLinks.forEach(link => {
+                link.style.color      = link.getAttribute('href') === '#' + currentId ? 'var(--col-deep)' : '';
+                link.style.fontWeight = link.getAttribute('href') === '#' + currentId ? '700' : '';
+                link.style.background = link.getAttribute('href') === '#' + currentId ? 'var(--col-offwhite)' : '';
+            });
+        }
+
+        window.addEventListener('scroll', updateSideNav);
+        updateSideNav();
+    </script>
+</body>
+</html>
