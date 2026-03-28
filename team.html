@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Blue Renaissance | Template</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+		body {
+			font-family: Arial;
+			background: conic-gradient(#2D83A6 50%, #3BA7BF 50%);
+			text-align: center;
+		}
+
+		h1 {
+			color: white;
+			font-size: 70px;
+		}
+
+		.team {
+			display: flex;
+			justify-content: center;
+			gap: 70px;
+		}
+
+		.card {
+			background: white;
+			width: 250px;
+			padding: 15px;
+			border-radius: 24px 6px;
+			transition: 0.3s;
+		}
+
+		.card:hover {
+			transform: scale(1.05);
+		}
+
+		.role {
+			color: #0077b6;
+		}
+
+		.card img {
+			width: 100%;
+			border-radius: 10px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<header>
+		<nav>
+			<a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+				<img src="Resourses\ocean renaissance logo.png" alt="ocean renaissance logo">
+				<span class="nav-logo-text">Blue <span>Renaissance</span></span>
+			</a>
+
+			<!-- Mobile toggle -->
+			<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+				<span></span><span></span><span></span>
+			</button>
+
+			<ul id="navMenu" role="list">
+				<li><a href="home.html" class="active" aria-current="page">Home</a></li>
+				<li><a href="gallery.html">Gallery</a></li>
+				<li><a href="ais.html">Impact Simulator</a></li>
+				<li><a href="feedback.html">Feedback</a></li>
+				<li><a href="team.html">Team</a></li>
+				<li><a href="profile.html">Profile</a></li>
+				<li><a href="sitemap.html">Sitemap</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+
+		<h1>🌊 Meet Our Team</h1>
+		<br>
+
+		<div class="team">
+
+			<div class="card">
+				<img src=" ">
+				<h3>Student 1</h3>
+				<p class="role"> Home page & Gallery page </p>
+			</div>
+
+			<div class="card">
+				<img src="student2.jpeg">
+				<h3> Student 2 </h3>
+				<p class="role"> Quiz & Splash screen </p>
+			</div>
+
+			<div class="card">
+				<img src="myPhoto.jpeg" alt="Student 3">
+				<h3> Student 3 </h3>
+				<p class="role"> Team & Feedback page </p>
+			</div>
+
+			<div class="card">
+				<img src=" ">
+				<h3> Student 4 </h3>
+				<p class="role"> User profile & Sitemap </p>
+			</div>
+
+		</div>
+
+
+
+	</main>
+
+	<footer>
+		<div class="footer-inner">
+			<div class="footer-grid">
+				<div>
+					<h4>Blue Renaissance</h4>
+					<p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+						Web Design &amp; Development module at the University of Westminster.</p>
+				</div>
+				<div>
+					<h4>Quick Links</h4>
+					<a href="home.html">Home</a>
+					<a href="gallery.html">Gallery</a>
+					<a href="ais.html">Impact Simulator</a>
+					<a href="feedback.html">Feedback</a>
+					<a href="team.html">Team</a>
+					<a href="sitemap.html">Sitemap</a>
+				</div>
+				<div>
+					<h4>Student 1</h4>
+					<p style="margin-bottom:0.5rem;">Name: N.G.S.R.Gunarahne<br>Student ID: 2024055 / w2181558</p>
+					<a href="pageEditor_ST1.html">My Page Editor</a>
+					<a href="validation_ST1.html">Validation Page</a>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+				<span>All content complies with JANET regulations.</span>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

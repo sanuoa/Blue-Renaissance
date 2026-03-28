@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Feedback - Life Below Water</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* BODY */
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#caf0f8;
+}
+
+/* HEADER */
+header{
+    background:#023e8a;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+/* SECTION */
+section{
+    margin:20px;
+}
+
+/* PROGRAM CARDS */
+.scroll-container{
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+}
+
+.card{
+    min-width:220px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+}
+
+.card button{
+    background:#0077b6;
+    color:white;
+    border:none;
+    padding:8px;
+    margin-top:10px;
+}
+
+.card button:hover{
+    background:#0096c7;
+}
+
+/* REVIEWS */
+.review{
+    background:white;
+    margin:10px;
+    padding:10px;
+    border-radius:10px;
+}
+
+/* FORM */
+form{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    max-width:500px;
+    margin:auto;
+}
+
+input, textarea, select{
+    width:100%;
+    padding:8px;
+    margin:10px 0;
+}
+
+/* BUTTON */
+button{
+    background:#0077b6;
+    color:white;
+    padding:10px;
+    border:none;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:10px;
+    background:#023e8a;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🌊 <i class="fa-solid fa-fish"></i> Feedback & Programs</h1>
+</header>
+
+<!-- PROGRAM SECTION -->
+<section>
+<h2>🌱 Ocean Programs</h2>
+
+<div class="scroll-container">
+
+<div class="card">
+<h3>Beach Cleanup</h3>
+<p>Help remove plastic from beaches.</p>
+<button>Join</button>
+</div>
+
+<div class="card">
+<h3>Coral Protection</h3>
+<p>Support coral reef conservation.</p>
+<button>Learn More</button>
+</div>
+
+<div class="card">
+<h3>Ocean Awareness</h3>
+<p>Spread awareness about pollution.</p>
+<button>Get Involved</button>
+</div>
+
+<div class="card">
+<h3>Marine Life Rescue</h3>
+<p>Protect injured sea animals.</p>
+<button>Join</button>
+</div>
+
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+<h2>⭐ Reviews</h2>
+
+<div class="review">
+<h4>Great Experience</h4>
+<p>Very helpful for ocean awareness.</p>
+<p>Rating: 9/10</p>
+</div>
+
+<div class="review">
+<h4>Informative</h4>
+<p>Learned a lot about marine life.</p>
+<p>Rating: 8/10</p>
+</div>
+
+<div class="review">
+<h4>Excellent Website</h4>
+<p>Easy to understand and useful.</p>
+<p>Rating: 9/10</p>
+</div>
+
+</section>
+
+<!-- FEEDBACK FORM -->
+<section>
+
+<h2>💬 Give Your Feedback</h2>
+
+<form id="feedbackForm">
+
+<fieldset>
+<legend>Personal Details</legend>
+
+<label>Full Name</label>
+<input type="text" id="name" required>
+
+<label>Email</label>
+<input type="email" id="email" required>
+
+<label>Telephone</label>
+<input type="tel">
+
+</fieldset>
+
+<fieldset>
+<legend>Feedback Details</legend>
+
+<label>Rate Us</label>
+<select id="rating">
+<option>Excellent</option>
+<option>Good</option>
+<option>Average</option>
+<option>Poor</option>
+</select>
+
+<label>Message</label>
+<textarea id="message" maxlength="200"></textarea>
+
+<p>Characters left: <span id="counter">200</span></p>
+
+<label>Date</label>
+<input type="date">
+
+</fieldset>
+
+<button type="submit">Submit Feedback</button>
+
+</form>
+
+<p id="result"></p>
+
+</section>
+
+<footer>
+<p>Created for Life Below Water Project 🌊</p>
+</footer>
+
+<script>
+
+// CHARACTER COUNTER
+const message = document.getElementById("message");
+const counter = document.getElementById("counter");
+
+message.addEventListener("input", function(){
+counter.textContent = 200 - message.value.length;
+});
+
+// FORM VALIDATION
+document.getElementById("feedbackForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+
+if(name === "" || email === ""){
+alert("Please fill all required fields");
+return;
+}
+
+// SUCCESS MESSAGE
+document.getElementById("result").textContent = "✅ Thank you for your feedback!";
+});
+
+</script>
+
+</body>
+</html>
