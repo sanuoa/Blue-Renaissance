@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blue Renaissance | Gallery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+
+        /* ── Page hero banner ── */
+        .gallery-hero {
+            background: linear-gradient(135deg, #053A40 0%, #195973 55%, #2D83A6 100%);
+            padding: 64px 40px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+            font-family: 'Georgia', serif;
+            position: relative;
+        }
+        .gallery-hero h1 span {
+            color: #63E4F2;
+        }
+        .gallery-hero p {
+            color: #b2e4ec;
+            font-size: 1.05rem;
+            margin: 4px 0;
+            position: relative;
+        }
+        /* ── Outer page wrapper / content width ── */
+        .gallery-section {
+            max-width: auto;
+            margin: 0 auto;
+            padding: 52px 40px 0;
+        }
+        .gallery-section:last-of-type {
+            padding-bottom: 72px;
+        }
+
+        /* ── Section heading row ── */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .section-heading h2 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #195973;
+            margin: 0;
+            white-space: nowrap;
+        }
+        .section-heading .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #bf3b3b 0%, transparent 100%);
+        }
+        .section-heading .tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: #195973;
+            color: #63E4F2;
+            padding: 3px 11px;
+            border-radius: 20px;
+            letter-spacing: 0.07em;
+            white-space: nowrap;
+        }
+
+        /* ══════════════════════════════════════════════════
+           GALLERY GRID
+
+           THE FIX for "whole row expands" bug:
+           align-items: start  →  each cell is sized by its
+           OWN content, not stretched to match its tallest
+           sibling in the same row.
+        ══════════════════════════════════════════════════ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            align-items: start;   /* ← KEY: prevents row-height stretching */
+        }
+        @media (max-width: 900px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-section { padding-left: 24px; padding-right: 24px; }
+        }
+        @media (max-width: 560px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-section { padding-left: 16px; padding-right: 16px; }
+            .gallery-hero { padding: 44px 20px 36px; }
+            .gallery-hero h1 { font-size: 2.1rem; }
+        }
+
+        /* ══════════════════════════════════════════════════
+           GALLERY CARD
+
+           Each card is fully self-contained.
+           The .message is a CHILD of .gallery-card, so
+           its expansion NEVER affects sibling cards.
+        ══════════════════════════════════════════════════ */
+        .gallery-card {
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #ffffff;
+            box-shadow: 0 2px 14px rgba(25, 89, 115, 0.09);
+            border: 1.5px solid #dff0f5;
+            /* align-self: start is inherited from grid's align-items: start */
+            transition: box-shadow 0.28s ease,
+                        transform   0.28s ease,
+                        border-color 0.28s ease;
+        }
+        .gallery-card:hover {
+            box-shadow: 0 10px 36px rgba(25, 89, 115, 0.18);
+            transform: translateY(-5px);
+            border-color: #3BA7BF;
+        }
+        .gallery-card:focus {
+            outline: 3px solid #3BA7BF;
+            outline-offset: 3px;
+        }
+
+        /* ── Thumbnail image container ── */
+        .thumb-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        .thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease, filter 0.4s ease;
+        }
+        .gallery-card:hover .thumb-wrap img {
+            transform: scale(1.07);
+            filter: brightness(0.72);
+        }
+
+        /* Gradient overlay */
+        .thumb-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 35%, rgba(5,58,64,0.52) 100%);
+            opacity: 0;
+            transition: opacity 0.32s ease;
+            pointer-events: none;
+        }
+        .gallery-card:hover .thumb-wrap::after {
+            opacity: 1;
+        }
+
+        /* "Click to explore" chip */
+        .explore-chip {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: rgba(99, 228, 242, 0.90);
+            color: #053A40;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            padding: 5px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        .gallery-card:hover .explore-chip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── Card label bar (title + arrow) ── */
+        .card-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 16px;
+            background: #ffffff;
+            transition: background 0.25s ease;
+        }
+        .gallery-card:hover .card-label {
+            background: #f0fbfd;
+        }
+        .card-title-text {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #053A40;
+        }
+        .arrow-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e4f4f8;
+            color: #195973;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+            transition: transform 0.35s ease, background 0.25s ease, color 0.25s ease;
+        }
+        .gallery-card:hover .arrow-icon {
+            transform: rotate(180deg);
+            background: #3BA7BF;
+            color: #ffffff;
+        }
+
+        /* ══════════════════════════════════════════════════
+           MESSAGE PANEL — the expandable description
+
+           ISOLATED EXPANSION:
+           The max-height animation targets .message which
+           is a DIRECT CHILD of .gallery-card.
+           .gallery-card:hover .message  only matches the
+           message INSIDE the hovered card — never other
+           cards in the same row.
+        ══════════════════════════════════════════════════ */
+        .gallery-card .message {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 16px;
+            font-size: 0.88rem;
+            line-height: 1.72;
+            color: #2e5e6e;
+            background: #f7fcfd;
+            border-top: 0px solid #dff0f5;
+            transition: max-height  0.42s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding     0.35s ease,
+                        opacity     0.38s ease,
+                        border-top  0.35s ease;
+            opacity: 0;
+        }
+        .gallery-card:hover .message {
+            max-height: 250px;
+            padding: 14px 16px 18px;
+            opacity: 1;
+            border-top: 1px solid #dff0f5;
+        }
+
+        /* ══════════════════════════════════════════════════
+           MODAL OVERLAY
+        ══════════════════════════════════════════════════ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 22, 28, 0.82);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: #ffffff;
+            border-radius: 18px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 28px 90px rgba(5,58,64,0.38);
+            animation: modalIn 0.32s cubic-bezier(0.34,1.4,0.64,1);
+        }
+        @keyframes modalIn {
+            from { transform: scale(0.88) translateY(28px); opacity: 0; }
+            to   { transform: scale(1)    translateY(0);    opacity: 1; }
+        }
+        .modal-img-wrap {
+            height: 270px;
+            overflow: hidden;
+            border-radius: 18px 18px 0 0;
+            position: relative;
+        }
+        .modal-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .modal-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 20px;
+            background: rgba(5,58,64,0.72);
+            color: #63E4F2;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            padding: 5px 13px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-body {
+            padding: 28px 32px 32px;
+        }
+        .modal-title {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #053A40;
+            margin: 0 0 10px;
+            font-family: 'Georgia', serif;
+            line-height: 1.2;
+        }
+        .modal-desc {
+            font-size: 0.97rem;
+            line-height: 1.78;
+            color: #3a6070;
+            margin: 0 0 24px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 13px;
+            right: 15px;
+            width: 33px;
+            height: 33px;
+            border-radius: 50%;
+            background: rgba(5,58,64,0.62);
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.22s;
+            z-index: 2;
+        }
+        .modal-close:hover {
+            background: #195973;
+            transform: rotate(90deg);
+        }
+
+        /* ── Customisation panel inside modal ── */
+        .customise-panel {
+            border-top: 1px solid #e0f2f7;
+            padding-top: 20px;
+        }
+        .customise-panel h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #195973;
+            margin: 0 0 14px;
+        }
+        .customise-sublabel {
+            display: block;
+            font-size: 0.76rem;
+            color: #7aafbf;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 8px;
+        }
+        .customise-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .c-btn {
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1.5px solid #cce8f0;
+            background: #f4fafc;
+            color: #195973;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .c-btn:hover { border-color: #3BA7BF; background: #e4f4f8; }
+        .c-btn.active { background: #195973; color: #fff; border-color: #195973; }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+            <img src="Resourses/ocean renaissance logo.png" alt="Ocean Renaissance logo">
+            <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul id="navMenu" role="list">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="gallery.html" class="active" aria-current="page">Gallery</a></li>
+            <li><a href="ais.html">Impact Simulator</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <div class="gallery-hero">
+        <h1>Our <span>Gallery</span></h1>
+        <p>Explore the ocean's wonders — and the threats it faces.</p>
+        <p>Hover any card to reveal its story. Click to open the full view.</p>
+    </div>
+
+    <!-- ─────────── Section 1: Marine Biodiversity ─────────── -->
+    <div class="gallery-section">
+        <div class="section-heading">
+            <h2>Marine Biodiversity</h2>
+            <div class="line"></div>
+            <span class="tag">4 species</span>
+        </div>
+
+        <div class="gallery-grid">
+
+            <!-- Sea Turtles -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Sea Turtles – hover to preview, click to expand"
+                 data-title="Sea Turtles"
+                 data-badge="Marine Biodiversity"
+                 data-img="Resourses/Sea-turtules.jpg"
+                 data-imgalt="A sea turtle gliding through clear blue ocean water"
+                 data-desc="These ancient mariners are essential for maintaining healthy seagrass beds and coral reefs. By grazing on seagrass, they ensure the ecosystem remains productive and provides a nursery for numerous fish species.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Sea-turtules.jpg" alt="A sea turtle gliding through clear blue ocean water">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Sea Turtles</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">These ancient mariners are essential for maintaining healthy seagrass beds and coral reefs. By grazing on seagrass, they ensure the ecosystem remains productive and provides a nursery for numerous fish species.</p>
+            </div>
+
+            <!-- Whales -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Whales – hover to preview, click to expand"
+                 data-title="Whales"
+                 data-badge="Marine Biodiversity"
+                 data-img="Resourses/Whales.webp"
+                 data-imgalt="A humpback whale breaching the ocean surface"
+                 data-desc="As the giants of the deep, whales play a crucial role in the ocean's carbon cycle. Their movements help circulate nutrients throughout the water column, supporting the growth of phytoplankton which produces half of Earth's oxygen.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Whales.webp" alt="A humpback whale breaching the ocean surface">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Whales</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">As the giants of the deep, whales play a crucial role in the ocean's carbon cycle. Their movements help circulate nutrients throughout the water column, supporting the growth of phytoplankton which produces half of Earth's oxygen.</p>
+            </div>
+
+            <!-- Coral Reefs -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Coral Reefs – hover to preview, click to expand"
+                 data-title="Coral Reefs"
+                 data-badge="Marine Biodiversity"
+                 data-img="Resourses/Coral-reef.avif"
+                 data-imgalt="Vibrant colourful coral reef teeming with fish"
+                 data-desc="Coral reefs are biodiversity hotspots, supporting approximately 25% of all marine species despite covering less than 1% of the ocean floor. They provide critical habitat for fish and other marine life, and also protect coastlines from erosion and storm damage.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Coral-reef.avif" alt="Vibrant colourful coral reef teeming with fish">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Coral Reefs</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Coral reefs are biodiversity hotspots, supporting approximately 25% of all marine species despite covering less than 1% of the ocean floor. They provide critical habitat for fish and other marine life, and also protect coastlines from erosion and storm damage.</p>
+            </div>
+
+            <!-- Jellyfish -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Jellyfish – hover to preview, click to expand"
+                 data-title="Jellyfish"
+                 data-badge="Marine Biodiversity"
+                 data-img="Resourses/Jellyfish.jpg"
+                 data-imgalt="Translucent jellyfish floating in deep blue water"
+                 data-desc="Jellyfish are gelatinous marine animals that play a significant role in ocean ecosystems. They serve as both predators and prey, helping to control plankton populations and providing a food source for larger marine animals.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Jellyfish.jpg" alt="Translucent jellyfish floating in deep blue water">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Jellyfish</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Jellyfish are gelatinous marine animals that play a significant role in ocean ecosystems. They serve as both predators and prey, helping to control plankton populations and providing a food source for larger marine animals.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ─────────── Section 2: Human Impacts ─────────── -->
+    <div class="gallery-section">
+        <div class="section-heading">
+            <h2>Human Impacts</h2>
+            <div class="line"></div>
+            <span class="tag">3 threats</span>
+        </div>
+
+        <div class="gallery-grid">
+
+            <!-- Plastic Pollution -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Plastic Pollution – hover to preview, click to expand"
+                 data-title="Plastic Pollution"
+                 data-badge="Human Impacts"
+                 data-img="Resourses/plastic pollution.webp"
+                 data-imgalt="Plastic waste floating near a shoreline"
+                 data-desc="Plastic pollution in the oceans poses a severe threat to marine life. It can cause injury and death to animals through ingestion or entanglement, and also disrupts the balance of marine ecosystems.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/plastic pollution.webp" alt="Plastic waste floating near a shoreline">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Plastic Pollution</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Plastic pollution in the oceans poses a severe threat to marine life. It can cause injury and death to animals through ingestion or entanglement, and also disrupts the balance of marine ecosystems.</p>
+            </div>
+
+            <!-- Ghost Nets -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Ghost Nets – hover to preview, click to expand"
+                 data-title="Ghost Nets"
+                 data-badge="Human Impacts"
+                 data-img="Resourses/Ghost-Nets.png"
+                 data-imgalt="Abandoned fishing nets drifting underwater"
+                 data-desc="Abandoned or lost fishing gear, known as ghost nets, continues to 'fish' for decades. These invisible traps kill thousands of turtles, dolphins, and sharks who become hopelessly entangled in the mesh.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Ghost-Nets.png" alt="Abandoned fishing nets drifting underwater">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Ghost Nets</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Abandoned or lost fishing gear, known as ghost nets, continues to "fish" for decades. These invisible traps kill thousands of turtles, dolphins, and sharks who become hopelessly entangled in the mesh.</p>
+            </div>
+
+            <!-- Bleached Corals -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Bleached Corals – hover to preview, click to expand"
+                 data-title="Bleached Corals"
+                 data-badge="Human Impacts"
+                 data-img="Resourses/Bleached Corals.webp"
+                 data-imgalt="White bleached coral skeleton on the ocean floor"
+                 data-desc="Coral bleaching occurs when corals expel the algae (zooxanthellae) living in their tissues due to stress from increased water temperatures. This process can lead to the death of coral reefs, which are vital for marine biodiversity.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Bleached Corals.webp" alt="White bleached coral skeleton on the ocean floor">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Bleached Corals</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Coral bleaching occurs when corals expel the algae (zooxanthellae) living in their tissues due to stress from increased water temperatures. This process can lead to the death of coral reefs, which are vital for marine biodiversity.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ─────────── Section 3: Conservation Efforts ─────────── -->
+    <div class="gallery-section">
+        <div class="section-heading">
+            <h2>Conservation Efforts</h2>
+            <div class="line"></div>
+            <span class="tag">3 actions</span>
+        </div>
+
+        <div class="gallery-grid">
+
+            <!-- Coral Restoration -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Coral Restoration – hover to preview, click to expand"
+                 data-title="Coral Restoration"
+                 data-badge="Conservation"
+                 data-img="Resourses/Coral Restoration.jpg"
+                 data-imgalt="Marine biologist attaching coral fragments to a reef"
+                 data-desc="Dedicated marine scientists are 'planting' lab-grown coral fragments back onto damaged reefs. This active restoration helps jumpstart the recovery of ecosystems that have been devastated by warming waters.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Coral Restoration.jpg" alt="Marine biologist attaching coral fragments to a reef">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Coral Restoration</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Dedicated marine scientists are "planting" lab-grown coral fragments back onto damaged reefs. This active restoration helps jumpstart the recovery of ecosystems that have been devastated by warming waters.</p>
+            </div>
+
+            <!-- Beach Clean-ups -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Beach Clean-ups – hover to preview, click to expand"
+                 data-title="Beach Clean-ups"
+                 data-badge="Conservation"
+                 data-img="Resourses/Beach-Cleanups.webp"
+                 data-imgalt="Volunteers collecting plastic waste on a sandy beach"
+                 data-desc="Local volunteer groups remove thousands of pounds of trash from shorelines before it can wash into the sea. These grassroots efforts prevent immediate harm to coastal birds and nesting sea turtles.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Beach-Cleanups.webp" alt="Volunteers collecting plastic waste on a sandy beach">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Beach Clean-ups</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Local volunteer groups remove thousands of pounds of trash from shorelines before it can wash into the sea. These grassroots efforts prevent immediate harm to coastal birds and nesting sea turtles.</p>
+            </div>
+
+            <!-- Marine Protected Areas -->
+            <div class="gallery-card" tabindex="0" role="button"
+                 aria-label="Marine Protected Areas – hover to preview, click to expand"
+                 data-title="Marine Protected Areas"
+                 data-badge="Conservation"
+                 data-img="Resourses/Marine Protected Areas.jpg"
+                 data-imgalt="A thriving protected reef zone with abundant marine life"
+                 data-desc="Establishing marine protected areas helps preserve critical habitats and allows marine ecosystems to recover from human impacts. These zones restrict certain activities like fishing or development, giving marine life a chance to thrive.">
+                <div class="thumb-wrap">
+                    <img src="Resourses/Marine Protected Areas.jpg" alt="A thriving protected reef zone with abundant marine life">
+                    <span class="explore-chip">Click to explore ↗</span>
+                </div>
+                <div class="card-label">
+                    <span class="card-title-text">Marine Protected Areas</span>
+                    <span class="arrow-icon" aria-hidden="true">&#9660;</span>
+                </div>
+                <p class="message">Establishing marine protected areas helps preserve critical habitats and allows marine ecosystems to recover from human impacts. These zones restrict certain activities like fishing or development, giving marine life a chance to thrive.</p>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<!-- ════════════════════ MODAL / EXTENDED VIEW ════════════════════ -->
+<div class="modal-overlay" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box" id="modalBox">
+        <button class="modal-close" id="modalClose" aria-label="Close extended view">&#x2715;</button>
+
+        <div class="modal-img-wrap">
+            <img id="modalImg" src="" alt="">
+            <span class="modal-badge" id="modalBadge"></span>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-title" id="modalTitle"></div>
+            <p class="modal-desc"  id="modalDesc"></p>
+
+            <!-- User Customisation — Spec §5 -->
+            <div class="customise-panel">
+                <h4>&#9998;&nbsp; Customise This View</h4>
+
+                <span class="customise-sublabel">Colour scheme</span>
+                <div class="customise-row" id="colourBtns">
+                    <button class="c-btn active" data-scheme="default">Ocean</button>
+                    <button class="c-btn"        data-scheme="seafoam">Seafoam</button>
+                    <button class="c-btn"        data-scheme="warm">Sandy</button>
+                    <button class="c-btn"        data-scheme="dark">Deep Sea</button>
+                </div>
+
+                <span class="customise-sublabel">Font style</span>
+                <div class="customise-row" id="fontBtns">
+                    <button class="c-btn active" data-font="default">Default</button>
+                    <button class="c-btn"        data-font="serif">Serif</button>
+                    <button class="c-btn"        data-font="mono">Monospace</button>
+                    <button class="c-btn"        data-font="rounded">Rounded</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div>
+                <h4>Blue Renaissance</h4>
+                <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                Web Design &amp; Development module at the University of Westminster.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="home.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="ais.html">Impact Simulator</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="team.html">Team</a>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+            <div>
+                <h4>Student 1</h4>
+                <p style="margin-bottom:0.5rem;">Name: N.G.S.R.Gunarahne<br>Student ID: 2024055 / w2181558</p>
+                <a href="pageEditor_ST1.html">My Page Editor</a>
+                <a href="validation_ST1.html">Validation Page</a>
+                <a href="#" aria-label="Accessibility compliance information">Accessibility Statement</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+            <span>All content complies with JANET regulations.</span>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     GALLERY JAVASCRIPT
+     1. Strip legacy .hidden class
+     2. Click cards → open modal (populated from data-*)
+     3. Close: button / outside click / Escape key
+     4. User customisation: colour scheme + font style
+     5. Mobile nav toggle
+═══════════════════════════════════════════════════ -->
+<script>
+
+    /* 1. Remove .hidden so CSS transitions aren't blocked */
+    document.querySelectorAll('.message').forEach(function(el) {
+        el.classList.remove('hidden');
+    });
+
+    /* 2. Click / keyboard → open modal */
+    document.querySelectorAll('.gallery-card').forEach(function(card) {
+
+        card.addEventListener('click', function() {
+            openModal(card);
+        });
+
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(card);
+            }
+        });
+    });
+
+    function openModal(card) {
+        document.getElementById('modalTitle').textContent = card.dataset.title  || '';
+        document.getElementById('modalDesc').textContent  = card.dataset.desc   || '';
+        document.getElementById('modalBadge').textContent = card.dataset.badge  || '';
+
+        var img = document.getElementById('modalImg');
+        img.src = card.dataset.img    || '';
+        img.alt = card.dataset.imgalt || '';
+
+        /* Reset customisation to defaults on each open */
+        applyScheme('default');
+        applyFont('default');
+        setActive('colourBtns', 'scheme', 'default');
+        setActive('fontBtns',   'font',   'default');
+
+        document.getElementById('galleryModal').classList.add('open');
+        document.getElementById('modalClose').focus();
+    }
+
+    /* 3. Close modal */
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+
+    document.getElementById('galleryModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function closeModal() {
+        document.getElementById('galleryModal').classList.remove('open');
+    }
+
+    /* 4. User customisation */
+    var schemes = {
+        'default': { bg: '#ffffff', text: '#3a6070', title: '#053A40', border: '#e0f2f7' },
+        'seafoam': { bg: '#e6f7f9', text: '#1a4455', title: '#195973', border: '#a8dce8' },
+        'warm':    { bg: '#fdf5e8', text: '#5a3e28', title: '#8b5a2b', border: '#e0c88a' },
+        'dark':    { bg: '#061c24', text: '#8ecfe0', title: '#63E4F2', border: '#1a4455' }
+    };
+    var fonts = {
+        'default': "'Segoe UI', Arial, sans-serif",
+        'serif':   "'Georgia', 'Times New Roman', serif",
+        'mono':    "'Courier New', Courier, monospace",
+        'rounded': "'Trebuchet MS', Verdana, sans-serif"
+    };
+
+    function applyScheme(name) {
+        var s   = schemes[name] || schemes['default'];
+        var box = document.getElementById('modalBox');
+        box.style.background = s.bg;
+        box.style.borderColor = s.border;
+        document.getElementById('modalDesc').style.color  = s.text;
+        document.getElementById('modalTitle').style.color = s.title;
+        document.querySelector('.customise-panel').style.borderTopColor = s.border;
+    }
+
+    function applyFont(name) {
+        var f = fonts[name] || fonts['default'];
+        document.getElementById('modalDesc').style.fontFamily  = f;
+        document.getElementById('modalTitle').style.fontFamily = f;
+    }
+
+    function setActive(groupId, dataKey, val) {
+        document.querySelectorAll('#' + groupId + ' .c-btn').forEach(function(btn) {
+            btn.classList.toggle('active', btn.dataset[dataKey] === val);
+        });
+    }
+
+    document.getElementById('colourBtns').addEventListener('click', function(e) {
+        var btn = e.target.closest('.c-btn');
+        if (!btn) return;
+        applyScheme(btn.dataset.scheme);
+        setActive('colourBtns', 'scheme', btn.dataset.scheme);
+    });
+
+    document.getElementById('fontBtns').addEventListener('click', function(e) {
+        var btn = e.target.closest('.c-btn');
+        if (!btn) return;
+        applyFont(btn.dataset.font);
+        setActive('fontBtns', 'font', btn.dataset.font);
+    });
+
+    /* 5. Mobile nav toggle */
+    var navToggle = document.getElementById('navToggle');
+    var navMenu   = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            var isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', String(!isOpen));
+            navMenu.classList.toggle('open');
+        });
+    }
+
+</script>
+
+</body>
+</html>

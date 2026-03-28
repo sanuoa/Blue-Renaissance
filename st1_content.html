@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blue Renaissance | Ocean Health & Biodiversity</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+       
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: minmax(140px, 190px) 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .side-nav {
+            position: sticky;
+            top: 90px;
+            width: 100%;
+            box-sizing: border-box;
+            background: var(--col-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            padding: 1rem 0.875rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.9srem;
+            text-align: center;
+        }
+
+        .side-nav h3 {
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            color: var(--col-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
+            padding: 0 0.25rem;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-nav ul li {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .side-nav ul li a {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.42rem 0.5rem;
+            font-size: 0.82rem;
+            color: #4a6670;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            font-weight: 500;
+            line-height: 1.4;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .side-nav ul li a:hover {
+            background: var(--col-offwhite);
+            color: var(--col-deep);
+            padding-left: 0.85rem;
+        }
+
+        .content-article section {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 90px;
+        }
+
+        .content-article h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--col-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .content-article .page-intro {
+            font-size: 1.1rem;
+            color: #5a7a82;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+            padding-bottom: 1.5rem;
+        }
+
+        .content-article h2 {
+            font-family: var(--font-display);
+            font-size: 1.65rem;
+            color: var(--col-deep);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+        }
+
+        .content-article h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--col-mid);
+            margin: 1.5rem 0 0.6rem;
+        }
+
+        .content-article p {
+            font-size: 0.96rem;
+            line-height: 1.8;
+            color: #3a5560;
+            margin-bottom: 1rem;
+        }
+
+        .content-img-wrap {
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .content-img-wrap img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-img-wrap figcaption {
+            background: var(--col-dark);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+            padding: 0.6rem 1rem;
+            font-style: italic;
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--col-dark);
+            color: white;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--col-light);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        .content-article ul,
+        .content-article ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-article ul li,
+        .content-article ol li {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: #3a5560;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Go-to-top button */
+        .go-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--col-deep);
+            color: white;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+            z-index: 500;
+        }
+
+        .go-top:hover {
+            background: var(--col-teal);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 860px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            .side-nav {
+                position: static;
+                border-left: none;
+                border-top: 4px solid var(--col-teal);
+            }
+            .side-nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            .side-nav ul li {
+                width: auto;
+            }
+            .side-nav ul li a {
+                white-space: nowrap;
+                background: var(--col-offwhite);
+                border: 1px solid #c8e6ea;
+                padding: 0.35rem 0.85rem;
+                border-radius: 999px;
+                font-size: 0.82rem;
+            }
+            .stat-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resources/ocean renaissance logo.png" alt="Ocean Renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section-wrap">
+
+            <div class="content-layout">
+
+                <!-- Sticky Side Navigation -->
+                <nav class="side-nav" aria-label="Page sections">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#why-it-matters">Why It Matters</a></li>
+                        <li><a href="#key-threats">Key Threats</a></li>
+                        <li><a href="#student-actions">Student Actions</a></li>
+                        <li><a href="#success-stories">Success Stories</a></li>
+                        <li><a href="#get-involved">Get Involved</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Article Body -->
+                <article class="content-article">
+
+                    <h1 id="top">Coral Reefs</h1>
+                    <p class="page-intro">
+                        Coral reefs are among the most vibrant and essential ecosystems on Earth.
+                        Known as the “rainforests of the sea,” they support incredible biodiversity
+                        while protecting coastlines and sustaining millions of people worldwide.
+                        However, coral reefs are under serious threat — and protecting them is
+                        a key part of achieving SDG 14: Life Below Water.
+                    </p>
+
+                    <section id="introduction">
+                        <h2>Introduction</h2>
+                        <p>
+                            Coral reefs are underwater ecosystems formed by tiny animals called coral polyps.
+                            Over time, these organisms build massive calcium carbonate structures that become
+                            home to thousands of marine species.
+                        </p>
+                        <p>
+                            Although they cover less than 1% of the ocean floor, coral reefs support nearly
+                            25% of all marine life. They are critical not only for ocean biodiversity but
+                            also for human livelihoods, food security, and coastal protection.
+                        </p>
+
+                        <div class="stat-row">
+                            <div class="stat-card">
+                                <span class="stat-number">25%</span>
+                                <span class="stat-label">of marine species depend on reefs</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">1%</span>
+                                <span class="stat-label">of ocean floor covered by reefs</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">500M+</span>
+                                <span class="stat-label">people rely on reefs for survival</span>
+                            </div>
+                        </div>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/coral reef.jpg"
+                                alt="Colorful coral reef with diverse marine life">
+                            <figcaption>Coral reefs support one of the richest ecosystems on Earth.</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="why-it-matters">
+                        <h2>Why Coral Reefs Matter</h2>
+                        <p>
+                            Coral reefs are vital to both marine ecosystems and human societies.
+                            They provide food, income, and protection for millions of people around the world.
+                        </p>
+
+                        <h3>Environmental Importance</h3>
+                        <p>
+                            Reefs provide shelter, breeding grounds, and food for countless marine species.
+                            Without them, many ocean ecosystems would collapse.
+                        </p>
+
+                        <h3>Economic Importance</h3>
+                        <p>
+                            Coral reefs support tourism and fishing industries worth billions of dollars
+                            globally. They are essential for the livelihoods of coastal communities.
+                        </p>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/coral fish.avif"
+                                alt="Fish swimming around coral reefs">
+                            <figcaption>Thousands of marine species depend on coral reefs for survival.</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="key-threats">
+                        <h2>Key Threats</h2>
+
+                        <h3>Climate Change</h3>
+                        <p>
+                            Rising ocean temperatures cause coral bleaching, a process where corals lose
+                            their color and ability to survive.
+                        </p>
+
+                        <h3>Pollution</h3>
+                        <p>
+                            Plastic waste, chemicals, and sewage damage reef ecosystems and harm marine life.
+                        </p>
+
+                        <h3>Overfishing</h3>
+                        <p>
+                            Removing key species disrupts the balance of reef ecosystems, making them weaker.
+                        </p>
+
+                        <h3>Ocean Acidification</h3>
+                        <p>
+                            Increased CO₂ levels make oceans more acidic, weakening coral skeletons.
+                        </p>
+
+                        <ul>
+                            <li>Over 50% of coral reefs have already been lost</li>
+                            <li>Bleaching events are increasing worldwide</li>
+                            <li>Pollution affects even remote reef systems</li>
+                            <li>Climate change is the biggest long-term threat</li>
+                        </ul>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/coral bleaching.jpg"
+                                alt="Bleached coral reef showing loss of color">
+                            <figcaption>Coral bleaching is one of the biggest threats to reef survival.</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="student-actions">
+                        <h2>Student Actions</h2>
+                        <p>
+                            Students can make a real difference in protecting coral reefs through simple actions:
+                        </p>
+
+                        <h3>Daily Actions</h3>
+                        <ol>
+                            <li>Reduce single-use plastic</li>
+                            <li>Save energy to reduce climate change</li>
+                            <li>Use eco-friendly products</li>
+                            <li>Avoid wasting water</li>
+                        </ol>
+
+                        <h3>Community Actions</h3>
+                        <ol>
+                            <li>Join beach clean-ups</li>
+                            <li>Spread awareness on social media</li>
+                            <li>Participate in environmental clubs</li>
+                            <li>Educate friends and family</li>
+                        </ol>
+
+                        <div class="callout">
+                            <p>
+                                Small actions by many students can create a global impact for ocean protection.
+                            </p>
+                        </div>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/beach cleanup.webp"
+                                alt="Students cleaning a beach">
+                            <figcaption>Students taking action to protect marine environments.</figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="success-stories">
+                        <h2>Success Stories</h2>
+                        <p>
+                            Around the world, efforts are being made to restore and protect coral reefs.
+                        </p>
+
+                        <h3>Coral Restoration Projects</h3>
+                        <p>
+                            Scientists grow corals in nurseries and replant them in damaged areas.
+                        </p>
+
+                        <h3>Marine Protected Areas</h3>
+                        <p>
+                            Protected zones allow marine ecosystems to recover naturally.
+                        </p>
+
+                        <h3>Innovative Research</h3>
+                        <p>
+                            Researchers are developing heat-resistant coral species to survive climate change.
+                        </p>
+
+                        <p>
+                            These efforts show that coral reefs can recover if we act quickly and responsibly.
+                        </p>
+                    </section>
+
+                    <section id="get-involved">
+                        <h2>Get Involved</h2>
+                        <p>
+                            You can help protect coral reefs by getting involved in conservation efforts:
+                        </p>
+
+                        <ul>
+                            <li>Join environmental organizations</li>
+                            <li>Volunteer for marine conservation programs</li>
+                            <li>Support eco-friendly initiatives</li>
+                            <li>Advocate for ocean protection policies</li>
+                        </ul>
+
+                        <p>
+                            Try our 
+                            <a href="ais.html" style="color:var(--col-teal); font-weight:600;">
+                            Action Impact Simulator</a> to see how your actions can make a difference.
+                        </p>
+
+                        <a href="ais.html" class="btn btn-primary">Try the Impact Simulator →</a>
+                    </section>
+
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <a href="#top" class="go-top" aria-label="Go back to top of page" title="Back to top">↑</a>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 1</h4>
+                    <p style="margin-bottom:0.5rem;">Name: N.G.S.R.Gunarahne<br>Student ID: 2024055 / w2181558</p>
+                    <a href="pageEditor_ST1.html">My Page Editor</a>
+                    <a href="validation_ST1.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu   = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+
+        const sections  = document.querySelectorAll('.content-article section[id]');
+        const sideLinks = document.querySelectorAll('.side-nav a');
+
+        function updateSideNav() {
+            let currentId = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 110) {
+                    currentId = sec.getAttribute('id');
+                }
+            });
+            sideLinks.forEach(link => {
+                link.style.color      = link.getAttribute('href') === '#' + currentId ? 'var(--col-deep)' : '';
+                link.style.fontWeight = link.getAttribute('href') === '#' + currentId ? '700' : '';
+                link.style.background = link.getAttribute('href') === '#' + currentId ? 'var(--col-offwhite)' : '';
+            });
+        }
+
+        window.addEventListener('scroll', updateSideNav);
+        updateSideNav();
+    </script>
+</body>
+</html>
