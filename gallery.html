@@ -11,7 +11,7 @@
 
     <style>
 
-        /* ── Page hero banner ── */
+        /*Page hero banner*/
         .gallery-hero {
             background: linear-gradient(135deg, #053A40 0%, #195973 55%, #2D83A6 100%);
             padding: 64px 40px 48px;
@@ -37,7 +37,7 @@
             margin: 4px 0;
             position: relative;
         }
-        /* ── Outer page wrapper / content width ── */
+        /*Outer page wrapper / content width*/
         .gallery-section {
             max-width: 100%;
             margin: 0 auto;
@@ -79,19 +79,11 @@
             white-space: nowrap;
         }
 
-        /* ══════════════════════════════════════════════════
-           GALLERY GRID
-
-           THE FIX for "whole row expands" bug:
-           align-items: start  →  each cell is sized by its
-           OWN content, not stretched to match its tallest
-           sibling in the same row.
-        ══════════════════════════════════════════════════ */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 22px;
-            align-items: start;   /* ← KEY: prevents row-height stretching */
+            align-items: start;   
         }
         @media (max-width: 900px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -104,13 +96,6 @@
             .gallery-hero h1 { font-size: 2.1rem; }
         }
 
-        /* ══════════════════════════════════════════════════
-           GALLERY CARD
-
-           Each card is fully self-contained.
-           The .message is a CHILD of .gallery-card, so
-           its expansion NEVER affects sibling cards.
-        ══════════════════════════════════════════════════ */
         .gallery-card {
             border-radius: 14px;
             overflow: hidden;
@@ -133,7 +118,7 @@
             outline-offset: 3px;
         }
 
-        /* ── Thumbnail image container ── */
+        /*Thumbnail image container*/
         .thumb-wrap {
             position: relative;
             overflow: hidden;
@@ -188,7 +173,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ── Card label bar (title + arrow) ── */
+        /*Card label bar (title + arrow)*/
         .card-label {
             display: flex;
             justify-content: space-between;
@@ -224,16 +209,7 @@
             color: #ffffff;
         }
 
-        /* ══════════════════════════════════════════════════
-           MESSAGE PANEL — the expandable description
-
-           ISOLATED EXPANSION:
-           The max-height animation targets .message which
-           is a DIRECT CHILD of .gallery-card.
-           .gallery-card:hover .message  only matches the
-           message INSIDE the hovered card — never other
-           cards in the same row.
-        ══════════════════════════════════════════════════ */
+        /* MESSAGE PANEL — the expandable description*/
         .gallery-card .message {
             max-height: 0;
             overflow: hidden;
@@ -256,9 +232,7 @@
             border-top: 1px solid #dff0f5;
         }
 
-        /* ══════════════════════════════════════════════════
-           MODAL OVERLAY
-        ══════════════════════════════════════════════════ */
+        /* MODAL OVERLAY*/
         .modal-overlay {
             display: none;
             position: fixed;
@@ -438,7 +412,7 @@
         <p>Hover any card to reveal its story. Click to open the full view.</p>
     </div>
 
-    <!-- ─────────── Section 1: Marine Biodiversity ─────────── -->
+    <!--  Section 1: Marine Biodiversity  -->
     <div class="gallery-section">
         <div class="section-heading">
             <h2>Marine Biodiversity</h2>
@@ -527,7 +501,7 @@
         </div>
     </div>
 
-    <!-- ─────────── Section 2: Human Impacts ─────────── -->
+    <!--  Section 2: Human Impacts  -->
     <div class="gallery-section">
         <div class="section-heading">
             <h2>Human Impacts</h2>
@@ -597,7 +571,7 @@
         </div>
     </div>
 
-    <!-- ─────────── Section 3: Conservation Efforts ─────────── -->
+    <!--  Section 3: Conservation Efforts  -->
     <div class="gallery-section">
         <div class="section-heading">
             <h2>Conservation Efforts</h2>
@@ -669,7 +643,7 @@
 
 </main>
 
-<!-- ════════════════════ MODAL / EXTENDED VIEW ════════════════════ -->
+<!--  MODAL / EXTENDED VIEW  -->
 <div class="modal-overlay" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box" id="modalBox">
         <button class="modal-close" id="modalClose" aria-label="Close extended view">&#x2715;</button>
@@ -707,7 +681,6 @@
     </div>
 </div>
 
-<!-- ════════════════════ FOOTER ════════════════════ -->
 <footer>
     <div class="footer-inner">
         <div class="footer-grid">
