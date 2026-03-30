@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blue Renaissance | Sustainable Fishing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+       
+
+        /* Two-column layout: fixed sidebar + fluid article */
+        .content-layout {
+            display: grid;
+            grid-template-columns: minmax(140px, 190px) 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* Sticky side-nav — vertically stacked label then links */
+        .side-nav {
+            position: sticky;
+            top: 90px;
+            width: 100%;
+            box-sizing: border-box;
+            background: var(--col-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            padding: 1rem 0.875rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.9rem;
+            text-align: center;
+        }
+
+        .side-nav h3 {
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            color: var(--col-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
+            padding: 0 0.25rem;
+        }
+
+        /* List is also a column — each item gets full width */
+        .side-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-nav ul li {
+            /* Let each list item fill the ul width */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Links fill their list item and wrap naturally */
+        .side-nav ul li a {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.42rem 0.5rem;
+            font-size: 0.82rem;
+            color: #4a6670;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            font-weight: 500;
+            line-height: 1.4;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .side-nav ul li a:hover {
+            background: var(--col-offwhite);
+            color: var(--col-deep);
+            padding-left: 0.85rem;
+        }
+
+        /* Content article sections */
+        .content-article section {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 90px;
+        }
+
+        .content-article h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--col-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .content-article .page-intro {
+            font-size: 1.1rem;
+            color: #5a7a82;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+            padding-bottom: 1.5rem;
+        }
+
+        .content-article h2 {
+            font-family: var(--font-display);
+            font-size: 1.65rem;
+            color: var(--col-deep);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+        }
+
+        .content-article h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--col-mid);
+            margin: 1.5rem 0 0.6rem;
+        }
+
+        .content-article p {
+            font-size: 0.96rem;
+            line-height: 1.8;
+            color: #3a5560;
+            margin-bottom: 1rem;
+        }
+
+        /* Content images with captions */
+        .content-img-wrap {
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .content-img-wrap img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-img-wrap figcaption {
+            background: var(--col-dark);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+            padding: 0.6rem 1rem;
+            font-style: italic;
+        }
+
+        /* Highlight/callout box */
+        .callout {
+            background: linear-gradient(135deg, rgba(59,167,191,0.1), rgba(25,89,115,0.08));
+            border-left: 4px solid var(--col-teal);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--col-deep);
+        }
+
+        /* Stat cards row */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--col-dark);
+            color: white;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--col-light);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        /* Ordered / unordered list styling */
+        .content-article ul,
+        .content-article ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-article ul li,
+        .content-article ol li {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: #3a5560;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Go-to-top button */
+        .go-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--col-deep);
+            color: white;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+            z-index: 500;
+        }
+
+        .go-top:hover {
+            background: var(--col-teal);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive: stack sidebar above content on small screens */
+        @media (max-width: 860px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            .side-nav {
+                position: static;
+                border-left: none;
+                border-top: 4px solid var(--col-teal);
+            }
+            /* On mobile: pills in a horizontal wrapping row */
+            .side-nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            /* Each pill shrinks to fit its text — nowrap is fine HERE
+               because the pill container wraps, not the text inside it */
+            .side-nav ul li {
+                width: auto;
+            }
+            .side-nav ul li a {
+                white-space: nowrap;
+                background: var(--col-offwhite);
+                border: 1px solid #c8e6ea;
+                padding: 0.35rem 0.85rem;
+                border-radius: 999px;
+                font-size: 0.82rem;
+            }
+            .stat-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════════════ HEADER / NAV (from shared template) ═══════════════ -->
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="Ocean Renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main>
+        <div class="section-wrap">
+
+            <div class="content-layout">
+
+                <!-- ── Sticky Side Navigation ── -->
+                <nav class="side-nav" aria-label="Page sections">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#intro">Introduction</a></li>
+                        <li><a href="#why">Why It Matters</a></li>
+                        <li><a href="#methods">Unsustainable Methods</a></li>
+                        <li><a href="#solutions">Sustainable Solutions</a></li>
+                        <li><a href="#data">By the Numbers</a></li>
+                        <li><a href="#action">Take Action</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Article Body -->
+                <article class="content-article">
+
+                    <h1 id="top">Sustainable Fishing</h1>
+                    <p class="page-intro">
+                        How responsible fishing practices protect our oceans and secure future food supplies — and what you can do as a student, consumer, and citizen.
+                    </p>
+
+                    <section id="intro">
+                        <h2>Introduction to Sustainable Fishing</h2>
+                        <p>
+                            Fishing has fed human civilisations for thousands of years. Today, over 3.3 billion people rely on fish as a primary source of protein, and the fishing industry employs more than 600 million people worldwide. But this essential food source is under severe pressure. Modern industrial fishing has grown so efficient that it now extracts fish faster than populations can replenish — a pattern that, if unchanged, threatens the collapse of entire marine ecosystems.
+                        </p>
+                        <p>
+                            Sustainable fishing is the practice of catching fish at a rate that allows populations to maintain themselves over time. It means using methods that minimise bycatch (the accidental catch of non-target species), reducing habitat destruction, and ensuring that fishing communities can depend on the ocean for generations to come. It sits at the heart of UN SDG 14: Life Below Water.
+                        </p>
+
+                        <div class="stat-row">
+                            <div class="stat-card">
+                                <span class="stat-number">34%</span>
+                                <span class="stat-label">Of world fish stocks harvested at unsustainable levels (FAO, 2022)</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">Of all fish caught globally discarded as bycatch</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">$23B</span>
+                                <span class="stat-label">Cost of illegal, unreported &amp; unregulated fishing per year</span>
+                            </div>
+                        </div>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/f1 - Copy.jpg.jpeg" alt="Fishing boats at sea during sunrise">
+                            <figcaption>Fishing has fed human civilisations for thousands of years and remains a critical food source today. Source: <a href="https://unsplash.com/photos/fishing-boats-at-sea" target="_blank" style="color:var(--col-teal); font-weight:600;">Unsplash</a></figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="why">
+                        <h2>Why It Matters</h2>
+                        <p>
+                            The health of our oceans is directly linked to the health of our planet. Fish are a keystone component of marine food chains — their removal creates cascading effects that damage entire ecosystems. When apex fish like sharks and tuna are overfished, populations of their prey explode uncontrollably, throwing the balance of sea life into chaos.
+                        </p>
+
+                        <div class="callout">
+                            <p>
+                                Coral reefs — home to 25% of all marine species — are severely threatened by destructive fishing. Beyond ecology, overfishing has devastating humanitarian consequences. Coastal communities in developing nations face food insecurity when local fish stocks collapse.
+                            </p>
+                        </div>
+
+                        <h3>Impact on Food Security</h3>
+                        <p>
+                            Over 3.3 billion people rely on fish as a primary source of protein. When fish populations collapse, entire communities lose their primary food source and livelihood. Women make up an estimated 47% of the workforce in small-scale fisheries and are disproportionately affected by stock collapse.
+                        </p>
+
+                        <h3>Economic Impact</h3>
+                        <p>
+                            Illegal, unreported, and unregulated (IUU) fishing costs the global economy up to $23 billion per year. Destructive fishing practices damage the very ecosystems on which long-term fishery productivity depends, undermining the livelihoods of the 600 million people employed in the industry worldwide.
+                        </p>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/f2 - Copy.jpg.jpeg" alt="Coral reef with diverse marine life">
+                            <figcaption>Coral reefs are home to 25% of all marine species and are severely threatened by destructive fishing practices. Source: <a href="https://unsplash.com/photos/coral-reef" target="_blank" style="color:var(--col-teal); font-weight:600;">Unsplash</a></figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="methods">
+                        <h2>Unsustainable Fishing Methods</h2>
+                        <p>
+                            Understanding what unsustainable fishing looks like is the first step towards demanding change. Several common industrial methods cause severe damage to marine environments:
+                        </p>
+
+                        <h3>Bottom Trawling</h3>
+                        <p>
+                            Massive nets are dragged along the ocean floor, destroying coral, sponges, and seabed habitats that took thousands of years to form. One trawl pass can devastate ecosystems that won't recover for centuries.
+                        </p>
+
+                        <h3>Blast Fishing</h3>
+                        <p>
+                            Explosives are detonated underwater to stun or kill fish for easy collection. This destroys coral reefs and kills everything in the blast radius — not just the target species.
+                        </p>
+
+                        <h3>Ghost Fishing</h3>
+                        <p>
+                            Lost or abandoned fishing gear (ghost nets) continues to trap and kill marine animals — including endangered sea turtles and dolphins — for years after being discarded.
+                        </p>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/f3 - Copy.jpg.jpeg" alt="Large trawling nets being hauled from the ocean">
+                            <figcaption>Bottom trawling destroys coral and seabed habitats that took thousands of years to form. Source: <a href="https://unsplash.com/photos/fishing-trawler" target="_blank" style="color:var(--col-teal); font-weight:600;">Unsplash</a></figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="solutions">
+                        <h2>Sustainable Fishing Solutions</h2>
+                        <p>
+                            Sustainable fishing is not about stopping fishing entirely — it's about fishing smarter. A range of proven approaches can protect marine ecosystems while still supporting livelihoods and food security.
+                        </p>
+                        <ul>
+                            <li><strong>Catch quotas and science-based management:</strong> Setting legal limits on how much of each species can be caught per season, based on population surveys conducted by marine biologists.</li>
+                            <li><strong>Marine Protected Areas (MPAs):</strong> Designating zones where fishing is restricted or prohibited, allowing fish populations and habitats to recover. Currently, only around 8% of the ocean is protected.</li>
+                            <li><strong>Selective fishing gear:</strong> Using hooks, traps, or nets designed to target specific species and sizes, dramatically reducing bycatch of dolphins, turtles, and juvenile fish.</li>
+                            <li><strong>Aquaculture (fish farming):</strong> Responsibly managed fish farms can reduce pressure on wild stocks. Sustainable aquaculture avoids harmful chemicals, escape of non-native species, and destruction of coastal wetlands.</li>
+                            <li><strong>Eco-certification schemes:</strong> Labels such as the MSC (Marine Stewardship Council) certification allow consumers to identify and choose fish products from well-managed, sustainable sources.</li>
+                            <li><strong>Community-based fisheries management:</strong> Empowering local fishing communities to manage and monitor their own resources leads to better compliance and more effective conservation.</li>
+                        </ul>
+
+                        <figure class="content-img-wrap">
+                            <img src="Resourses/f4.jpg.jpeg" alt="Small fishing boat on calm turquoise water">
+                            <figcaption>Sustainable fishing is about fishing smarter — protecting marine ecosystems while supporting livelihoods. Source: <a href="https://unsplash.com/photos/small-boat-ocean" target="_blank" style="color:var(--col-teal); font-weight:600;">Unsplash</a></figcaption>
+                        </figure>
+                    </section>
+
+                    <section id="data">
+                        <h2>Sustainable Fishing By the Numbers</h2>
+                        <p>The table below summarises key global indicators relating to sustainable fishing targets under SDG 14.</p>
+                        <table style="width:100%;border-collapse:collapse;font-size:0.93rem;margin:1rem 0;">
+                            <thead>
+                                <tr style="background:#195973;color:white;">
+                                    <th style="padding:10px 14px;text-align:left;">Indicator</th>
+                                    <th style="padding:10px 14px;text-align:left;">Current Status</th>
+                                    <th style="padding:10px 14px;text-align:left;">Target / Goal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">Fish stocks at sustainable levels</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">66% (FAO, 2022)</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">100% by 2030 (SDG 14.4)</td>
+                                </tr>
+                                <tr style="background:#f0fbfd;">
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">Ocean area under protection</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">~8%</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">30% by 2030 (30x30 Initiative)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">Illegal fishing (IUU) volume</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">11–26 million tonnes/year</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">Elimination via monitoring</td>
+                                </tr>
+                                <tr style="background:#f0fbfd;">
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">Harmful fishing subsidies</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">$35.4 billion/year globally</td>
+                                    <td style="padding:9px 14px;border-bottom:1px solid #c8e8ef;">Reform by 2025 (WTO agreement)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:9px 14px;">MSC-certified fisheries</td>
+                                    <td style="padding:9px 14px;">~500 globally</td>
+                                    <td style="padding:9px 14px;">Continued expansion</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="action">
+                        <h2>What You Can Do — Take Action</h2>
+                        <p>
+                            Sustainable fishing is not just a government or industry responsibility. Every consumer decision you make sends a signal to the market. Here are concrete actions you can take as a student and citizen:
+                        </p>
+                        <ul>
+                            <li><strong>Choose certified seafood:</strong> Look for the MSC (Marine Stewardship Council) blue label or ASC (Aquaculture Stewardship Council) label when buying fish.</li>
+                            <li><strong>Use the Good Fish Guide:</strong> The Marine Conservation Society's free app tells you which fish species are sustainable to eat right now.</li>
+                            <li><strong>Raise awareness on campus:</strong> Talk to your university about sourcing sustainable seafood in dining halls and cafeterias.</li>
+                            <li><strong>Write to your MP:</strong> Advocate for stronger fishing regulations, the end of harmful subsidies, and expanded marine protected areas.</li>
+                            <li><strong>Support ocean charities:</strong> Organisations like Oceana, Surfers Against Sewage, and the Marine Conservation Society campaign directly for sustainable fishing policy.</li>
+                            <li><strong>Reduce demand for unsustainable species:</strong> Avoid commonly overfished species like Atlantic cod, bluefin tuna, and wild-caught prawns unless verified as sustainable.</li>
+                        </ul>
+
+                        <div class="callout">
+                            <p>
+                                The ocean has an extraordinary capacity to recover — but only if we give it the chance. By making more informed choices and speaking up for ocean-friendly policies, students and young people can be a powerful force for change in protecting the life below water.
+                            </p>
+                        </div>
+
+                        <a href="ais.html" class="btn btn-primary">Try the Impact Simulator</a>
+                    </section>
+
+                </article>
+            </div><!-- end .content-layout -->
+        </div><!-- end .section-wrap -->
+    </main>
+
+    <!-- ═══════════════ GO TO TOP ═══════════════ -->
+    <a href="#top" class="go-top" aria-label="Go back to top of page" title="Back to top">↑</a>
+
+    <!-- ═══════════════ FOOTER (from shared template) ═══════════════ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 4</h4>
+                    <p style="margin-bottom:0.5rem;">Name: J.M.D.Jayasinghe<br>Student ID: 20240747 / w2181802</p>
+                    <a href="pageEditor_ST4.html">My Page Editor</a>
+                    <a href="validation_ST4.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu   = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Mark active nav link based on current page filename
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+
+        // Highlight side-nav link that is currently in view (simple scroll spy)
+        const sections  = document.querySelectorAll('.content-article section[id]');
+        const sideLinks = document.querySelectorAll('.side-nav a');
+
+        function updateSideNav() {
+            let currentId = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 110) {
+                    currentId = sec.getAttribute('id');
+                }
+            });
+            sideLinks.forEach(link => {
+                link.style.color      = link.getAttribute('href') === '#' + currentId ? 'var(--col-deep)' : '';
+                link.style.fontWeight = link.getAttribute('href') === '#' + currentId ? '700' : '';
+                link.style.background = link.getAttribute('href') === '#' + currentId ? 'var(--col-offwhite)' : '';
+            });
+        }
+
+        window.addEventListener('scroll', updateSideNav);
+        updateSideNav();
+    </script>
+</body>
+</html>
