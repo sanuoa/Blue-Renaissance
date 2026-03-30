@@ -1,71 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Marine Wildlife</title>
+    <title>Blue Renaissance | Ocean Health & Biodiversity</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+       
 
-	nav ul{
-		display:flex;
-		gap:15px;
-		list-style:none;
-		background-color:#053A40;
-		padding:0;
-	}
-	
-	nav li{
-		float:left;
-	}
-	
-	nav ul li a{
-		display:block;
-		color:white;
-		text-align:center;
-		padding:14px 16px;
-	}
-	
-	nav ul li a:hover{
-		background-color:black;
-	}
-	
-	img{
-		width:1390px;
-		height:400px;
-	}
-	
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
-	
-	td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-	}
+        .content-layout {
+            display: grid;
+            grid-template-columns: minmax(140px, 190px) 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
 
-</style>
+        .side-nav {
+            position: sticky;
+            top: 90px;
+            width: 100%;
+            box-sizing: border-box;
+            background: var(--col-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            padding: 1rem 0.875rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.9srem;
+            text-align: center;
+        }
+
+        .side-nav h3 {
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            color: var(--col-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
+            padding: 0 0.25rem;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-nav ul li {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .side-nav ul li a {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.42rem 0.5rem;
+            font-size: 0.82rem;
+            color: #4a6670;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            font-weight: 500;
+            line-height: 1.4;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .side-nav ul li a:hover {
+            background: var(--col-offwhite);
+            color: var(--col-deep);
+            padding-left: 0.85rem;
+        }
+
+        .content-article section {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 90px;
+        }
+
+        .content-article h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--col-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .content-article .page-intro {
+            font-size: 1.1rem;
+            color: #5a7a82;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+            padding-bottom: 1.5rem;
+        }
+
+        .content-article h2 {
+            font-family: var(--font-display);
+            font-size: 1.65rem;
+            color: var(--col-deep);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--col-offwhite);
+        }
+
+        .content-article h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--col-mid);
+            margin: 1.5rem 0 0.6rem;
+        }
+
+        .content-article p {
+            font-size: 0.96rem;
+            line-height: 1.8;
+            color: #3a5560;
+            margin-bottom: 1rem;
+        }
+
+        .content-img-wrap {
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .content-img-wrap img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-img-wrap figcaption {
+            background: var(--col-dark);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+            padding: 0.6rem 1rem;
+            font-style: italic;
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--col-dark);
+            color: white;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--col-light);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        .content-article ul,
+        .content-article ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-article ul li,
+        .content-article ol li {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: #3a5560;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Go-to-top button */
+        .go-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--col-deep);
+            color: white;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+            z-index: 500;
+        }
+
+        .go-top:hover {
+            background: var(--col-teal);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 860px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            .side-nav {
+                position: static;
+                border-left: none;
+                border-top: 4px solid var(--col-teal);
+            }
+            .side-nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            .side-nav ul li {
+                width: auto;
+            }
+            .side-nav ul li a {
+                white-space: nowrap;
+                background: var(--col-offwhite);
+                border: 1px solid #c8e6ea;
+                padding: 0.35rem 0.85rem;
+                border-radius: 999px;
+                font-size: 0.82rem;
+            }
+            .stat-row {
+                grid-template-columns: 1fr;
+            }
+			
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+				border: 1px solid #b0cfd4;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+				margin: 1rem 0;
+			}
+
+			thead tr {
+				background-color: #1a5f6e;
+				color: #ffffff;
+			}
+
+			th {
+				text-align: left;
+				padding: 12px 16px;
+				font-size: 0.9rem;
+				font-weight: 600;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				border: 1px solid #0e4350;
+			}
+
+			td {
+				text-align: left;
+				padding: 11px 16px;
+				font-size: 0.92rem;
+				color: #2d4f58;
+				border: 1px solid #b0cfd4;
+			}
+
+			tbody tr:last-child td {
+				border-bottom: none;
+			}
+
+			tbody tr:nth-child(even) {
+				background-color: #f0f9fb;
+			}
+
+			tbody tr:nth-child(odd) {
+				background-color: #ffffff;
+			}
+
+			tbody tr:hover {
+				background-color: #d9f0f4;
+				transition: background 0.2s;
+			}
+	</style>
+	
+</head>
 
 <body>
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resources/ocean renaissance logo.png" alt="Ocean Renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
 
-	<header>
-		<h1>Marine Wildlife</h1>
-	</header>
-	
-	<main>
-		
-		<nav>
-			<ul>
-				<li> <a href="#intro">Introduction</a></li>
-				<li> <a href="#types">Types</a></li>
-				<li> <a href="#threats">Threats</a></li>
-				<li> <a href="#protect">Protection</a></li>
-			</ul>
-		</nav>
-		
-		<img src="https://s7g10.scene7.com/is/image/barcelo/wildlife-in-the-maldives_maldives-tropical-fish?&&fmt=webp-alpha&qlt=75&wid=1200&fit=crop,1">
+    <main>
+        <div class="section-wrap">
+
+            <div class="content-layout">
+
+                <!-- Sticky Side Navigation -->
+                <nav class="side-nav" aria-label="Page sections">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#intro">Introduction</a></li>
+                        <li><a href="#types">Types</a></li>
+                        <li><a href="#threats">Threats</a></li>
+                        <li><a href="#protect">Protection</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Article Body -->
+                <article class="content-article">
+
+                    <h1 id="top">Marine Wildlife</h1>
 		
 		<section id="intro">
 			<h2>Introduction to Marine Wildlife</h2>
@@ -79,53 +355,40 @@
 			
 		</section>
 		
+		
 		<section id="types">
 			<h2>Types of Marine Animals</h2>
+			
+			<br>
+			<img src="Resourses/marine_animals.png" style="width:800px; height:250px;" alt="Types of marine animals">
+			<br>
+			
 			<p>Marine animals can be grouped into several categories:</p>
-			
-			<table>
-				<tr>
-					<th>Group</th>
-					<th>Example</th>
-					<th>Key features</th>
-				</tr>
-				
-				<tr>
-					<td>Mammals</td>
-					<td>Whales, dolphins, seals</td>
-					<td>Warm-blooded, breathe air, nurse young</td>
-				</tr>
-				
-				<tr>
-					<td>Fish</td>
-					<td>Sharks, tuna, clownfish</td>
-					<td>Cold-blooded, gills for breathing</td>
-				</tr>
-				
-				<tr>
-					<td>Reptiles</td>	
-					<td>Sea turtles, marine iguanas</td>	
-					<td>Lay eggs, adapted to saltwater</td>
-				</tr>
-				
-				<tr>
-					<td>Invertebrates</td>	
-					<td>Octopus, jellyfish, corals</td>	
-					<td>No backbone, diverse adaptations</td>
-				</tr>
-				
-				<tr>
-					<td>Plankton</td>	
-					<td>Phytoplankton, zooplankton</td>	
-					<td>Microscopic, base of food chain</td>
-				</tr>
-			
-			</table>
+
+			<h3>Mammals</h3>
+			<p>Examples include whales, dolphins, and seals. They are warm-blooded, breathe air, and nurse their young.</p>
+
+			<h3>Fish</h3>
+			<p>Examples include sharks, tuna, and clownfish. They are cold-blooded and use gills for breathing.</p>
+
+			<h3>Reptiles</h3>
+			<p>Examples include sea turtles and marine iguanas. They lay eggs and are specially adapted to saltwater environments.</p>
+
+			<h3>Invertebrates</h3>
+			<p>Examples include octopuses, jellyfish, and corals. They have no backbone and display a wide range of diverse adaptations.</p>
+
+			<h3>Plankton</h3>
+			<p>Examples include phytoplankton and zooplankton. They are microscopic organisms that form the base of the ocean food chain.</p>
 			
 		</section>
 
 		<section id="threats">
 			<h2>Threats to Marine Wildlife</h2>
+			<br>
+			
+				<img src="Resourses/threats.webp" style="width:800px; height:250px;" alt="Key threats">
+				<br>
+			
 			
 			<p>Marine ecosystems face multiple human-driven challenges:</p>
 			
@@ -140,6 +403,11 @@
 
 		<section id="protect">
 			<h2>How we can protect our Marine Wildlife</h2>
+			<br>
+				<img src="Resourses/protect.webp" style="width:800px; height:250px" alt="protect our marine wildlife">
+			<br>
+			
+			
 			
 			<p>Protecting marine ecosystems requires collective action:</p>
 			
@@ -152,17 +420,81 @@
 			</ul>
 		
 		</section>	
-		
-	
-	
-	</main>
-	
-	<footer>
-		<p>I.D.D.M.Weerasinghe - 20241149 | w2182045</p>
-	</footer>
 
+                </article>
+            </div>
+        </div>
+    </main>
 
+    <a href="#top" class="go-top" aria-label="Go back to top of page" title="Back to top">↑</a>
 
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 3</h4>
+                    <p style="margin-bottom:0.5rem;">Name: I.D.D.M.Weerasinghe<br>Student ID: 20241149 / w2182045</p>
+                    <a href="pageEditor_ST3.html">My Page Editor</a>
+                    <a href="validation_ST3.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu   = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+
+        const sections  = document.querySelectorAll('.content-article section[id]');
+        const sideLinks = document.querySelectorAll('.side-nav a');
+
+        function updateSideNav() {
+            let currentId = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 110) {
+                    currentId = sec.getAttribute('id');
+                }
+            });
+            sideLinks.forEach(link => {
+                link.style.color      = link.getAttribute('href') === '#' + currentId ? 'var(--col-deep)' : '';
+                link.style.fontWeight = link.getAttribute('href') === '#' + currentId ? '700' : '';
+                link.style.background = link.getAttribute('href') === '#' + currentId ? 'var(--col-offwhite)' : '';
+            });
+        }
+
+        window.addEventListener('scroll', updateSideNav);
+        updateSideNav();
+    </script>
 </body>
-</head>
+</html>
