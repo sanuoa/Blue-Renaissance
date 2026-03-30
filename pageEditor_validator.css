@@ -119,6 +119,10 @@ section a:hover {
     text-decoration: underline;
 }
 
+section ul{
+    padding-left: 1.5rem;
+}
+
 /* References list */
 .ref {
     padding-left: 0;
