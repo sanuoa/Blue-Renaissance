@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Editor - J.M.D.Jayasinghe | Blue Renaissance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageEditor_validator.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="ocean renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="stud" id="top">
+        <h2>J.M.D.Jayasinghe &nbsp;|&nbsp; Blue Renaissance &nbsp;|&nbsp; Student 4 – User Profile &amp; Sitemap</h2>
+    </section>
+
+    <div class="container">
+        <main>
+
+            <section>
+                <h2 id="splash">User Profile Page</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The User Profile page (<code>profile.html</code>) uses the shared Blue Renaissance template, containing the standard <code>&lt;header&gt;</code> with the navigation bar, a <code>&lt;main&gt;</code> element that holds the entire profile-building interface, and the shared <code>&lt;footer&gt;</code>. Inside <code>&lt;main&gt;</code>, a <code>&lt;div class="profile-wrapper"&gt;</code> provides the centred, max-width layout. The page is divided into semantically meaningful sections: an introductory <code>&lt;div class="intro-box"&gt;</code>, a progress indicator area, step-trigger buttons using <code>&lt;button&gt;</code> elements (which are keyboard-accessible by default), a status message <code>&lt;div&gt;</code>, and a profile output area built from nested <code>&lt;div&gt;</code> blocks, each corresponding to a step.
+                </p>
+                <p>
+                    All three step blocks inside the profile output are hidden with <code>display:none</code> initially and revealed progressively using JavaScript DOM manipulation — specifically, adding a <code>.visible</code> class that switches them to <code>display:block</code>. This approach avoids page reloads and keeps everything within a single, clean HTML document. Embedded CSS handles all page-specific styles within a <code>&lt;style&gt;</code> block in the document head. Flexbox is used extensively: the step button row uses <code>display:flex; flex-wrap:wrap; gap:12px</code> to lay buttons out responsively. The progress bar is achieved through a fixed-height outer container with <code>overflow:hidden; border-radius:20px</code> and an inner <code>&lt;div&gt;</code> whose <code>width</code> property is transitioned smoothly using CSS <code>transition: width 0.5s ease</code>.
+                </p>
+                <p>
+                    The User Profile page collects data using JavaScript's <code>prompt()</code> function. Collection is structured into three logical steps of three prompts each (nine prompts total), covering personal details, ocean interests, and conservation commitments. A <code>profileData</code> object stores all answers, and a <code>stepStatus</code> object tracks whether each step is <code>'pending'</code>, <code>'completed'</code>, or <code>'skipped'</code>. Users may skip any individual prompt by pressing Cancel, or skip an entire step if they cancel all three prompts. A <code>renderOutput()</code> function uses DOM selection to update paragraph content dynamically, and <code>updateRevisitButtons()</code> generates revisit buttons for any skipped steps so users can return and complete them later.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    The User Profile step buttons are standard <code>&lt;button&gt;</code> elements, which are natively keyboard-focusable. The mobile navigation toggle button uses <code>aria-expanded</code> to communicate open/closed state. White text on the deep teal (#053A40) background exceeds the WCAG AA 4.5:1 contrast ratio for normal text. The page has a <code>lang</code> attribute set to English so screen readers know what language the content is in.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST4.html#splashVal">View W3C validation result for the User Profile page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="profile.html">View the User Profile page</a></p>
+            </section>
+
+            <section>
+                <h2 id="ais">Sitemap Page</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The Sitemap page (<code>sitemap.html</code>) uses the shared template. The <code>&lt;main&gt;</code> section contains a heading, a brief description paragraph, and the SVG sitemap wrapped inside a responsive <code>&lt;div class="svg-container"&gt;</code> that provides overflow scrolling on small screens. The SVG element itself uses a <code>viewBox="0 0 900 560"</code> attribute with <code>width="100%"</code> so it scales proportionally at any screen width without losing aspect ratio or content.
+                </p>
+                <p>
+                    Each node in the SVG is built as an <code>&lt;a&gt;</code> element wrapping a <code>&lt;g&gt;</code> group containing a <code>&lt;title&gt;</code> for screen-reader accessibility, a shape (<code>&lt;rect&gt;</code> or <code>&lt;ellipse&gt;</code>), and a <code>&lt;text&gt;</code> label. The <code>&lt;a&gt;</code> elements include <code>tabindex="0"</code> and <code>role="link"</code> with <code>aria-label</code> attributes to ensure keyboard and screen-reader users can navigate the sitemap. Connector lines between nodes are drawn using <code>&lt;line&gt;</code> elements with a custom SVG <code>&lt;marker&gt;</code> defining arrowheads. Node hover interactivity is implemented using embedded CSS which transitions the fill colour and stroke width on hover. A <code>:focus</code> style using <code>outline: 3px solid #ffc107</code> provides a visible keyboard focus indicator.
+                </p>
+                <p>
+                    SVG was chosen because it is resolution-independent, natively supports hyperlinking within elements, is searchable and accessible to screen readers, and validates as part of the HTML document. Using <code>viewBox</code> ensures the diagram scales cleanly across devices. The colour hierarchy — darkest for top-level pages, progressively lighter for deeper levels — gives users an immediate intuitive understanding of the site structure. Student 4's own pages are highlighted with a distinctive lighter border and a star symbol (★) to clearly identify individual contributions within the group structure.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    The Sitemap SVG nodes use <code>tabindex="0"</code> on their <code>&lt;a&gt;</code> wrappers with <code>aria-label</code> descriptions, and a visible <code>:focus</code> outline ensures keyboard users can see which node is active. The SVG container has a <code>role="img"</code> and <code>aria-label</code> describing the diagram. Each SVG link includes a <code>&lt;title&gt;</code> element for screen reader identification. A colour legend below the SVG uses a flex row of small coloured swatches to explain the hierarchy visually.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST4.html#aisVal">View W3C validation result for the Sitemap page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="sitemap.html">View the Sitemap page</a></p>
+            </section>
+
+            <section>
+                <h2 id="content">Content Page — Sustainable Fishing</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The Content page (<code>content_ST4.html</code>) uses the shared template and is structured around semantic HTML5 elements. One <code>&lt;h1&gt;</code> provides the page title (Sustainable Fishing), and six <code>&lt;section&gt;</code> elements each carry an <code>&lt;h2&gt;</code> heading and an <code>id</code> attribute for internal anchor linking. Sections cover: Introduction, Why It Matters, Unsustainable Methods, Sustainable Solutions, By the Numbers (data table), and Take Action. An internal navigation <code>&lt;nav&gt;</code> block at the top uses anchor links to allow users to jump directly to any section. A data <code>&lt;table&gt;</code> in the statistics section uses <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code> elements correctly. A fixed "Go to Top" <code>&lt;a&gt;</code> button links back to the <code>id="top"</code> placed on the <code>&lt;body&gt;</code> element.
+                </p>
+                <p>
+                    The content page uses embedded CSS within a <code>&lt;style&gt;</code> block containing more than five distinct rules. The internal navigation bar uses <code>display:flex; flex-wrap:wrap</code> with pill-shaped link styling (<code>border-radius:20px</code>). Section headings use a left-border accent (<code>border-left: 4px solid #7ecfda</code>) for visual hierarchy. Images use <code>object-fit:cover</code> with a fixed <code>height:300px</code> to maintain consistent visual proportions. A custom "fact box" component uses a <code>linear-gradient</code> background and a coloured border to visually separate key statistics from body text. The Go to Top button uses <code>position:fixed; bottom:30px; right:30px</code> — implemented entirely in CSS with no JavaScript.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    All page content is original and written specifically for this coursework. All four images include descriptive <code>alt</code> attributes. The heading hierarchy is strictly sequential (h1 → h2 only). The internal navigation is wrapped in a <code>&lt;nav&gt;</code> element with an <code>aria-label="Page sections"</code> attribute so assistive technologies can identify it separately from the site navigation bar. The data table uses <code>&lt;th&gt;</code> elements with implicit column scope for screen-reader compatibility.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST4.html#contentVal">View W3C validation result for the Content Page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="content_ST4.html">View the Sustainable Fishing Content page</a></p>
+            </section>
+
+            <section>
+                <h2 id="challenge">Challenges and Lessons Learned</h2>
+                <p>
+                    The most significant challenge was designing the User Profile page's JavaScript step system to handle all edge cases: users who skip every prompt in a step, users who complete some prompts and skip others within the same step, and users who revisit and partially fill in previously skipped steps. The initial approach used a simple counter, but this led to double-counting when revisiting steps that had already been partially completed. The solution was to track the answered count globally and prevent re-incrementing by checking whether a value already existed in the <code>profileData</code> object before adding to the counter.
+                </p>
+                <p>
+                    For the SVG sitemap, calculating x/y coordinates for node placement required iterative manual adjustment since SVG positions are absolute. I drew a rough layout on paper first, then converted measurements into SVG coordinates, which made the process significantly faster. Getting arrowhead markers to render at the correct scale and position required careful tuning of the <code>refX</code>, <code>refY</code>, and <code>markerWidth</code> attributes, which are not immediately intuitive from documentation alone. Working within a shared template also taught me to be disciplined about separating page-specific CSS from global styles.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="compliance">Compliance</h2>
+                <p>All of my pages follow the JANET regulations for web publishing at the University of Westminster:</p>
+                <ul>
+                    <li>All content relates directly to SDG 14 — Life Below Water and sustainable fishing. No offensive, discriminatory, or inappropriate material is included on any page.</li>
+                    <li>All images used are sourced from royalty-free platforms (Unsplash) and are referenced in the References section.</li>
+                    <li>The User Profile page does not transmit any user data to a server. All input stays within the browser session and is discarded when the page is closed.</li>
+                    <li>All code and written content was produced personally and has not been plagiarised from other students or from online templates.</li>
+                    <li>All pages have the correct charset and viewport settings in the head.</li>
+                    <li>The website presents a positive, constructive message focused on environmental awareness and individual action.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 id="group">Group Meetings and Individual Contribution Log</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="6">Group Meetings and Contribution Log</th>
+                        </tr>
+                        <tr>
+                            <th>Meeting</th>
+                            <th>Date &amp; Time</th>
+                            <th>Format</th>
+                            <th>Objective</th>
+                            <th>Attended</th>
+                            <th>Your Individual Contribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>03/02/2026, 2:00 PM</td>
+                            <td>Face-to-face</td>
+                            <td>Agree on SDG topic and assign individual roles and pages</td>
+                            <td>Yes</td>
+                            <td>I agreed to take responsibility for the User Profile and Sitemap pages as Student 4. I also agreed to create content_ST4.html on the topic of sustainable fishing.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>17/02/2026, 11:00 AM</td>
+                            <td>Online (Teams)</td>
+                            <td>Review the shared template and agree on the colour palette and global CSS rules</td>
+                            <td>Yes</td>
+                            <td>I reviewed the template HTML that Student 1 had drafted and gave feedback on the footer layout. I confirmed the colour scheme (deep teal #053A40) worked well for my pages.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>03/03/2026, 11:30 AM</td>
+                            <td>Hybrid</td>
+                            <td>Share first drafts of individual pages for group feedback</td>
+                            <td>Yes</td>
+                            <td>I showed an early version of the User Profile page. The group suggested making the progress bar more prominent and adding a confirmation message at the end, which I then implemented.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>14/03/2026, 3:00 PM</td>
+                            <td>Online (Teams)</td>
+                            <td>Review SVG sitemap drafts and confirm file naming structure</td>
+                            <td>Yes</td>
+                            <td>I shared my SVG sitemap draft. The group pointed out that the content page nodes were too small to read clearly on mobile — I subsequently increased their font size and added more spacing between nodes.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>24/03/2026, 11:00 AM</td>
+                            <td>Face-to-face</td>
+                            <td>Accessibility and W3C validation checks across all pages</td>
+                            <td>Yes</td>
+                            <td>I ran W3C validation on all three of my pages. I fixed a missing closing tag in content_ST4.html and corrected an invalid tabindex value in sitemap.html that was causing a validation warning.</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>28/03/2026, 8:00 PM</td>
+                            <td>Online (Teams)</td>
+                            <td>Final group review before submission deadline</td>
+                            <td>Yes</td>
+                            <td>I did a final check of all navigation links across my pages, confirmed all images had alt text, and submitted my completed files to the shared group folder. I also helped check that Student 3's links to my pages were pointing to the correct filenames.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 id="ref">References</h2>
+                <h3>Images Used:</h3>
+                <ul class="ref">
+                    <li>Unsplash – fishing boats: <a href="https://unsplash.com/photos/fishing-boats-at-sea" target="_blank">unsplash.com</a></li>
+                    <li>Unsplash – coral reef: <a href="https://unsplash.com/photos/coral-reef" target="_blank">unsplash.com</a></li>
+                    <li>Unsplash – trawling nets: <a href="https://unsplash.com/photos/fishing-trawler" target="_blank">unsplash.com</a></li>
+                    <li>Unsplash – small fishing boat: <a href="https://unsplash.com/photos/small-boat-ocean" target="_blank">unsplash.com</a></li>
+                </ul>
+                <h3>Website References</h3>
+                <ul class="ref">
+                    <li>FAO (2022). <em>The State of World Fisheries and Aquaculture.</em> Available at: <a href="https://www.fao.org/documents/card/en/c/cc0461en" target="_blank">fao.org</a></li>
+                    <li>Marine Conservation Society – Good Fish Guide. Available at: <a href="https://www.mcsuk.org/goodfishguide" target="_blank">mcsuk.org</a></li>
+                    <li>Marine Stewardship Council. Available at: <a href="https://www.msc.org" target="_blank">msc.org</a></li>
+                    <li>Oceana – Sustainable Fishing. Available at: <a href="https://oceana.org/sustainable-fishing" target="_blank">oceana.org</a></li>
+                    <li>United Nations – SDG 14. Available at: <a href="https://sdgs.un.org/goals/goal14" target="_blank">sdgs.un.org</a></li>
+                    <li>MDN Web Docs – SVG. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">developer.mozilla.org</a></li>
+                    <li>MDN Web Docs – Window.prompt(). Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt" target="_blank">developer.mozilla.org</a></li>
+                    <li>W3Schools – CSS Flexbox. Available at: <a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank">w3schools.com</a></li>
+                    <li>W3C Markup Validation Service. Available at: <a href="https://validator.w3.org/" target="_blank">validator.w3.org</a></li>
+                    <li>University of Westminster – Lecture Notes, Web Design and Development (4COSC011W), Semester 2, 2025/26.</li>
+                </ul>
+            </section>
+
+            <p class="top"><a href="#top">Go top</a></p>
+        </main>
+
+        <aside>
+            <h3>Student 4 Pages:</h3>
+            <ul class="top-level-ul">
+                <li><a href="#splash">User Profile</a></li>
+                <li><a href="#ais">Sitemap</a></li>
+                <li><a href="#content">Content Page</a></li>
+                <li><a href="#challenge">Challenges &amp; Lessons Learned</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+                <li><a href="#group">Group Meetings Log</a></li>
+                <li><a href="#ref">References</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 4</h4>
+                    <p style="margin-bottom:0.5rem;">Name: J.M.D.Jayasinghe<br>Student ID: 20240747 / w2181802</p>
+                    <a href="pageEditor_ST4.html">My Page Editor</a>
+                    <a href="validation_ST4.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

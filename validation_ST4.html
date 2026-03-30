@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation - J.M.D.Jayasinghe | Blue Renaissance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageEditor_validator.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="ocean renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="stud" id="top">
+        <h2>J.M.D.Jayasinghe &nbsp;|&nbsp; Blue Renaissance &nbsp;|&nbsp; Student 4 - Validation Report</h2>
+    </section>
+
+    <div class="container">
+        <main>
+
+            <section>
+                <h2 id="splashVal">User Profile Page - Validation Report</h2>
+                <p>
+                    The User Profile page was validated by uploading the file directly to the W3C Validator. The result showed no errors. One informational warning was present regarding the use of the <code>type="text/css"</code> attribute on style elements — this is acceptable per the coursework specification and does not constitute an error.
+                </p>
+                <img src="Resourses/val_profile.png" alt="W3C validation result for User Profile page showing no errors">
+
+                <h3>Back to Page Editor</h3>
+                <p><a href="profile.html">Back to User Profile in Page Editor</a></p>
+            </section>
+
+            <section>
+                <h2 id="aisVal">Sitemap Page - Validation Report</h2>
+                <p>
+                    The Sitemap page was validated using the W3C Validator file upload. The SVG content embedded within the HTML document validated successfully. No errors were returned. An informational note about the SVG <code>title</code> elements being used for accessibility was present but does not constitute a validation error.
+                </p>
+                <img src="Resourses/val_sitemap.png" alt="W3C validation result for Sitemap page showing no errors">
+
+                <h3>Back to Page Editor</h3>
+                <p><a href="sitemap.html">Back to Sitemap in Page Editor</a></p>
+            </section>
+
+            <section>
+                <h2 id="contentVal">Content Page — Sustainable Fishing - Validation Report</h2>
+                <p>
+                    The Content page was validated using the W3C Validator file upload. The document uses standard HTML5 elements including <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;table&gt;</code>, and <code>&lt;a href="#anchor"&gt;</code> internal links, all of which validated without errors. No errors were returned. In <code>content_ST4.html</code>, I had accidentally omitted the closing <code>&lt;/head&gt;</code> tag, which the validator caught immediately and I fixed. The external image URLs generated no validation issues as they are standard absolute URLs.
+                </p>
+                <img src="Resourses/val_content.png" alt="W3C validation result for Content page showing no errors">
+
+                <h3>Back to Page Editor</h3>
+                <p><a href="content_ST4.html">Back to Content Page in Page Editor</a></p>
+            </section>
+
+            <p class="top"><a href="#top">Go top</a></p>
+        </main>
+
+        <aside>
+            <h3>Validation Reports</h3>
+            <ul>
+                <li><a href="#splashVal">User Profile</a></li>
+                <li><a href="#aisVal">Sitemap</a></li>
+                <li><a href="#contentVal">Content Page</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 4</h4>
+                    <p style="margin-bottom:0.5rem;">Name: J.M.D.Jayasinghe<br>Student ID: 20240747 / w2181802</p>
+                    <a href="pageEditor_ST4.html">My Page Editor</a>
+                    <a href="validation_ST4.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

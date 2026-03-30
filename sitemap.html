@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap | Blue Renaissance</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        
+
+        
+        .sitemap-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        
+        .sitemap-wrapper h1 {
+            color: #195973;
+            margin-bottom: 8px;
+        }
+        .sitemap-wrapper > p {
+            color: #1a3a40;
+            margin-bottom: 28px;
+        }
+
+        
+        .svg-container {
+            width: 100%;
+            overflow-x: auto;
+            background: #f0fbfd;
+            border: 1px solid #3BA7BF;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        
+        .site-node {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .site-node rect, .site-node ellipse {
+            transition: fill 0.2s, stroke-width 0.2s;
+        }
+        .site-node:hover rect, .site-node:focus rect {
+            fill: #2D83A6 !important;
+            stroke-width: 3;
+        }
+        .site-node:hover ellipse, .site-node:focus ellipse {
+            fill: #2D83A6 !important;
+            stroke-width: 3;
+        }
+        .site-node:hover text, .site-node:focus text {
+            fill: white !important;
+        }
+        .site-node:focus {
+            outline: 3px solid #F97316;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        
+        .sitemap-legend {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            font-size: 0.88rem;
+            color: #1a3a40;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="Blue Renaissance ocean logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html" class="active" aria-current="page">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="sitemap-wrapper">
+            <h1>Website Sitemap</h1>
+            <p>A visual overview of the Blue Renaissance website structure. Click or tab to any node to navigate to that page.</p>
+
+            
+            <div class="svg-container" role="img" aria-label="Blue Renaissance website sitemap diagram">
+                <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"
+                     width="100%" style="display:block; min-width:480px;">
+
+                    <defs>
+                        
+                        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#3BA7BF"/>
+                        </marker>
+                    </defs>
+
+                    
+                    
+                    <line x1="450" y1="70" x2="450" y2="120" stroke="#3BA7BF" stroke-width="2" marker-end="url(#arrow)"/>
+
+                
+                    
+                    <line x1="380" y1="160" x2="120" y2="220" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <line x1="420" y1="160" x2="270" y2="220" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <line x1="450" y1="160" x2="420" y2="220" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <line x1="470" y1="160" x2="570" y2="220" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <line x1="490" y1="160" x2="720" y2="220" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <line x1="510" y1="155" x2="850" y2="220" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    
+                    <line x1="450" y1="160" x2="450" y2="340" stroke="#3BA7BF" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+
+                   
+                    <line x1="390" y1="380" x2="220" y2="440" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <
+                    <line x1="420" y1="385" x2="355" y2="440" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    
+                    <line x1="480" y1="385" x2="545" y2="440" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+                    <line x1="510" y1="380" x2="680" y2="440" stroke="#3BA7BF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <!-- NODES  -->
+
+                    
+                    <a href="splash.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Splash Screen page">
+                            <title>Splash Screen</title>
+                            <ellipse cx="450" cy="42" rx="90" ry="26" fill="#053A40" stroke="#3BA7BF" stroke-width="2"/>
+                            <text x="450" y="47" fill="white" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">Splash Screen</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="home.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Home page">
+                            <title>Home Page</title>
+                            <rect x="360" y="122" width="180" height="40" rx="8" fill="#053A40" stroke="#63E4F2" stroke-width="2.5"/>
+                            <text x="450" y="147" fill="white" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Home Page</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="gallery.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Gallery page">
+                            <title>Gallery</title>
+                            <rect x="50" y="222" width="140" height="36" rx="6" fill="#195973" stroke="#3BA7BF" stroke-width="1.5"/>
+                            <text x="120" y="245" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">Gallery</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="ais.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Impact Simulator page">
+                            <title>Impact Simulator (AIS)</title>
+                            <rect x="195" y="222" width="152" height="36" rx="6" fill="#195973" stroke="#3BA7BF" stroke-width="1.5"/>
+                            <text x="271" y="245" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">Impact Simulator</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="feedback.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Feedback page">
+                            <title>Feedback</title>
+                            <rect x="355" y="222" width="130" height="36" rx="6" fill="#195973" stroke="#3BA7BF" stroke-width="1.5"/>
+                            <text x="420" y="245" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">Feedback</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="team.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Team page">
+                            <title>Team</title>
+                            <rect x="503" y="222" width="130" height="36" rx="6" fill="#195973" stroke="#3BA7BF" stroke-width="1.5"/>
+                            <text x="568" y="245" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">Team</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="profile.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="User Profile page">
+                            <title>User Profile</title>
+                            <rect x="651" y="222" width="138" height="36" rx="6" fill="#195973" stroke="#3BA7BF" stroke-width="1.5"/>
+                            <text x="720" y="245" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">User Profile</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="sitemap.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Sitemap page (current page)">
+                            <title>Sitemap (current page)</title>
+                            <rect x="797" y="222" width="100" height="36" rx="6" fill="#2D83A6" stroke="#63E4F2" stroke-width="2"/>
+                            <text x="847" y="245" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">Sitemap ★</text>
+                        </g>
+                    </a>
+
+                   
+                    <a href="home.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Content Pages hub">
+                            <title>Content Pages (all four students)</title>
+                            <rect x="360" y="342" width="180" height="36" rx="6" fill="#195973" stroke="#3BA7BF" stroke-width="1.5" stroke-dasharray="5,3"/>
+                            <text x="450" y="365" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">Content Pages</text>
+                        </g>
+                    </a>
+
+                
+                    <a href="content_ST1.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Content Page Student 1">
+                            <title>Content Page – Student 1</title>
+                            <rect x="148" y="442" width="148" height="34" rx="5" fill="#2D83A6" stroke="#3BA7BF" stroke-width="1.2"/>
+                            <text x="222" y="464" fill="white" font-size="11" font-family="sans-serif" text-anchor="middle">Content – ST1</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="content_ST2.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Content Page Student 2">
+                            <title>Content Page – Student 2</title>
+                            <rect x="305" y="442" width="148" height="34" rx="5" fill="#2D83A6" stroke="#3BA7BF" stroke-width="1.2"/>
+                            <text x="379" y="464" fill="white" font-size="11" font-family="sans-serif" text-anchor="middle">Content – ST2</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="content_ST3.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Content Page Student 3">
+                            <title>Content Page – Student 3</title>
+                            <rect x="462" y="442" width="148" height="34" rx="5" fill="#2D83A6" stroke="#3BA7BF" stroke-width="1.2"/>
+                            <text x="536" y="464" fill="white" font-size="11" font-family="sans-serif" text-anchor="middle">Content – ST3</text>
+                        </g>
+                    </a>
+
+                    
+                    <a href="content_ST4.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Content Page Student 4 - Sustainable Fishing">
+                            <title>Content Page – Student 4 (Sustainable Fishing)</title>
+                            <rect x="605" y="442" width="158" height="34" rx="5" fill="#195973" stroke="#63E4F2" stroke-width="2"/>
+                            <text x="684" y="460" fill="white" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="bold">Content – ST4 ★</text>
+                            <text x="684" y="472" fill="#63E4F2" font-size="9" font-family="sans-serif" text-anchor="middle">(Sustainable Fishing)</text>
+                        </g>
+                    </a>
+
+                    
+                    <line x1="684" y1="476" x2="684" y2="516" stroke="#3BA7BF" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+                    <a href="pageEditor_ST4.html" tabindex="0">
+                        <g class="site-node" role="link" aria-label="Page Editor Student 4">
+                            <title>Page Editor – Student 4</title>
+                            <rect x="600" y="518" width="168" height="30" rx="5" fill="#3BA7BF" stroke="#3BA7BF" stroke-width="1"/>
+                            <text x="684" y="538" fill="white" font-size="10.5" font-family="sans-serif" text-anchor="middle">Page Editor – ST4</text>
+                        </g>
+                    </a>
+
+                    <line x1="684" y1="548" x2="684" y2="555" stroke="none"/>
+
+                </svg>
+            </div>
+
+            
+            <div class="sitemap-legend" aria-label="Sitemap colour legend">
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background:#053A40;"></div>
+                    <span>Top-level pages</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background:#195973;"></div>
+                    <span>Main navigation pages</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background:#2D83A6;"></div>
+                    <span>Content pages</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background:#195973; border:2px solid #63E4F2;"></div>
+                    <span>★ My pages (Student 4)</span>
+                </div>
+                <div class="legend-item">
+                    <div style="width:28px; height:2px; background:#3BA7BF; border-top: 2px dashed #3BA7BF;"></div>
+                    <span>Content sub-group</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 4</h4>
+                    <p style="margin-bottom:0.5rem;">Name: J.M.D.Jayasinghe<br>Student ID: 20240747 / w2181802</p>
+                    <a href="pageEditor_ST4.html">My Page Editor</a>
+                    <a href="validation_ST4.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        const toggle = document.getElementById('navToggle');
+        const menu = document.getElementById('navMenu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!expanded));
+                menu.classList.toggle('open');
+            });
+        }
+    </script>
+
+</body>
+</html>
