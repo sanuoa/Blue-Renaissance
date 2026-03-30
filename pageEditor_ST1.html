@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Editor - N.G.S.R.Gunarathne | Blue Renaissance</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0fbfd;
+    color: #0d2b30;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    main {
+        flex: 3;
+    }
+
+    /* Sidebar */
+    aside {
+        flex: 1;
+        background-color: #053A40;
+        padding: 1.25rem;
+        border-radius: 10px;
+        align-self: flex-start;
+        position: sticky;
+        top: 90px;
+    }
+
+    aside h3 {
+        color: #63E4F2;
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(99,228,242,0.3);
+        padding-bottom: 0.5rem;
+    }
+
+    aside ul {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    aside li {
+        padding-bottom: 0.4rem;
+    }
+
+    aside a {
+        text-decoration: none;
+        color: rgba(255,255,255,0.75);
+        font-size: 0.875rem;
+        transition: color 0.2s;
+    }
+
+    aside a:hover {
+        color: #63E4F2;
+    }
+
+    /* Student banner */
+    .stud {
+        text-align: center;
+        background: #053A40;
+        color: #63E4F2;
+        padding: 0.75rem 2rem;
+    }
+
+    .stud h2 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.5;
+        color: #63E4F2;
+    }
+
+    /* Sections */
+    section {
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        border: 1px solid #c8e8ef;
+        background-color: #ffffff;
+        box-shadow: 0 2px 12px rgba(25, 89, 115, 0.07);
+    }
+
+    section h2 {
+        color: #195973;
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid #3BA7BF;
+    }
+
+    section h3 {
+        color: #2D83A6;
+        font-size: 1rem;
+        margin: 1rem 0 0.4rem;
+    }
+
+    section p, section li {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #1a3a40;
+    }
+
+    section a {
+        color: #2D83A6;
+        text-decoration: none;
+    }
+
+    section a:hover {
+        color: #195973;
+        text-decoration: underline;
+    }
+
+    /* References list */
+    .ref {
+        padding-left: 0;
+    }
+
+    .ref li {
+        list-style: none;
+        padding-bottom: 0.6rem;
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    /* Validation screenshots */
+    img {
+        width: 100%;
+        max-width: 800px;
+        display: block;
+        border-radius: 8px;
+        border: 2px solid #3BA7BF;
+        margin: 1rem 0;
+    }
+
+    /* Meetings table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+    }
+
+    th, td {
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #c8e8ef;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #195973;
+        color: #ffffff;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f0fbfd;
+    }
+
+    tbody tr:hover {
+        background-color: #dff4f8;
+    }
+
+    /* Go to top button */
+    .top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 999;
+    }
+
+    .top a {
+        padding: 0.5rem 1.2rem;
+        background-color: #195973;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(25,89,115,0.3);
+        transition: background 0.25s;
+    }
+
+    .top a:hover {
+        background-color: #2D83A6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+        aside {
+            position: static;
+        }
+    }
+    section ul{
+        padding-left: 1.5rem;
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">
+                <img src="Resourses/ocean renaissance logo.png" alt="ocean renaissance logo">
+                <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu" role="list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="ais.html">Impact Simulator</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="stud" id="top">
+        <h2>N.G.S.R.Gunarathne | Blue Renaissance | Student 1 – Home Page and Gallery</h2>
+    </section>
+
+    <div class="container">
+        <aside>
+            <h3>Student 2 Pages:</h3>
+            <ul class="top-level-ul">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#content">Content Page</a></li>
+                <li><a href="#challenge">Challenges &amp; Lessons Learned</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+                <li><a href="#group">Group Meetings Log</a></li>
+                <li><a href="#ref">References</a></li>
+            </ul>
+        </aside>
+        <main>
+
+            <section>
+                <h2 id="home">Home Page</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The home page is the main landing page for the site. It has a hero section, a "Why SDG 14 Matters" section with three cards, and an explore section with four gallery tiles.
+                     All CSS for the page is written in a style block inside the HTML file. Two Google Fonts are loaded — Playfair Display for headings and DM Sans for body text.
+                </p>
+                <p>
+                    The hero section uses a two-column grid. The left side has a heading, a short paragraph, and two call-to-action buttons. The right side shows four stat boxes in a two-column grid.
+                    The stat numbers count up from zero when they scroll into view, using requestAnimationFrame with an ease-out cubic formula to make the counting feel smooth.
+                    The hero heading and text fade in from below using a CSS slideUp keyframe animation. Three decorative bubble shapes float up and down behind the hero content using a CSS floatUp animation.
+                </p>
+                <p>
+                    The cards and gallery tiles start invisible and slide into view when the user scrolls down, using the IntersectionObserver API.
+                    Each item has a slightly different delay so they appear one after another rather than all at once.
+                    JavaScript event listeners handle hover highlighting on the gallery tiles and allow keyboard navigation with Enter or Space.
+                    The sticky header gets a stronger drop shadow added by JavaScript when the user scrolls more than 10 pixels down.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    The hero section uses aria-labelledby pointing to the h1 heading so screen readers can identify the section. The "Why SDG 14 Matters" section does the same with its heading.
+                    The nav logo has an aria-label and the mobile toggle button has aria-label="Toggle navigation" and an aria-expanded attribute that updates when the menu opens or closes.
+                    The current page link has aria-current="page". The gallery tiles are <a> elements with aria-label attributes describing where each one goes. The three decorative bubble divs are purely visual and do not carry any text, so they do not affect screen readers.
+                    The page has a lang="en" attribute and a viewport meta tag so it scales correctly on all devices.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST1.html#homeVal">View W3C validation result for the Home Page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="home.html">View the Home Page</a></p>
+            </section>
+
+            <section>
+                <h2 id="gallery">Gallery Page</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The gallery page has a hero banner at the top built with a CSS linear gradient that goes from dark teal to a lighter blue. Below that, the images are arranged in sections using a three-column CSS Grid.
+                    On smaller screens the grid automatically switches to two columns, and then one column on very small screens, using media queries.
+                </p>
+                <p>
+                    Each card has three parts: a thumbnail image at the top, a title bar in the middle, and a hidden description panel at the bottom.
+                    When the user hovers over a card, the image zooms in slightly and dims, a "Click to explore" chip slides up from the bottom of the image, and the description panel smoothly expands using a max-height animation.
+                    The align-items: start rule on the grid stops the whole row from growing tall when one card's description opens.
+                </p>
+                <p>
+                    When a card is clicked, JavaScript reads its data-* attributes to get the title, description, image, and badge text, and then fills in and opens a modal popup.
+                    The modal has a customisation panel with buttons to switch between four colour schemes (Ocean, Seafoam, Sandy, Deep Sea) and four font styles (Default, Serif, Monospace, Rounded).
+                    These are applied by changing inline styles on the modal box. The modal closes when the user clicks the X button, clicks outside the box, or presses Escape.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    Each gallery card has a tabindex="0" so it can be reached with the keyboard, and JavaScript listens for Enter and Space key presses to open the modal, the same as a click.
+                    The modal element has role="dialog", aria-modal="true", and aria-labelledby pointing to the modal title, so screen readers announce it correctly when it opens. When the modal opens, focus is moved to the close button straight away.
+                    The close button has an aria-label so its purpose is clear. The small arrow icon inside each card label has aria-hidden="true" so screen readers skip it.
+                    Cards also show a visible focus outline when tabbed to. The page has a lang="en" attribute and a viewport meta tag.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST1.html#galleryVal">View W3C validation result for the Gallery Page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="gallery_ST1.html">View the Gallery Page</a></p>
+            </section>
+
+            <section>
+                <h2 id="content">Content Page</h2>
+
+                <h3>Technical Description</h3>
+                <p>
+                    The content page uses the shared site header, footer, and stylesheet. The page layout is built with CSS Grid, splitting the screen into two columns — a narrow sticky sidebar on the left and the main article on the right. 
+                    The sidebar stays in place as the user scrolls, always showing the section links.
+                    The gap value in the sidebar uses a CSS custom property, and the styles are written inside a style block directly in the HTML file rather than in a separate CSS file.
+                </p>
+                <p>
+                    The article is divided into five sections: an introduction, coral reefs, key threats, student actions, success stories, and a get involved section.
+                    Three images are placed inside <figure> elements with captions below each one. There is also a row of three stat cards that show key numbers using a three-column grid.
+                    JavaScript is used to highlight the correct sidebar link as the user scrolls through each section, and to mark the current page link as active in the navigation. 
+                    A go-to-top button is fixed to the bottom-right corner of the screen at all times.
+                </p>
+                <p>
+                    Two Google Fonts — Playfair Display and DM Sans — are loaded from Google's font service.
+                    The font sizes use clamp() so the heading scales smoothly depending on the screen width.
+                </p>
+
+                <h3>Accessibility</h3>
+                <p>
+                    All three images have alt text that describes what is shown in them.
+                    The captions are placed inside <figcaption> elements so screen readers can link them to their images. 
+                    The page uses a proper heading structure starting at h1 and going down through h2 and h3, which makes it easy for screen readers to follow. The sticky sidebar uses anchor links so users can jump directly to any section of the page.
+                    The go-to-top button has an aria-label so screen readers know what it does. The JavaScript that marks the current nav link also adds an aria-current="page" attribute. The page has a lang="en" attribute and a viewport meta tag so it works on all screen sizes.
+                </p>
+
+                <h3>Link to the Validation Page</h3>
+                <p><a href="validation_ST1.html#contentVal">View W3C validation result for the Content Page</a></p>
+
+                <h3>Link to the Page</h3>
+                <p><a href="content_ST1.html">View the Content Page</a></p>
+            </section>
+
+            <section>
+                <h2 id="challenge">Challenges and Lessons Learned</h2>
+                <p>
+                    The biggest challenge I faced was building the gallery page pop-up modal using JavaScript.
+                    I had not worked much with JavaScript before, so figuring out how to open the modal, fill it with the right image and text from each card, and then close it properly took a lot of trial and error.
+                    Getting the Escape key and outside-click close to work at the same time as the close button was tricky, and I had to look up how event listeners work to get it right.
+                    The JavaScript on the home page was also difficult. Adding the scroll-reveal animation using IntersectionObserver, making the stat numbers count up smoothly, and handling the hamburger menu toggle all at once felt like a lot to manage together. 
+                    It took me several attempts to get the counter animation to feel natural and to make sure the menu opened and closed correctly on mobile.
+                </p>
+                <p>
+                    Working through these challenges taught me quite a bit about JavaScript that I did not know before. I learned how data-* attributes can be used to store information on HTML elements and then read them with JavaScript, which is how the modal gets its content from each card.
+                    I also learned how IntersectionObserver works and how useful it is for triggering things when they scroll into view, rather than constantly checking the scroll position.
+                    On the CSS side, I got more comfortable with things like max-height transitions for smooth expand and collapse effects, clamp() for font sizes that scale with the screen width, and align-items: start on a grid to stop rows from stretching unexpectedly.
+                    Overall, building these two pages gave me a much better understanding of how JavaScript and CSS work together to create interactive and responsive pages.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="compliance">Compliance</h2>
+                <p>All of my pages follow the JANET regulations for web publishing at the University of Westminster:</p>
+                <br>
+                <ul>
+                    <li>All the written content on my pages is my own and was not copied from any other website.</li>
+                    <li>The images I used are royalty-free and are properly referenced in the references section below.</li>
+                    <li>None of my pages collect or store any personal information from users.</li>
+                    <li>All pages have the correct charset and viewport meta tags in the head section.</li>
+                    <li>The page has a lang attribute set to English so screen readers and browsers can identify the language correctly.</li>
+                    <li>There is no offensive or inappropriate content on any of my pages.</li>
+                    <li>The gallery modal allows the user to close it at any time using the close button, clicking outside, or pressing Escape, so the user is never trapped.</li>
+                    <li>All external resources such as Google Fonts are loaded from trusted sources.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 id="group">Group Meetings and Individual Contribution Log</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="6" style="text-align: center">Group Meetings and Contribution Log</th>
+                        </tr>
+                        <tr>
+                            <th>Meeting</th>
+                            <th>Date & Time</th>
+                            <th>Format</th>
+                            <th>Objective</th>
+                            <th>Attended</th>
+                            <th>Your Individual Contribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2/03/2026, 11:00 AM</td>
+                            <td>Face-to-face</td>
+                            <td>Agree SDG topic and assign student roles</td>
+                            <td>Yes</td>
+                            <td>I agreed to take on the Home and Gallery pages.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>9/03/2026, 7:00 PM</td>
+                            <td>Online</td>
+                            <td>Discuss design direction and colour palette</td>
+                            <td>Yes</td>
+                            <td>I presented the first draft of the shared site template to the group, including the header, footer, navigation, and base stylesheet. I explained how the CSS variables and layout classes worked so the rest of the team could build their pages on top of it.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>14/03/2026, 11:30 AM</td>
+                            <td>Hybrid</td>
+                            <td>Progress review - share individual page drafts</td>
+                            <td>Yes</td>
+                            <td>I showed my progress on the home page and gallery page. I also helped other group members who were having trouble fitting their pages into the shared template, and answered questions about how the CSS classes worked.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>19/03/2026, 8:00 PM</td>
+                            <td>Online</td>
+                            <td>Review updated pages after the jellyfish was scrapped</td>
+                            <td>Yes</td>
+                            <td>I reviewed the updated pages from all group members and gave feedback on whether they were following the shared template correctly. I made small fixes to the shared stylesheet where needed so all pages looked consistent.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>24/03/2026, 11:00 AM</td>
+                            <td>Face-to-face</td>
+                            <td>Accessibility and validation checks</td>
+                            <td>Yes</td>
+                            <td>I ran W3C validation on my pages — the home page, gallery page, and content page — and fixed any errors that came up. I also helped check the accessibility of the shared template, making sure the navigation toggle and aria attributes were working correctly across all pages.</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>28/03/2026, 8:00 PM</td>
+                            <td>Online</td>
+                            <td>Final review before submission</td>
+                            <td>Yes</td>
+                            <td>I did a final check of all my pages, made sure all links were working, confirmed all images had alt text, and reviewed the overall look of the site to make sure the shared template was consistent across every page before submission.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 id="ref">References</h2>
+                <h3>Images Used:</h3>
+                <ul class="ref">
+                    <li>Photo by Simona Toma on <a href="https://unsplash.com/photos/various-corals-floating-in-clear-blue-water-i1rrxGTvuFU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Photo by NOAA on <a href="https://unsplash.com/photos/body-of-water-during-sunset-0KoRn8IQFww?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Photo by Juan Nino on <a href="https://unsplash.com/photos/a-group-of-people-standing-around-a-truck-filled-with-fish-eL48wMgNxj4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Photo by NEOM on <a href="https://unsplash.com/photos/an-underwater-view-of-a-colorful-coral-reef-HYHYGLs-Rp8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Photo by Naja Bertolt Jensen on <a href="https://unsplash.com/photos/school-of-fish-in-water-BJUoZu0mpt0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Photo by Benjamin Kraus on <a href="https://unsplash.com/photos/gray-bearded-dragon-on-black-rock-mzBXDRPT7YU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                    <li>Photo by Valeri Penchev on <a href="https://unsplash.com/photos/boat-sailing-near-circular-fish-farms-on-the-ocean-7QeP-X3Noas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                </ul>
+                <h3>Website References</h3>
+                <ul class="ref">
+                    
+                    <li>MDN Web Docs Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" target="_blank">https://developer.mozilla.org/</a></li>
+                    <li>W3Schools : Available at: <a href="https://www.w3schools.com/css/css_grid.asp" target="_blank">https://www.w3schools.com/</a></li>
+                    <li>W3C Markup Validation Service : Available at: <a href="https://validator.w3.org/" target="_blank">https://validator.w3.org/</a></li>
+                    <li>Unsplash : Available at: <a href="https://unsplash.com/" target="_blank">https://unsplash.com/</a></li>
+                    <li>Pexels : Available at: <a href="https://www.pexels.com/" target="_blank">https://www.pexels.com/</a></li>
+                    <li>United Nations : Available at: <a href="https://sdgs.un.org/" target="_blank">https://sdgs.un.org/</a></li>
+                    <li>National Oceanic and Atmospheric Administration (NOAA) : Available at: <a href="https://www.noaa.gov/" target="_blank">https://www.noaa.gov/</a></li>
+                    <li>National Geographic : Available at: <a href="https://www.nationalgeographic.com/" target="_blank">https://www.nationalgeographic.com/</a></li>
+                    <li>Surfers Against Sewage : Available at: <a href="https://www.surfersagainstsewage.org/" target="_blank">https://www.surfersagainstsewage.org/</a></li>
+                    <li>Aestera font from: <a href="https://befonts.com/aestera-font.html" target="_blank">BeFonts.com</a></li>
+                    
+                </ul>
+            </section>
+
+            <p class="top"><a href="#top">Go top</a></p>
+        </main>
+
+        
+
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <h4>Blue Renaissance</h4>
+                    <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                    Web Design &amp; Development module at the University of Westminster.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="home.html">Home</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="ais.html">Impact Simulator</a>
+                    <a href="feedback.html">Feedback</a>
+                    <a href="team.html">Team</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div>
+                    <h4>Student 2</h4>
+                    <p style="margin-bottom:0.5rem;">Name: H.D.M.R.M Weerasiri<br>Student ID: 20240789 / w2181803</p>
+                    <a href="pageEditor_ST2.html">My Page Editor</a>
+                    <a href="validation_ST2.html">Validation Page</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                <span>All content complies with JANET regulations.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

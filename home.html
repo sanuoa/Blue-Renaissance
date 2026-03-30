@@ -326,7 +326,7 @@
             <span></span><span></span><span></span>
         </button>
 
-        <ul id="navMenu" role="list">
+        <ul id="navMenu">
             <li><a href="home.html" class="active" aria-current="page">Home</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="ais.html">Impact Simulator</a></li>
@@ -365,7 +365,7 @@
                 </div>
             </div>
 
-            <div class="hero-stat-box" aria-label="Ocean facts">
+            <div class="hero-stat-box">
                 <div class="stat-item">
                     <span class="stat-num">71%</span>
                     <span class="stat-label">of Earth's surface is ocean</span>
@@ -397,15 +397,8 @@
 
             <div class="cards-grid">
 
-                <!-- Card 1: Marine Biodiversity -->
                 <article class="card" tabindex="0" aria-label="Marine Biodiversity card">
-                    <div class="card-img-placeholder" aria-hidden="true">🐠</div>
-                    <!--
-                        PLACEHOLDER IMAGE
-                        Replace the div above with:
-                        <img class="card-img" src="images/marine-biodiversity.jpg"
-                             alt="Colourful coral reef with diverse fish species">
-                    -->
+                    <img src="Resourses/Marine Biodiversity.jpg" alt="Marine Biodiversity">
                     <div class="card-body">
                         <h3>Marine Biodiversity</h3>
                         <p>Over 2 million species live in our oceans. Pollution, overfishing,
@@ -419,15 +412,8 @@
                     </div>
                 </article>
 
-                <!-- Card 2: Ocean & Climate -->
                 <article class="card" tabindex="0" aria-label="Ocean and Climate card">
-                    <div class="card-img-placeholder" aria-hidden="true">🌍</div>
-                    <!--
-                        PLACEHOLDER IMAGE
-                        Replace the div above with:
-                        <img class="card-img" src="images/ocean-climate.jpg"
-                             alt="Aerial view of ocean waves representing climate connection">
-                    -->
+                    <img src="Resourses/Ocean & Climate.jpg" alt="Ocean and Climate">
                     <div class="card-body">
                         <h3>Ocean &amp; Climate</h3>
                         <p>The ocean absorbs 25% of all CO₂ emissions and generates 50%
@@ -441,15 +427,8 @@
                     </div>
                 </article>
 
-                <!-- Card 3: Sustainable Fisheries -->
                 <article class="card" tabindex="0" aria-label="Sustainable Fisheries card">
-                    <div class="card-img-placeholder" aria-hidden="true">🎣</div>
-                    <!--
-                        PLACEHOLDER IMAGE
-                        Replace the div above with:
-                        <img class="card-img" src="images/sustainable-fisheries.jpg"
-                             alt="Fishermen on a boat using sustainable fishing methods">
-                    -->
+                    <img src="Resources/Sustainable Fisheries.jpg" alt="Sustainable Fisheries">
                     <div class="card-body">
                         <h3>Sustainable Fisheries</h3>
                         <p>34% of fish stocks are currently overexploited. Sustainable fishing
@@ -479,64 +458,46 @@
             <div class="gallery-grid" role="list">
 
                 <!-- Tile 1: Student 1 Content Page -->
-                <a href="content_ST1.html" class="gallery-tile" role="listitem"
+                <a href="content_ST1.html" class="gallery-tile""
                    aria-label="Navigate to Student 1 content page">
-                    <!--
-                        TO CUSTOMISE THIS TILE:
-                        1. Replace the .gallery-tile-bg div with an <img> tag:
-                           <img class="gallery-tile-img" src="images/content1-thumb.jpg"
-                                alt="[Describe the image]">
-                        2. Update the label, title, and description below.
-                    -->
-                    <div class="gallery-tile-bg"
-                         style="background:linear-gradient(135deg,#195973,#2D83A6);"
-                         aria-hidden="true">🐋</div>
+                   <img src="Resourses/Coral Reef.jpg" alt="Coral Reefs">
                     <div class="gallery-tile-overlay">
                         <span class="gallery-tile-label">Student 1 · Topic</span>
-                        <p class="gallery-tile-title">Ocean Pollution &amp; Plastic Crisis</p>
-                        <!-- UPDATE: Replace with real topic title and short description -->
+                        <p class="gallery-tile-title">Coral Reefs</p>
                         <span class="gallery-tile-arrow">Read full article →</span>
                     </div>
                 </a>
 
                 <!-- Tile 2: Student 2 Content Page -->
-                <a href="content_ST2.html" class="gallery-tile" role="listitem"
+                <a href="content_ST2.html" class="gallery-tile""
                    aria-label="Navigate to Student 2 content page">
-                    <div class="gallery-tile-bg"
-                         style="background:linear-gradient(135deg,#053A40,#195973);"
-                         aria-hidden="true">🦈</div>
+                   <img src="Resourses/Ocean Pollution.jpg" alt="Ocean Pollution">
                     <div class="gallery-tile-overlay">
                         <span class="gallery-tile-label">Student 2 · Topic</span>
-                        <p class="gallery-tile-title">Marine Protected Areas</p>
+                        <p class="gallery-tile-title">Ocean Pollution</p>
                         <!-- UPDATE: Replace with real topic title -->
                         <span class="gallery-tile-arrow">Read full article →</span>
                     </div>
                 </a>
 
                 <!-- Tile 3: Student 3 Content Page -->
-                <a href="content_ST3.html" class="gallery-tile" role="listitem"
+                <a href="content_ST3.html" class="gallery-tile"
                    aria-label="Navigate to Student 3 content page">
-                    <div class="gallery-tile-bg"
-                         style="background:linear-gradient(135deg,#2D83A6,#3BA7BF);"
-                         aria-hidden="true">🐢</div>
+                   <img src="Resourses/Marine Wildlife.jpg" alt="Marine Wildlife">
                     <div class="gallery-tile-overlay">
                         <span class="gallery-tile-label">Student 3 · Topic</span>
-                        <p class="gallery-tile-title">Climate Change &amp; Rising Seas</p>
-                        <!-- UPDATE: Replace with real topic title -->
+                        <p class="gallery-tile-title">Marine Wildlife</p>
                         <span class="gallery-tile-arrow">Read full article →</span>
                     </div>
                 </a>
 
                 <!-- Tile 4: Student 4 Content Page -->
-                <a href="content_ST4.html" class="gallery-tile" role="listitem"
+                <a href="content_ST4.html" class="gallery-tile"
                    aria-label="Navigate to Student 4 content page">
-                    <div class="gallery-tile-bg"
-                         style="background:linear-gradient(135deg,#3BA7BF,#63E4F2);"
-                         aria-hidden="true">🌊</div>
+                   <img src="Resourses/Sustainable Fishing.jpg" alt="Sustainable Fishing">
                     <div class="gallery-tile-overlay">
                         <span class="gallery-tile-label">Student 4 · Topic</span>
-                        <p class="gallery-tile-title">Sustainable Fishing Practices</p>
-                        <!-- UPDATE: Replace with real topic title -->
+                        <p class="gallery-tile-title">Sustainable Fishing</p>
                         <span class="gallery-tile-arrow">Read full article →</span>
                     </div>
                 </a>
@@ -544,7 +505,7 @@
             </div>
 
             <!-- CTA row -->
-            <div style="text-align:center;margin-top:3rem;">
+            <div style="text-align:center; margin-top:3rem;">
                 <a href="gallery.html" class="btn btn-primary" style="font-size:0.95rem;padding:0.8rem 2rem;">
                     Browse Full Gallery →
                 </a>
@@ -558,7 +519,7 @@
 <!-- ============================================================
      FOOTER
 ============================================================ -->
-<footer role="contentinfo">
+<footer>
     <div class="footer-inner">
         <div class="footer-grid">
             <div>
