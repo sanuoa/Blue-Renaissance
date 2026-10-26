@@ -198,7 +198,7 @@
             margin-top: 0.05rem;
         }
 
-        /* 6. Explore / Gallery section */
+        /* 6. Gallery section */
         .explore-section {
             background: linear-gradient(180deg, var(--col-offwhite) 0%, #d4f4f8 100%);
             padding: 5rem 0;
@@ -323,9 +323,6 @@
 
 <body>
 
-<!-- ============================================================
-     HEADER & NAVIGATION
-============================================================ -->
 <header>
     <nav>
         <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">  
@@ -351,9 +348,6 @@
 </header>
 
 
-<!-- ============================================================
-     MAIN CONTENT
-============================================================ -->
 <main>
 
     <!-- ── HERO SECTION ── -->
@@ -376,7 +370,7 @@
     </section>
 
 
-    <!-- ── WHY SDG 14 MATTERS — THREE CARDS ── -->
+    <!-- ── WHY SDG 14 MATTERS ── -->
     <section id="why-matters" aria-labelledby="why-title">
         <div class="section-wrap">
             <h2 class="section-title" id="why-title">Why SDG 14 Matters</h2>
@@ -436,7 +430,7 @@
     </section>
 
 
-    <!-- ── EXPLORE CONTENT — GALLERY TILES ── -->
+    <!-- ── EXPLORE CONTENT ── -->
     <section id="explore-content" class="explore-section" aria-labelledby="explore-title">
         <div class="section-wrap" style="padding-top:0;padding-bottom:0;">
             <h2 class="section-title" id="explore-title">Explore Our Content</h2>
@@ -446,7 +440,7 @@
 
             <div class="gallery-grid" role="list">
 
-                <!-- Tile 1: Student 1 Content Page -->
+                <!-- Student 1 Content Page -->
                 <a href="content_ST1.html" class="gallery-tile""
                    aria-label="Navigate to Student 1 content page">
                    <img src="Resourses/Coral Reef.jpg" alt="Coral Reefs">
@@ -457,7 +451,7 @@
                     </div>
                 </a>
 
-                <!-- Tile 2: Student 2 Content Page -->
+                <!-- Student 2 Content Page -->
                 <a href="content_ST2.html" class="gallery-tile""
                    aria-label="Navigate to Student 2 content page">
                    <img src="Resourses/Ocean Pollution.jpg" alt="Ocean Pollution">
@@ -469,7 +463,7 @@
                     </div>
                 </a>
 
-                <!-- Tile 3: Student 3 Content Page -->
+                <!-- Student 3 Content Page -->
                 <a href="content_ST3.html" class="gallery-tile"
                    aria-label="Navigate to Student 3 content page">
                    <img src="Resourses/Marine Wildlife.jpg" alt="Marine Wildlife">
@@ -480,7 +474,7 @@
                     </div>
                 </a>
 
-                <!-- Tile 4: Student 4 Content Page -->
+                <!-- Student 4 Content Page -->
                 <a href="content_ST4.html" class="gallery-tile"
                    aria-label="Navigate to Student 4 content page">
                    <img src="Resourses/Sustainable Fishing.jpg" alt="Sustainable Fishing">
@@ -505,9 +499,6 @@
 </main>
 
 
-<!-- ============================================================
-     FOOTER
-============================================================ -->
 <footer>
     <div class="footer-inner">
         <div class="footer-grid">
@@ -540,13 +531,9 @@
 </footer>
 
 
-<!-- ============================================================
-     JAVASCRIPT
-     Handles: mobile nav toggle, scroll-reveal animations,
-     gallery hover interactivity, smooth scroll, active-link check
-============================================================ -->
+<!-- JAVASCRIPT-->
 <script>
-    // ── 1. Mobile Navigation Toggle ──────────────────────────────
+    // 1. Mobile Navigation Toggle 
     const navToggle = document.getElementById('navToggle');
     const navMenu   = document.getElementById('navMenu');
 
@@ -573,7 +560,7 @@
     });
 
 
-    // ── 2. Scroll-Reveal Animation ───────────────────────────────
+    // 2. Scroll-Reveal Animation 
     // Cards and gallery tiles animate in when scrolled into view
     const revealItems = document.querySelectorAll('.card, .gallery-tile, .stat-item');
 
