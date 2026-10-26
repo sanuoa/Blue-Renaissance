@@ -1,223 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Feedback - Life Below Water</title>
+    <head>
+        <title>Blue Renaissance | Template</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+		
+		<style>
 
-<style>
+				/* BODY */
+				body{
+					font-family: Arial, sans-serif;
+					margin:0;
+					background:#caf0f8;
+					scroll-behavior:smooth;
+				}
 
-/* BODY */
-body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    background:#caf0f8;
-}
+				/* HEADER */
+				header{
+					background:#053A40;
+					color:white;
+					padding:15px;
+					text-align:center;
+				}
 
-/* HEADER */
-header{
-    background:#023e8a;
-    color:white;
-    padding:15px;
-    text-align:center;
-}
+				/* SECTION */
+				section{
+					margin:20px;
+				}
 
-/* SECTION */
-section{
-    margin:20px;
-}
+				/* BUTTON STYLE */
+				.btn{
+				display:inline-block;
+				background:#0077b6;
+				color:white;
+				padding:8px 12px;
+				text-decoration:none;
+				border-radius:5px;
+				transition:0.3s;
+				}
 
-/* PROGRAM CARDS */
-.scroll-container{
-    display:flex;
-    overflow-x:auto;
-    gap:20px;
-}
+				.btn:hover{
+				background:#0096c7;
+				transform:scale(1.05);
+				}
 
-.card{
-    min-width:220px;
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.2);
-}
+				/* PROGRAM CARDS */
+				.scroll-container{
+					display:flex;
+					overflow-x:auto;
+					gap:20px;
+				}
 
-.card button{
-    background:#0077b6;
-    color:white;
-    border:none;
-    padding:8px;
-    margin-top:10px;
-}
+				.card{
+					min-width:220px;
+					background:white;
+					padding:15px;
+					border-radius:10px;
+					box-shadow:0 3px 8px rgba(0,0,0,0.2);
+				}
 
-.card button:hover{
-    background:#0096c7;
-}
+				/* REVIEWS */
+				.review{
+					background:white;
+					margin:10px;
+					padding:10px;
+					border-radius:10px;
+				}
 
-/* REVIEWS */
-.review{
-    background:white;
-    margin:10px;
-    padding:10px;
-    border-radius:10px;
-}
+				/* FORM */
+				form{
+					background:white;
+					padding:20px;
+					border-radius:10px;
+					max-width:500px;
+					margin:auto;
+				}
 
-/* FORM */
-form{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    max-width:500px;
-    margin:auto;
-}
+				input, textarea, select{
+					width:100%;
+					padding:8px;
+					margin:10px 0;
+				}
 
-input, textarea, select{
-    width:100%;
-    padding:8px;
-    margin:10px 0;
-}
+				/* FOOTER */
+				footer{
+					text-align:center;
+					padding:10px;
+					background:#053A40;
+					color:white;
+				}
 
-/* BUTTON */
-button{
-    background:#0077b6;
-    color:white;
-    padding:10px;
-    border:none;
-}
+		</style>
+		
+    </head>
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:10px;
-    background:#023e8a;
-    color:white;
-}
+    <body>
+        <header>
+            <nav>
+                <a href="home.html" class="nav-logo" aria-label="Blue Renaissance - Home">  
+                    <img src="Resourses\ocean renaissance logo.png" alt="ocean renaissance logo" >
+                    <span class="nav-logo-text">Blue <span>Renaissance</span></span>
+                </a>
 
-</style>
-</head>
+                <!-- Mobile toggle -->
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
 
-<body>
+                <ul id="navMenu">
+                    <li><a href="home.html" class="active" aria-current="page">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="ais.html">Impact Simulator</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                </ul>
+            </nav>
+        </header>                         
 
-<header>
-<h1>🌊 <i class="fa-solid fa-fish"></i> Feedback & Programs</h1>
-</header>
+        <main>
+		
+		<header>	
+			<h1 style="text-align: center; font-size:50px;"> <i class="fa-solid fa-fish"></i> Feedback & Ocean Programs</h1>
+			<br>
+		</header>
 
-<!-- PROGRAM SECTION -->
-<section>
-<h2>🌱 Ocean Programs</h2>
+			<!-- PROGRAM SECTION -->
+			<section>
+			<h1 headingoffset="2"> Ocean Programs</h1>
+			<br>
+			<br>
 
-<div class="scroll-container">
+			<div class="scroll-container">
 
-<div class="card">
-<h3>Beach Cleanup</h3>
-<p>Help remove plastic from beaches.</p>
-<button>Join</button>
-</div>
+				<div class="card">
+				<h2>Beach Cleanup</h2>
+				<p>Help remove plastic from beaches.</p>
+				<a href="#cleanup" class="btn"> Join</a>
+				</div>
 
-<div class="card">
-<h3>Coral Protection</h3>
-<p>Support coral reef conservation.</p>
-<button>Learn More</button>
-</div>
+				<div class="card">
+				<h2>Coral Protection</h2>
+				<p>Support coral reef conservation.</p>
+				<a href="#coral" class="btn"> Learn More</a>
+				</div>
 
-<div class="card">
-<h3>Ocean Awareness</h3>
-<p>Spread awareness about pollution.</p>
-<button>Get Involved</button>
-</div>
+				<div class="card">
+				<h2>Ocean Awareness</h2>
+				<p>Spread awareness about pollution.</p>
+				<a href="#awareness" class="btn"> Get Involved</a>
+				</div>
 
-<div class="card">
-<h3>Marine Life Rescue</h3>
-<p>Protect injured sea animals.</p>
-<button>Join</button>
-</div>
+				<div class="card">
+				<h2>Marine Life Rescue</h2>
+				<p>Protect injured sea animals.</p>
+				<a href="#rescue" class="btn"> Join</a>
+				</div>
 
-</div>
-</section>
+			</div>
+			</section>
+			<br>
 
-<!-- REVIEWS -->
-<section>
-<h2>⭐ Reviews</h2>
+			<!-- DETAILS SECTIONS -->
 
-<div class="review">
-<h4>Great Experience</h4>
-<p>Very helpful for ocean awareness.</p>
-<p>Rating: 9/10</p>
-</div>
+			<section id="cleanup">
+			<h2> Beach Cleanup</h2>
+			<p>Join local beach cleanup programs to reduce ocean pollution and protect marine animals.</p>
+			</section>
 
-<div class="review">
-<h4>Informative</h4>
-<p>Learned a lot about marine life.</p>
-<p>Rating: 8/10</p>
-</div>
+			<section id="coral">
+			<h2> Coral Protection</h2>
+			<p>Coral reefs are important ecosystems. Protect them by reducing pollution and supporting conservation.</p>
+			</section>
 
-<div class="review">
-<h4>Excellent Website</h4>
-<p>Easy to understand and useful.</p>
-<p>Rating: 9/10</p>
-</div>
+			<section id="awareness">
+			<h2> Ocean Awareness</h2>
+			<p>Educate others about the dangers of plastic waste and how it affects marine life.</p>
+			</section>
 
-</section>
+			<section id="rescue">
+			<h2> Marine Life Rescue</h2>
+			<p>Help rescue and protect injured marine animals like turtles and dolphins.</p>
+			</section>
+			<br>
 
-<!-- FEEDBACK FORM -->
-<section>
+			<!-- REVIEWS -->
+			<section>
+			<h1 headingoffset="2"> Reviews</h1>
 
-<h2>💬 Give Your Feedback</h2>
+				<div class="review">
+				<h2>Great Experience</h2>
+				<p>Very helpful for ocean awareness.</p>
+				<p>Rating: 9/10</p>
+				</div>
 
-<form id="feedbackForm">
+				<div class="review">
+				<h3>Informative</h3>
+				<p>Learned a lot about marine life.</p>
+				<p>Rating: 8/10</p>
+				</div>
 
-<fieldset>
-<legend>Personal Details</legend>
+				<div class="review">
+				<h4>Excellent Website</h4>
+				<p>Easy to understand and useful.</p>
+				<p>Rating: 9/10</p>
+				</div>
 
-<label>Full Name</label>
-<input type="text" id="name" required>
+			</section>
 
-<label>Email</label>
-<input type="email" id="email" required>
+			<!-- FEEDBACK FORM -->
+			<section id="feedbackForm">
 
-<label>Telephone</label>
-<input type="tel">
+				<h2> Give Your Feedback</h2>
 
-</fieldset>
+				<form id="form">
 
-<fieldset>
-<legend>Feedback Details</legend>
+				<fieldset>
+				
+				<legend><b>Personal Details</b></legend>
+				<br>
 
-<label>Rate Us</label>
-<select id="rating">
-<option>Excellent</option>
-<option>Good</option>
-<option>Average</option>
-<option>Poor</option>
-</select>
+					<label>Full Name</label>
+					<input type="text" id="name" required>
 
-<label>Message</label>
-<textarea id="message" maxlength="200"></textarea>
+					<label>Email</label>
+					<input type="email" id="email" required>
 
-<p>Characters left: <span id="counter">200</span></p>
+				</fieldset>
+				<br>
 
-<label>Date</label>
-<input type="date">
+				<fieldset>
+				
+				<legend><b>Feedback Details</b></legend>
+				<br>
 
-</fieldset>
+					<label>Rate Us</label>
+					
+					<select>
+					<option>Excellent</option>
+					<option>Good</option>
+					<option>Average</option>
+					<option>Poor</option>
+					</select>
 
-<button type="submit">Submit Feedback</button>
+					<label>Message</label>
+					<textarea id="message" maxlength="200"></textarea>
 
-</form>
+					<p>Characters left: <span id="counter">200</span></p>
 
-<p id="result"></p>
+				</fieldset>
+				<br>
 
-</section>
+				<button type="submit" class="btn">Submit Feedback</button>
 
-<footer>
-<p>Created for Life Below Water Project 🌊</p>
-</footer>
+				</form>
+
+			<p id="result"></p>
+
+			</section>
+
 
 <script>
 
-// CHARACTER COUNTER
+/* CHARACTER COUNTER */
 const message = document.getElementById("message");
 const counter = document.getElementById("counter");
 
@@ -225,8 +273,8 @@ message.addEventListener("input", function(){
 counter.textContent = 200 - message.value.length;
 });
 
-// FORM VALIDATION
-document.getElementById("feedbackForm").addEventListener("submit", function(e){
+/* FORM VALIDATION */
+document.getElementById("form").addEventListener("submit", function(e){
 
 e.preventDefault();
 
@@ -238,11 +286,43 @@ alert("Please fill all required fields");
 return;
 }
 
-// SUCCESS MESSAGE
 document.getElementById("result").textContent = "✅ Thank you for your feedback!";
+
 });
 
 </script>
+ 
+        </main>
 
-</body>
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-grid">
+                    <div>
+                        <h4>Blue Renaissance</h4>
+                        <p>A student project promoting SDG 14 — Life Below Water. Built as part of the
+                        Web Design &amp; Development module at the University of Westminster.</p>
+                    </div>
+                    <div>
+                        <h4>Quick Links</h4>
+                        <a href="home.html">Home</a>
+                        <a href="gallery.html">Gallery</a>
+                        <a href="ais.html">Impact Simulator</a>
+                        <a href="feedback.html">Feedback</a>
+                        <a href="team.html">Team</a>
+                        <a href="sitemap.html">Sitemap</a>
+                    </div>
+                    <div>
+                        <h4>Student 3</h4>
+                        <p style="margin-bottom:0.5rem;">Name: I.D.D.M.Weerasinghe<br>Student ID: 20241149 / w2182045</p>
+                        <a href="pageEditor_ST3.html">My Page Editor</a>
+                        <a href="validation_ST3.html">Validation Page</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span>© 2026 Blue Renaissance. Student coursework. University of Westminster.</span>
+                    <span>All content complies with JANET regulations.</span>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>
